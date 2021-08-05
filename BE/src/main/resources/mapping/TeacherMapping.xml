@@ -3,14 +3,9 @@
 
 <mapper namespace="com.springbootWork.dao.mapper.TeacherMapper">
     <select id="getPage" resultType="TeacherItemVO">
-        SELECT teacher_id AS 'id', teacher_number AS 'number', teacher_name AS 'name',
-        department_name AS 'departmentName'
+        SELECT teacher_id AS 'id', teacher_number AS 'number', teacher_name AS 'name'
         FROM rc_teacher
-        JOIN rc_department on teacher_department_id = department_id
         <where>
-            <if test="departmentName != null and departmentName != ''">
-                AND department_name LIKE CONCAT('%',#{departmentName},'%')
-            </if>
             <if test="name != null and name != ''">
                 AND teacher_name LIKE CONCAT('%',#{name},'%')
             </if>
@@ -20,11 +15,7 @@
     <select id="count" resultType="Integer">
         SELECT COUNT(*)
         FROM rc_teacher
-        JOIN rc_department on teacher_department_id = department_id
         <where>
-            <if test="departmentName != null and departmentName != ''">
-                AND department_name LIKE CONCAT('%',#{departmentName},'%')
-            </if>
             <if test="name != null and name != ''">
                 AND teacher_name LIKE CONCAT('%',#{name},'%')
             </if>

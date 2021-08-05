@@ -63,18 +63,12 @@ public class ActivitySelectService extends BaseService {
         if (activity == null) {
             return failedResult("活动Id:" + activityId + "不存在!");
         }
-//        if (!manager.inSameDepartment(activityId, consumerId)) {
-//            return failedResult("用户不能选择非教学系的活动!");
-//        }
         if (activity.getSelectedCount() >= activity.getMaxSize()) {
             return failedResult("课容量已满!");
         }
         if (manager.getConsumerActivityByActivityIdAndConsumerId(activityId, consumerId) != null) {
             return failedResult("用户已选修此活动!");
         }
-//        if (!manager.getConsumerGradeById(consumer.getId()).equals(activity.getGrade())) {
-//            return failedResult("用户与活动不在同一年级");
-//        }
         String timePart = splitTimePart(activity.getTime());
         if (manager.countConsumerActivitySelectedByTimePart(consumerId, timePart) > 0) {
             return failedResult("上课时间冲突!");

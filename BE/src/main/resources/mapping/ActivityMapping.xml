@@ -4,15 +4,10 @@
 <mapper namespace="com.springbootWork.dao.mapper.ActivityMapper">
     <select id="getPage" resultType="ActivityItemBO">
         SELECT activity_id AS 'id', activity_name AS 'name', teacher_name AS 'teacherName',
-        department_name AS 'departmentName', activity_grade AS 'grade', activity_credit AS 'credit',
         activity_time AS 'time', activity_selected_count AS 'selectedCount', activity_max_size AS 'maxSize'
         FROM rc_activity
         JOIN rc_teacher on activity_teacher_id = teacher_id
-        JOIN rc_department on teacher_department_id = department_id
         <where>
-<!--            <if test="departmentName != null and departmentName != ''">-->
-<!--                AND department_name LIKE CONCAT('%',#{departmentName},'%')-->
-<!--            </if>-->
             <if test="teacherName != null and teacherName != ''">
                 AND teacher_name LIKE CONCAT('%',#{teacherName},'%')
             </if>
@@ -26,11 +21,7 @@
         SELECT COUNT(*)
         FROM rc_activity
         JOIN rc_teacher on activity_teacher_id = teacher_id
---         JOIN rc_department on teacher_department_id = department_id
         <where>
-<!--            <if test="departmentName != null and departmentName != ''">-->
-<!--                AND department_name LIKE CONCAT('%',#{departmentName},'%')-->
-<!--            </if>-->
             <if test="teacherName != null and teacherName != ''">
                 AND teacher_name LIKE CONCAT('%',#{teacherName},'%')
             </if>
@@ -80,10 +71,4 @@
         AND activity_selected_count &lt; activity_max_size) cnt
     </select>
 
-    <select id="getDepartmentIdById" resultType="Integer">
-        SELECT teacher_department_id
-        FROM rc_activity
-                 JOIN rc_teacher on activity_teacher_id = teacher_id
-        WHERE activity_id = #{activityId}
-    </select>
 </mapper>

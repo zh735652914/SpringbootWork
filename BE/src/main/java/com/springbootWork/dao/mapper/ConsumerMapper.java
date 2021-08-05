@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ConsumerMapper extends BaseMapper<ConsumerEntity> {
-    Integer getDepartmentIdById(Integer consumerId);
 
     Integer getGradeById(Integer consumerId);
 

@@ -27,7 +27,7 @@ public class ActivityService extends BaseService {
         return result(manager.getPageCount(teacherName, name));
     }
 
-    public ResultVO getPage(Integer index, String departmentName, String teacherName, String name) {
+    public ResultVO getPage(Integer index, String teacherName, String name) {
         List<ActivityItemBO> boList = manager.getPage(index, teacherName, name);
         List<ActivityItemVO> voList = new ArrayList<>(boList.size());
 

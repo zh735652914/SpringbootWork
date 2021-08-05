@@ -44,13 +44,13 @@ public class ActivityController extends BaseController {
     }
 
     @RequestMapping("/page")
-    public ResultVO getPage(String departmentName, String teacherName, String name) {
-        return service.getPage(1, departmentName, teacherName, name);
+    public ResultVO getPage(String teacherName, String name) {
+        return service.getPage(1, teacherName, name);
     }
 
     @RequestMapping("/page/{index}")
-    public ResultVO getPage(@PathVariable Integer index, String departmentName, String teacherName, String name) {
-        return service.getPage(index, departmentName, teacherName, name);
+    public ResultVO getPage(@PathVariable Integer index, String teacherName, String name) {
+        return service.getPage(index, teacherName, name);
     }
 
     @Admin

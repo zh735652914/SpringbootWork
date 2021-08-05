@@ -55,7 +55,6 @@ export default {
       entityForm: {
         number: "",
         name: "",
-        departmentName: "",
         email: "",
         birthday: "",
         sex: "",

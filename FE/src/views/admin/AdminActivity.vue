@@ -139,7 +139,6 @@ export default {
   data() {
     return {
       queryForm: {
-        departmentName: "",
         teacherName: "",
         name: ""
       },
@@ -179,7 +178,6 @@ export default {
     query() {
       api
         .getPageCount(
-          this.queryForm.departmentName,
           this.queryForm.teacherName,
           this.queryForm.name
         )
@@ -193,7 +191,6 @@ export default {
       api
         .getPage(
           pageIndex,
-          this.queryForm.departmentName,
           this.queryForm.teacherName,
           this.queryForm.name
         )

@@ -22,13 +22,6 @@
             />
           </el-col>
           <el-col :span="3">
-            <el-input
-              @keyup.enter.native="query"
-              placeholder="系名"
-              v-model="queryForm.departmentName"
-            />
-          </el-col>
-          <el-col :span="3">
             <el-button @click="query" icon="el-icon-search" type="primary"
               >搜索
             </el-button>
@@ -53,7 +46,6 @@
           <el-table-column label="教师Id" prop="id" />
           <el-table-column label="教师工号" prop="number" />
           <el-table-column label="教师姓名" prop="name" />
-          <el-table-column label="所属系" prop="departmentName" />
           <el-table-column align="center" label="操作" width="200px">
             <template slot-scope="scope">
               <el-button @click="edit(scope.row.id)" size="mini" type="success"
@@ -78,16 +70,6 @@
           <el-form-item label="教师姓名">
             <el-input v-model="entityForm.name"></el-input>
           </el-form-item>
-          <el-form-item label="所属系">
-            <el-select placeholder="请选择系" v-model="entityForm.departmentId">
-              <el-option
-                :key="index"
-                :label="item.name"
-                :value="item.id"
-                v-for="(item, index) in departments"
-              />
-            </el-select>
-          </el-form-item>
           <el-form-item label="登录密码">
             <el-input type="password" v-model="entityForm.password"></el-input>
           </el-form-item>
@@ -109,7 +91,6 @@ export default {
   data() {
     return {
       queryForm: {
-        departmentName: "",
         name: ""
       },
       entityForm: {},
@@ -118,13 +99,12 @@ export default {
       pageCount: 1,
       pageIndex: 1,
       editing: false,
-      departments: []
     };
   },
   methods: {
     query() {
       api
-        .getPageCount(this.queryForm.departmentName, this.queryForm.name)
+        .getPageCount(this.queryForm.name)
         .then(res => {
           this.pageCount = res;
           this.pageIndex = 1;
@@ -133,7 +113,7 @@ export default {
     },
     getPage(pageIndex) {
       api
-        .getPage(pageIndex, this.queryForm.departmentName, this.queryForm.name)
+        .getPage(pageIndex, this.queryForm.name)
         .then(res => {
           this.tableData = res;
         });
@@ -143,7 +123,6 @@ export default {
         id: -1,
         number: "",
         name: "",
-        departmentId: "",
         password: ""
       };
       this.editing = true;
@@ -179,7 +158,6 @@ export default {
   },
   created() {
     this.query();
-    this.getDepartments();
   }
 };
 </script>

@@ -67,10 +67,6 @@ public class ConsumerDAO extends BaseDAO {
         return mapper.selectList(wrapper);
     }
 
-    public Integer getDepartmentIdById(Integer consumerId) {
-        return mapper.getDepartmentIdById(consumerId);
-    }
-
     public Integer getGradeById(Integer consumerId) {
         return mapper.getGradeById(consumerId);
     }

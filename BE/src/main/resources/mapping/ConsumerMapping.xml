@@ -40,14 +40,6 @@
         </where>
     </select>
 
-    <select id="getDepartmentIdById" resultType="Integer">
-        SELECT major_department_id
-        FROM rc_consumer
-                 JOIN rc_class on consumer_class_id = class_id
-                 JOIN rc_major on class_major_id = major_id
-        WHERE consumer_id = #{consumerId}
-    </select>
-
     <select id="getGradeById" resultType="Integer">
         SELECT class_grade
         FROM rc_consumer

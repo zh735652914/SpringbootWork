@@ -7,7 +7,6 @@ public class ActivityItemBO {
     private Integer id;
     private String name;
     private String teacherName;
-    private String departmentName;
     private Integer grade;
     private Integer credit;
     private String time;
