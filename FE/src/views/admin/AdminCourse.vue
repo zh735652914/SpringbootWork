@@ -235,7 +235,7 @@ export default {
         id: -1,
         teacherId: null,
         name: "",
-        grade: 2019,
+        grade: 2021,
         time: "",
         location: "",
         credit: 2,
@@ -243,9 +243,9 @@ export default {
         examDate: null,
         examLocation: null
       };
-      this.courseDay = 1;
-      this.courseTime = 1;
-      this.courseLength = 2;
+      this.courseDay = 5;
+      this.courseTime = 0;
+      this.courseLength = 1;
       this.editing = true;
     },
     edit(id) {

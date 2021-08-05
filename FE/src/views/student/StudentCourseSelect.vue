@@ -3,7 +3,7 @@
     <div class="crumbs">
       <el-breadcrumb separator="/">
         <el-breadcrumb-item>
-          <i class="el-icon-fa fa-book"></i> 选修课程
+          <i class="el-icon-fa fa-book"></i> 所有活动
         </el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -14,14 +14,14 @@
           <el-col :offset="15" :span="3">
             <el-input
               @keyup.enter.native="query"
-              placeholder="课程名"
+              placeholder="活动名"
               v-model="queryForm.courseName"
             />
           </el-col>
           <el-col :span="3">
             <el-input
               @keyup.enter.native="query"
-              placeholder="教师名"
+              placeholder="活动发起人"
               v-model="queryForm.teacherName"
             />
           </el-col>
@@ -47,25 +47,24 @@
 
       <div class="table">
         <el-table :data="tableData" stripe>
-          <el-table-column label="课程Id" prop="courseId" />
-          <el-table-column label="课程名" prop="courseName" width="180px" />
-          <el-table-column label="教师" prop="teacherName" />
-          <el-table-column label="学分" prop="credit" />
+          <el-table-column align="center" label="活动Id" prop="courseId" />
+          <el-table-column align="center" label="活动名" prop="courseName" width="180px" />
+          <el-table-column align="center" label="活动发起人" prop="teacherName" />
           <el-table-column
             align="center"
-            label="上课时间"
+            label="活动时间"
             prop="time"
             width="130px"
           />
-          <el-table-column label="已选人数" prop="selectedCount" />
-          <el-table-column label="课程容量" prop="maxSize" />
+          <el-table-column align="center" label="已选人数" prop="selectedCount" />
+          <el-table-column align="center" label="活动容量" prop="maxSize" />
           <el-table-column align="center" label="操作" width="200px">
             <template slot-scope="scope">
               <el-button
                 @click="select(scope.row.courseId)"
                 size="mini"
                 type="success"
-                >选修
+                >选择
               </el-button>
             </template>
           </el-table-column>
@@ -115,7 +114,7 @@ export default {
     },
     select(id) {
       api.select(id).then(() => {
-        this.$message.success("选修成功!");
+        this.$message.success("选择成功!");
         this.getPage(this.pageIndex);
       });
     }

@@ -3,7 +3,7 @@
     <div class="crumbs">
       <el-breadcrumb separator="/">
         <el-breadcrumb-item>
-          <i class="el-icon-fa fa-table"></i> 课表查询
+          <i class="el-icon-fa fa-table"></i> 时间表查询
         </el-breadcrumb-item>
       </el-breadcrumb>
     </div>

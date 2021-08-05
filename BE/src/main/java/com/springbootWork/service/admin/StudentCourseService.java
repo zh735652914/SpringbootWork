@@ -75,9 +75,9 @@ public class StudentCourseService extends BaseService {
         if (course.getSelectedCount() >= course.getMaxSize()) {
             return failedResult("课容量已满");
         }
-        if (!manager.inSameDepartment(entity.getCourseId(), entity.getStudentId())) {
-            return failedResult("课程与学生不在同一教学系");
-        }
+//        if (!manager.inSameDepartment(entity.getCourseId(), entity.getStudentId())) {
+//            return failedResult("课程与学生不在同一教学系");
+//        }
         if (!course.getGrade().equals(manager.getStudentGradeById(entity.getStudentId()))) {
             return failedResult("课程与学生不在同一年级");
         }

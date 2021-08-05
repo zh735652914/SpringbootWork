@@ -40,6 +40,10 @@ public class CourseDAO extends BaseDAO {
         return mapper.count(departmentName, teacherName, name);
     }
 
+//    public int count(String teacherName, String name) {
+//        return mapper.count(teacherName, name);
+//    }
+
     public List<CourseItemBO> getPage(Integer index, String departmentName, String teacherName, String name) {
         Page<CourseItemBO> page = new Page<>(index, PAGE_SIZE);
 
@@ -74,6 +78,10 @@ public class CourseDAO extends BaseDAO {
         return mapper.updateById(course);
     }
 
+//    public Integer countStudentCanSelect(Integer studentId, Integer departmentId, Integer grade, String courseName, String teacherName) {
+//        return mapper.countStudentCanSelect(studentId, departmentId, grade, courseName, teacherName);
+//    }
+
     public Integer countStudentCanSelect(Integer studentId, Integer departmentId, Integer grade, String courseName, String teacherName) {
         return mapper.countStudentCanSelect(studentId, departmentId, grade, courseName, teacherName);
     }
@@ -84,7 +92,13 @@ public class CourseDAO extends BaseDAO {
         return mapper.getStudentCanSelectPage(page, studentId, departmentId, grade, courseName, teacherName).getRecords();
     }
 
-    public Integer getDepartmentIdById(Integer courseId) {
-        return mapper.getDepartmentIdById(courseId);
-    }
+//    public List<StudentCourseSelectItemBO> getStudentCanSelectPage(Integer index, Integer studentId, String courseName, String teacherName) {
+//        Page<StudentCourseSelectItemBO> page = new Page<>(index, PAGE_SIZE);
+//
+//        return mapper.getStudentCanSelectPage(page, studentId, courseName, teacherName).getRecords();
+//    }
+
+//    public Integer getDepartmentIdById(Integer courseId) {
+//        return mapper.getDepartmentIdById(courseId);
+//    }
 }

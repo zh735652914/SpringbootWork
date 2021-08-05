@@ -14,7 +14,6 @@
           <el-table-column label="选课Id" prop="studentCourseId" />
           <el-table-column label="课程名" prop="courseName" />
           <el-table-column label="教师" prop="teacherName" />
-          <el-table-column label="学分" prop="credit" />
           <el-table-column label="日常成绩" prop="dailyScore" />
           <el-table-column label="考试成绩" prop="examScore" />
           <el-table-column label="总成绩" prop="score" />

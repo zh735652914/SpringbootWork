@@ -63,18 +63,18 @@ public class CourseSelectService extends BaseService {
         if (course == null) {
             return failedResult("课程Id:" + courseId + "不存在!");
         }
-        if (!manager.inSameDepartment(courseId, studentId)) {
-            return failedResult("学生不能选择非教学系的课程!");
-        }
+//        if (!manager.inSameDepartment(courseId, studentId)) {
+//            return failedResult("学生不能选择非教学系的课程!");
+//        }
         if (course.getSelectedCount() >= course.getMaxSize()) {
             return failedResult("课容量已满!");
         }
         if (manager.getStudentCourseByCourseIdAndStudentId(courseId, studentId) != null) {
             return failedResult("学生已选修此课程!");
         }
-        if (!manager.getStudentGradeById(student.getId()).equals(course.getGrade())) {
-            return failedResult("学生与课程不在同一年级");
-        }
+//        if (!manager.getStudentGradeById(student.getId()).equals(course.getGrade())) {
+//            return failedResult("学生与课程不在同一年级");
+//        }
         String timePart = splitTimePart(course.getTime());
         if (manager.countStudentCourseSelectedByTimePart(studentId, timePart) > 0) {
             return failedResult("上课时间冲突!");

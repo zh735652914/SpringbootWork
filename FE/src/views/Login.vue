@@ -28,8 +28,8 @@
 
         <el-form-item prop="userType">
           <el-radio-group v-model="formData.userType">
-            <el-radio label="1">游客</el-radio>
-            <el-radio label="2">普通用户</el-radio>
+            <el-radio label="1">注册用户</el-radio>
+            <el-radio label="2">用户</el-radio>
             <el-radio label="3">运营人员</el-radio>
           </el-radio-group>
         </el-form-item>

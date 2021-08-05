@@ -70,8 +70,8 @@ public class StudentCourseManager extends BaseManager {
         return studentDAO.getGradeById(studentId);
     }
 
-    public boolean inSameDepartment(Integer courseId, Integer studentId) {
-        return courseDAO.getDepartmentIdById(courseId)
-                .equals(studentDAO.getDepartmentIdById(studentId));
-    }
+//    public boolean inSameDepartment(Integer courseId, Integer studentId) {
+//        return courseDAO.getDepartmentIdById(courseId)
+//                .equals(studentDAO.getDepartmentIdById(studentId));
+//    }
 }

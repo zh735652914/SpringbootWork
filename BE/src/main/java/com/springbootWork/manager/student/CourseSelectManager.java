@@ -45,10 +45,10 @@ public class CourseSelectManager extends BaseManager {
         return studentDAO.get(studentId);
     }
 
-    public boolean inSameDepartment(Integer courseId, Integer studentId) {
-        return courseDAO.getDepartmentIdById(courseId)
-                .equals(studentDAO.getDepartmentIdById(studentId));
-    }
+//    public boolean inSameDepartment(Integer courseId, Integer studentId) {
+//        return courseDAO.getDepartmentIdById(courseId)
+//                .equals(studentDAO.getDepartmentIdById(studentId));
+//    }
 
     public StudentCourseEntity getStudentCourseByCourseIdAndStudentId(Integer courseId, Integer studentId) {
         return studentCourseDAO.getByCourseIdAndStudentId(courseId, studentId);

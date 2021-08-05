@@ -17,8 +17,8 @@ CREATE TABLE `rc_admin`  (
 -- ----------------------------
 -- Records of rc_admin
 -- ----------------------------
-INSERT INTO `rc_admin` VALUES (1, 'admin', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', 255);
-INSERT INTO `rc_admin` VALUES (2, 'azure99', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', 96);
+INSERT INTO `rc_admin` VALUES (1, 'admin', '111111', 255);
+INSERT INTO `rc_admin` VALUES (2, 'admintest', '222222', 96);
 
 -- ----------------------------
 -- Table structure for rc_class

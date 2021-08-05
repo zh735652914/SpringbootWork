@@ -17,8 +17,9 @@ CREATE TABLE `rc_admin`  (
 -- ----------------------------
 -- Records of rc_admin
 -- ----------------------------
-INSERT INTO `rc_admin` VALUES (1, 'admin', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', 255);
-INSERT INTO `rc_admin` VALUES (2, 'azure99', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', 96);
+INSERT INTO `rc_admin` VALUES (1, 'admin', '111111', 255);
+INSERT INTO `rc_admin` VALUES (2, 'admintest', '111111', 96);
+INSERT INTO `rc_admin` VALUES (3, 'admintest3', '222222', 96);
 
 -- ----------------------------
 -- Table structure for rc_class
@@ -241,7 +242,7 @@ CREATE TABLE `rc_student`  (
 -- ----------------------------
 -- Records of rc_student
 -- ----------------------------
-INSERT INTO `rc_student` VALUES (1, 1, '201711010001', '李雨轩', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', '961523404@qq.com', '1998-08-19 16:09:47', 1, '2019-12-16 17:16:47');
+INSERT INTO `rc_student` VALUES (1, 1, '201711010001', '李雨轩', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, '1998-08-19 16:09:47', 1, '2019-12-16 17:16:47');
 INSERT INTO `rc_student` VALUES (2, 1, '201711010002', '宋健', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
 INSERT INTO `rc_student` VALUES (3, 1, '201711010003', '李同学1', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
 INSERT INTO `rc_student` VALUES (4, 1, '201711010004', '李同学2', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);

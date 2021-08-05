@@ -12,7 +12,7 @@
       <tbody>
         <tr :key="index" v-for="(lesson, index) in tableData[0].length">
           <td>
-            <p>{{ "第" + digital2Chinese(lesson) + "节" }}</p>
+            <p>{{digital2Time(lesson)}}</p>
           </td>
           <td :key="courseIndex" v-for="(course, courseIndex) in tableData">
             <span class="course-name">
@@ -48,6 +48,15 @@ export default {
     };
   },
   methods: {
+  digital2Time(num) {
+          const character = [
+                  "8:00-10:00",
+                  "10:00-12:00",
+                  "14:00-16:00",
+                  "16:00-18:00"
+          ];
+          return character[num/2];
+      },
     updateData(data) {
       this.clearTable();
       for (let i = 0; i < data.length; i++) {

@@ -7,28 +7,28 @@ SideBarItem.items = [
   {
     icon: "el-icon-fa fa-bar-chart",
     index: "/student",
-    title: "游客首页",
+    title: "用户首页",
     userType: UserType.student,
     permission: Permission.no
   },
   {
     icon: "el-icon-fa fa-book",
     index: "/student/course/select",
-    title: "选修活动",
+    title: "所有活动",
     userType: UserType.student,
     permission: Permission.no
   },
   {
     icon: "el-icon-fa fa-edit",
     index: "/student/course",
-    title: "游客活动",
+    title: "用户活动",
     userType: UserType.student,
     permission: Permission.no
   },
   {
     icon: "el-icon-fa fa-table",
     index: "/student/timetable",
-    title: "课表查询",
+    title: "时间表查询",
     userType: UserType.student,
     permission: Permission.no
   },
@@ -36,13 +36,6 @@ SideBarItem.items = [
     icon: "el-icon-fa fa-eye",
     index: "/student/exam",
     title: "考试查询",
-    userType: UserType.student,
-    permission: Permission.no
-  },
-  {
-    icon: "el-icon-fa fa-newspaper-o",
-    index: "/student/score",
-    title: "成绩查询",
     userType: UserType.student,
     permission: Permission.no
   },
@@ -112,14 +105,14 @@ SideBarItem.items = [
   {
     icon: "el-icon-fa fa-user",
     index: "/admin/student",
-    title: "游客管理",
+    title: "用户管理",
     userType: UserType.admin,
     permission: Permission.student
   },
   {
     icon: "el-icon-fa fa-user-plus",
     index: "/admin/teacher",
-    title: "用户管理",
+    title: "教师管理",
     userType: UserType.admin,
     permission: Permission.teacher
   },

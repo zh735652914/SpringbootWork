@@ -10,9 +10,9 @@
         JOIN rc_teacher on course_teacher_id = teacher_id
         JOIN rc_department on teacher_department_id = department_id
         <where>
-            <if test="departmentName != null and departmentName != ''">
-                AND department_name LIKE CONCAT('%',#{departmentName},'%')
-            </if>
+<!--            <if test="departmentName != null and departmentName != ''">-->
+<!--                AND department_name LIKE CONCAT('%',#{departmentName},'%')-->
+<!--            </if>-->
             <if test="teacherName != null and teacherName != ''">
                 AND teacher_name LIKE CONCAT('%',#{teacherName},'%')
             </if>
@@ -26,11 +26,11 @@
         SELECT COUNT(*)
         FROM rc_course
         JOIN rc_teacher on course_teacher_id = teacher_id
-        JOIN rc_department on teacher_department_id = department_id
+--         JOIN rc_department on teacher_department_id = department_id
         <where>
-            <if test="departmentName != null and departmentName != ''">
-                AND department_name LIKE CONCAT('%',#{departmentName},'%')
-            </if>
+<!--            <if test="departmentName != null and departmentName != ''">-->
+<!--                AND department_name LIKE CONCAT('%',#{departmentName},'%')-->
+<!--            </if>-->
             <if test="teacherName != null and teacherName != ''">
                 AND teacher_name LIKE CONCAT('%',#{teacherName},'%')
             </if>
@@ -46,9 +46,8 @@
         course_selected_count AS 'selectedCount', course_max_size AS 'maxSize'
         FROM rc_course
         JOIN rc_teacher on course_teacher_id = teacher_id
-        WHERE teacher_department_id = #{departmentId}
-        AND course_grade = #{grade}
-        AND course_id NOT IN (
+        WHERE #{studentId} = #{studentId}
+        AND  course_id NOT IN (
         SELECT sc_course_id
         FROM rc_student_course
         WHERE sc_student_id = #{studentId}
@@ -66,8 +65,7 @@
         SELECT COUNT(*) FROM ( SELECT DISTINCT course_id
         FROM rc_course
         JOIN rc_teacher on course_teacher_id = teacher_id
-        WHERE teacher_department_id = #{departmentId}
-        AND course_grade = #{grade}
+        WHERE #{studentId} = #{studentId}
         AND course_id NOT IN (
         SELECT sc_course_id
         FROM rc_student_course

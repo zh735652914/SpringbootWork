@@ -27,6 +27,10 @@ public class CourseService extends BaseService {
         return result(manager.getPageCount(departmentName, teacherName, name));
     }
 
+//    public ResultVO getPageCount(String teacherName, String name) {
+//        return result(manager.getPageCount(teacherName, name));
+//    }
+
     public ResultVO getPage(Integer index, String departmentName, String teacherName, String name) {
         List<CourseItemBO> boList = manager.getPage(index, departmentName, teacherName, name);
         List<CourseItemVO> voList = new ArrayList<>(boList.size());

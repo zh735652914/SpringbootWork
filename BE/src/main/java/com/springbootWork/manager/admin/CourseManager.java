@@ -30,6 +30,11 @@ public class CourseManager extends BaseManager {
         return calcPageCount(count, CourseDAO.PAGE_SIZE);
     }
 
+//    public Integer getPageCount(String teacherName, String name) {
+//        int count = courseDAO.count(teacherName, name);
+//        return calcPageCount(count, CourseDAO.PAGE_SIZE);
+//    }
+
     public List<CourseItemBO> getPage(Integer index, String departmentName, String teacherName, String name) {
         return courseDAO.getPage(index, departmentName, teacherName, name);
     }

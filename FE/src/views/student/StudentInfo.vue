@@ -10,20 +10,11 @@
 
     <div class="container">
       <el-form :model="entityForm" class="info-form" label-width="80px">
-        <el-form-item label="学号">
+        <el-form-item label="账户">
           <el-input disabled v-model="entityForm.number"></el-input>
         </el-form-item>
         <el-form-item label="姓名">
           <el-input disabled v-model="entityForm.name"></el-input>
-        </el-form-item>
-        <el-form-item label="教学系">
-          <el-input disabled v-model="entityForm.departmentName"></el-input>
-        </el-form-item>
-        <el-form-item label="专业">
-          <el-input disabled v-model="entityForm.majorName"></el-input>
-        </el-form-item>
-        <el-form-item label="班级">
-          <el-input disabled v-model="entityForm.className"></el-input>
         </el-form-item>
         <el-form-item label="Email">
           <el-input v-model="entityForm.email"></el-input>
