@@ -1,6 +1,6 @@
 package com.springbootWork.manager.admin;
 
-import com.springbootWork.dao.CourseDAO;
+import com.springbootWork.dao.ActivityDAO;
 import com.springbootWork.dao.DepartmentDAO;
 import com.springbootWork.dao.TeacherDAO;
 import com.springbootWork.manager.BaseManager;
@@ -17,12 +17,12 @@ import java.util.List;
 public class TeacherManager extends BaseManager {
     private final DepartmentDAO departmentDAO;
     private final TeacherDAO teacherDAO;
-    private final CourseDAO courseDAO;
+    private final ActivityDAO activityDAO;
 
-    public TeacherManager(DepartmentDAO departmentDAO, TeacherDAO teacherDAO, CourseDAO courseDAO) {
+    public TeacherManager(DepartmentDAO departmentDAO, TeacherDAO teacherDAO, ActivityDAO activityDAO) {
         this.departmentDAO = departmentDAO;
         this.teacherDAO = teacherDAO;
-        this.courseDAO = courseDAO;
+        this.activityDAO = activityDAO;
     }
 
     public Integer getPageCount(String departmentName, String name) {
@@ -50,8 +50,8 @@ public class TeacherManager extends BaseManager {
         return teacherDAO.delete(id);
     }
 
-    public boolean hasCourse(Integer teacherId) {
-        return courseDAO.countByTeacherId(teacherId) > 0;
+    public boolean hasActivity(Integer teacherId) {
+        return activityDAO.countByTeacherId(teacherId) > 0;
     }
 
     public DepartmentEntity getDepartmentById(Integer id) {

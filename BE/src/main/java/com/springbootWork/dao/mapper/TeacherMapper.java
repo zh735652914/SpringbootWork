@@ -3,7 +3,7 @@ package com.springbootWork.dao.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.springbootWork.model.entity.TeacherEntity;
-import com.springbootWork.model.vo.response.table.TeacherCourseItemVO;
+import com.springbootWork.model.vo.response.table.TeacherActivityItemVO;
 import com.springbootWork.model.vo.response.table.TeacherItemVO;
 import com.springbootWork.model.vo.response.table.TimetableItemVO;
 import org.springframework.stereotype.Repository;
@@ -18,5 +18,5 @@ public interface TeacherMapper extends BaseMapper<TeacherEntity> {
 
     List<TimetableItemVO> listTeacherTimetable(Integer teacherId);
 
-    List<TeacherCourseItemVO> listTeacherCourse(Integer teacherId);
+    List<TeacherActivityItemVO> listTeacherActivity(Integer teacherId);
 }

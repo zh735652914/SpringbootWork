@@ -1,7 +1,7 @@
 package com.springbootWork.manager.admin;
 
 import com.springbootWork.dao.ClassDAO;
-import com.springbootWork.dao.StudentCourseDAO;
+import com.springbootWork.dao.StudentActivityDAO;
 import com.springbootWork.dao.StudentDAO;
 import com.springbootWork.manager.BaseManager;
 import com.springbootWork.model.entity.ClassEntity;
@@ -16,12 +16,12 @@ import java.util.List;
 @Component
 public class StudentManager extends BaseManager {
     private final ClassDAO classDAO;
-    private final StudentCourseDAO studentCourseDAO;
+    private final StudentActivityDAO studentActivityDAO;
     private final StudentDAO studentDAO;
 
-    public StudentManager(ClassDAO classDAO, StudentCourseDAO studentCourseDAO, StudentDAO studentDAO) {
+    public StudentManager(ClassDAO classDAO, StudentActivityDAO studentActivityDAO, StudentDAO studentDAO) {
         this.classDAO = classDAO;
-        this.studentCourseDAO = studentCourseDAO;
+        this.studentActivityDAO = studentActivityDAO;
         this.studentDAO = studentDAO;
     }
 
@@ -54,8 +54,8 @@ public class StudentManager extends BaseManager {
         return classDAO.get(classId);
     }
 
-    public boolean hasStudentCourse(Integer studentId) {
-        return studentCourseDAO.countByStudentId(studentId) > 0;
+    public boolean hasStudentActivity(Integer studentId) {
+        return studentActivityDAO.countByStudentId(studentId) > 0;
     }
 
     public List<IdNameVO> listName() {

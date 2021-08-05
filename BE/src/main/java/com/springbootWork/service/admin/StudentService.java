@@ -59,7 +59,7 @@ public class StudentService extends BaseService {
         if (manager.get(id) == null) {
             return failedResult("学生Id: " + id + "不存在!");
         }
-        if (manager.hasStudentCourse(id)) {
+        if (manager.hasStudentActivity(id)) {
             return failedResult("此学生还有未退选课程");
         }
 

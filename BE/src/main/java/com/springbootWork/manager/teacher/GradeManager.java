@@ -1,10 +1,10 @@
 package com.springbootWork.manager.teacher;
 
-import com.springbootWork.dao.CourseDAO;
-import com.springbootWork.dao.StudentCourseDAO;
+import com.springbootWork.dao.ActivityDAO;
+import com.springbootWork.dao.StudentActivityDAO;
 import com.springbootWork.manager.BaseManager;
-import com.springbootWork.model.entity.CourseEntity;
-import com.springbootWork.model.entity.StudentCourseEntity;
+import com.springbootWork.model.entity.ActivityEntity;
+import com.springbootWork.model.entity.StudentActivityEntity;
 import com.springbootWork.model.vo.response.table.TeacherGradeItemVO;
 import org.springframework.stereotype.Component;
 
@@ -12,34 +12,34 @@ import java.util.List;
 
 @Component
 public class GradeManager extends BaseManager {
-    private final CourseDAO courseDAO;
-    private final StudentCourseDAO studentCourseDAO;
+    private final ActivityDAO activityDAO;
+    private final StudentActivityDAO studentActivityDAO;
 
-    public GradeManager(CourseDAO courseDAO, StudentCourseDAO studentCourseDAO) {
-        this.courseDAO = courseDAO;
-        this.studentCourseDAO = studentCourseDAO;
+    public GradeManager(ActivityDAO activityDAO, StudentActivityDAO studentActivityDAO) {
+        this.activityDAO = activityDAO;
+        this.studentActivityDAO = studentActivityDAO;
     }
 
-    public Integer getTeacherGradePageCount(Integer teacherId, String courseName, String studentName) {
+    public Integer getTeacherGradePageCount(Integer teacherId, String activityName, String studentName) {
         return calcPageCount(
-                studentCourseDAO.countTeacherGrade(teacherId, courseName, studentName),
-                StudentCourseDAO.PAGE_SIZE);
+                studentActivityDAO.countTeacherGrade(teacherId, activityName, studentName),
+                StudentActivityDAO.PAGE_SIZE);
     }
 
-    public List<TeacherGradeItemVO> getTeacherGradePage(Integer index, Integer teacherId, String courseName, String studentName) {
-        return studentCourseDAO.getTeacherGradePage(index, teacherId, courseName, studentName);
+    public List<TeacherGradeItemVO> getTeacherGradePage(Integer index, Integer teacherId, String activityName, String studentName) {
+        return studentActivityDAO.getTeacherGradePage(index, teacherId, activityName, studentName);
     }
 
-    public StudentCourseEntity getStudentCourseById(Integer studentCourseId) {
-        return studentCourseDAO.get(studentCourseId);
+    public StudentActivityEntity getStudentActivityById(Integer studentActivityId) {
+        return studentActivityDAO.get(studentActivityId);
     }
 
-    public CourseEntity getCourseById(Integer courseId) {
-        return courseDAO.get(courseId);
+    public ActivityEntity getActivityById(Integer activityId) {
+        return activityDAO.get(activityId);
     }
 
 
-    public int updateStudentCourse(StudentCourseEntity entity) {
-        return studentCourseDAO.update(entity);
+    public int updateStudentActivity(StudentActivityEntity entity) {
+        return studentActivityDAO.update(entity);
     }
 }

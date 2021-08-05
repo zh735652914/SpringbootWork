@@ -8,7 +8,7 @@ spring:
     username: root
     password: 735652914
     schema:
-      - classpath:database/rainng_course.sql
+      - classpath:database/rainng_activity.sql
 #      - classpath:database/homeWork.sql
     initialization-mode: ALWAYS
     platform: mysql

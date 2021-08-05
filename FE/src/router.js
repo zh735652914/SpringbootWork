@@ -2,13 +2,13 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Container from "./views/Container.vue";
 import Login from "./views/Login";
-import StudentCourseSelect from "./views/student/StudentCourseSelect";
-import StudentCourse from "./views/student/StudentCourse";
+import StudentActivitySelect from "./views/student/StudentActivitySelect";
+import StudentActivity from "./views/student/StudentActivity";
 import StudentInfo from "./views/student/StudentInfo";
 import StudentTimeTable from "./views/student/StudentTimeTable";
 import StudentExam from "./views/student/StudentExam";
 import StudentScore from "./views/student/StudentScore";
-import TeacherCourse from "./views/teacher/TeacherCourse";
+import TeacherActivity from "./views/teacher/TeacherActivity";
 import TeacherTimetable from "./views/teacher/TeacherTimetable";
 import TeacherGrade from "./views/teacher/TeacherGrade";
 import AdminDepartment from "./views/admin/AdminDepartment";
@@ -16,8 +16,8 @@ import AdminMajor from "./views/admin/AdminMajor";
 import AdminClass from "./views/admin/AdminClass";
 import AdminStudent from "./views/admin/AdminStudent";
 import AdminTeacher from "./views/admin/AdminTeacher";
-import AdminCourse from "./views/admin/AdminCourse";
-import AdminStudentCourse from "./views/admin/AdminStudentCourse";
+import AdminActivity from "./views/admin/AdminActivity";
+import AdminStudentActivity from "./views/admin/AdminStudentActivity";
 import AdminAdmin from "./views/admin/AdminAdmin";
 import Home from "./views/Home";
 
@@ -35,14 +35,14 @@ const routes = [
         component: Home
       },
       {
-        path: "/student/course/select",
-        name: "student-course-select",
-        component: StudentCourseSelect
+        path: "/student/activity/select",
+        name: "student-activity-select",
+        component: StudentActivitySelect
       },
       {
-        path: "/student/course",
-        name: "student-course",
-        component: StudentCourse
+        path: "/student/activity",
+        name: "student-activity",
+        component: StudentActivity
       },
       {
         path: "/student/timetable",
@@ -70,9 +70,9 @@ const routes = [
         component: Home
       },
       {
-        path: "/teacher/course",
-        name: "teacher-course",
-        component: TeacherCourse
+        path: "/teacher/activity",
+        name: "teacher-activity",
+        component: TeacherActivity
       },
       {
         path: "/teacher/timetable",
@@ -115,14 +115,14 @@ const routes = [
         component: AdminTeacher
       },
       {
-        path: "/admin/course",
-        name: "admin-course",
-        component: AdminCourse
+        path: "/admin/activity",
+        name: "admin-activity",
+        component: AdminActivity
       },
       {
-        path: "/admin/student/course",
-        name: "admin-student-course",
-        component: AdminStudentCourse
+        path: "/admin/student/activity",
+        name: "admin-student-activity",
+        component: AdminStudentActivity
       },
       {
         path: "/admin/admin",

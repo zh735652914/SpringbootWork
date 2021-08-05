@@ -13,14 +13,14 @@ SideBarItem.items = [
   },
   {
     icon: "el-icon-fa fa-book",
-    index: "/student/course/select",
+    index: "/student/activity/select",
     title: "所有活动",
     userType: UserType.student,
     permission: Permission.no
   },
   {
     icon: "el-icon-fa fa-edit",
-    index: "/student/course",
+    index: "/student/activity",
     title: "用户活动",
     userType: UserType.student,
     permission: Permission.no
@@ -55,7 +55,7 @@ SideBarItem.items = [
   },
   {
     icon: "el-icon-fa fa-book",
-    index: "/teacher/course",
+    index: "/teacher/activity",
     title: "授课查询",
     userType: UserType.teacher,
     permission: Permission.no
@@ -118,17 +118,17 @@ SideBarItem.items = [
   },
   {
     icon: "el-icon-fa fa-book",
-    index: "/admin/course",
+    index: "/admin/activity",
     title: "课程管理",
     userType: UserType.admin,
-    permission: Permission.course
+    permission: Permission.activity
   },
   {
     icon: "el-icon-fa fa-edit",
-    index: "/admin/student/course",
+    index: "/admin/student/activity",
     title: "选课修改",
     userType: UserType.admin,
-    permission: Permission.studentCourse
+    permission: Permission.studentActivity
   },
   {
     icon: "el-icon-fa fa-id-badge",

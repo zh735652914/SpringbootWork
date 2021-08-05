@@ -21,9 +21,9 @@ public @interface Admin {
     // 教师管理
     int TEACHER_MANAGE = 16;
     // 课程管理
-    int COURSE_MANAGE = 32;
+    int ACTIVITY_MANAGE = 32;
     // 学生选课管理
-    int STUDENT_COURSE_MANAGE = 64;
+    int STUDENT_ACTIVITY_MANAGE = 64;
     // 管理员管理
     int ADMIN_MANAGE = 128;
     // 所有权限

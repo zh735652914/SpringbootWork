@@ -1,3 +1,3 @@
-import * as courseApi from "./course";
+import * as activityApi from "./activity";
 
-export const list = () => courseApi.list();
+export const list = () => activityApi.list();

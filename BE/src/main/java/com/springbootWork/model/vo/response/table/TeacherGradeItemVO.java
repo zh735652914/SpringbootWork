@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class TeacherGradeItemVO {
-    private Integer studentCourseId;
-    private String courseName;
+    private Integer studentActivityId;
+    private String activityName;
     private String studentName;
     private Integer dailyScore;
     private Integer examScore;

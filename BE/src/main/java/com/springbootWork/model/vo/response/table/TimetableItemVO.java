@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class TimetableItemVO {
     private String time;
-    private String courseName;
+    private String activityName;
     private String teacherName;
     private String location;
 }

@@ -11,8 +11,8 @@
     <div class="container">
       <div class="table">
         <el-table :data="tableData" stripe>
-          <el-table-column label="选课Id" prop="studentCourseId" />
-          <el-table-column label="课程名" prop="courseName" />
+          <el-table-column label="选课Id" prop="studentActivityId" />
+          <el-table-column label="课程名" prop="activityName" />
           <el-table-column label="教师" prop="teacherName" />
           <el-table-column label="日常成绩" prop="dailyScore" />
           <el-table-column label="考试成绩" prop="examScore" />
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import * as api from "../../api/student/course";
+import * as api from "../../api/student/activity";
 
 export default {
   name: "StudentScore",

@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.springbootWork.dao.mapper.TeacherMapper;
 import com.springbootWork.model.entity.TeacherEntity;
-import com.springbootWork.model.vo.response.table.TeacherCourseItemVO;
+import com.springbootWork.model.vo.response.table.TeacherActivityItemVO;
 import com.springbootWork.model.vo.response.table.TeacherItemVO;
 import com.springbootWork.model.vo.response.table.TimetableItemVO;
 import org.springframework.stereotype.Repository;
@@ -72,7 +72,7 @@ public class TeacherDAO extends BaseDAO {
         return mapper.listTeacherTimetable(teacherId);
     }
 
-    public List<TeacherCourseItemVO> listTeacherCourse(Integer teacherId) {
-        return mapper.listTeacherCourse(teacherId);
+    public List<TeacherActivityItemVO> listTeacherActivity(Integer teacherId) {
+        return mapper.listTeacherActivity(teacherId);
     }
 }

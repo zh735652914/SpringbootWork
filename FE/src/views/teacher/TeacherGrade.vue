@@ -15,7 +15,7 @@
             <el-input
               @keyup.enter.native="query"
               placeholder="课程名"
-              v-model="queryForm.courseName"
+              v-model="queryForm.activityName"
             />
           </el-col>
           <el-col :span="3">
@@ -47,8 +47,8 @@
 
       <div class="table">
         <el-table :data="tableData" stripe>
-          <el-table-column label="选课Id" prop="studentCourseId" />
-          <el-table-column label="课程名" prop="courseName" />
+          <el-table-column label="选课Id" prop="studentActivityId" />
+          <el-table-column label="课程名" prop="activityName" />
           <el-table-column label="学生姓名" prop="studentName" />
           <el-table-column label="日常分" prop="dailyScore" />
           <el-table-column label="笔试分" prop="examScore" />
@@ -56,7 +56,7 @@
           <el-table-column align="center" label="操作" width="200px">
             <template slot-scope="scope">
               <el-button
-                @click="edit(scope.row.studentCourseId)"
+                @click="edit(scope.row.studentActivityId)"
                 size="mini"
                 type="success"
                 >打分
@@ -72,7 +72,7 @@
             <el-input
               disabled
               type="number"
-              v-model="entityForm.studentCourseId"
+              v-model="entityForm.studentActivityId"
             ></el-input>
           </el-form-item>
           <el-form-item label="日常成绩">
@@ -102,7 +102,7 @@ export default {
   data() {
     return {
       queryForm: {
-        courseName: "",
+        activityName: "",
         studentName: ""
       },
       entityForm: {},
@@ -116,7 +116,7 @@ export default {
   methods: {
     query() {
       api
-        .getPageCount(this.queryForm.courseName, this.queryForm.studentName)
+        .getPageCount(this.queryForm.activityName, this.queryForm.studentName)
         .then(res => {
           this.pageCount = res;
           this.pageIndex = 1;
@@ -127,7 +127,7 @@ export default {
       api
         .getPage(
           pageIndex,
-          this.queryForm.courseName,
+          this.queryForm.activityName,
           this.queryForm.studentName
         )
         .then(res => {

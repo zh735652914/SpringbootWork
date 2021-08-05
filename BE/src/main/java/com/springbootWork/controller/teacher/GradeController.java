@@ -18,13 +18,13 @@ public class GradeController {
     }
 
     @RequestMapping("/page/count")
-    public ResultVO getPageCount(String courseName, String studentName) {
-        return service.getPageCount(courseName, studentName);
+    public ResultVO getPageCount(String activityName, String studentName) {
+        return service.getPageCount(activityName, studentName);
     }
 
     @RequestMapping("/page/{index}")
-    public ResultVO getPage(@PathVariable Integer index, String courseName, String studentName) {
-        return service.getPage(index, courseName, studentName);
+    public ResultVO getPage(@PathVariable Integer index, String activityName, String studentName) {
+        return service.getPage(index, activityName, studentName);
     }
 
     @GetMapping("/{id}")

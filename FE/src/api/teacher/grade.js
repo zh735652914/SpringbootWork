@@ -4,15 +4,15 @@ export const get = id => ajax.pureGet("/teacher/grade/" + id);
 
 export const update = entity => ajax.put("/teacher/grade", entity);
 
-export const getPageCount = (courseName, studentName) =>
+export const getPageCount = (activityName, studentName) =>
   ajax.get("/teacher/grade/page/count", {
-    courseName: courseName,
+    activityName: activityName,
     studentName: studentName
   });
 
-export const getPage = (index, courseName, studentName) =>
+export const getPage = (index, activityName, studentName) =>
   ajax.get("/teacher/grade/page/" + index, {
-    courseName: courseName,
+    activityName: activityName,
     studentName: studentName
   });
 

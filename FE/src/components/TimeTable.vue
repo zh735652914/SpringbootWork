@@ -14,15 +14,15 @@
           <td>
             <p>{{digital2Time(lesson)}}</p>
           </td>
-          <td :key="courseIndex" v-for="(course, courseIndex) in tableData">
-            <span class="course-name">
-              {{ tableData[courseIndex][index].courseName }}
+          <td :key="activityIndex" v-for="(activity, activityIndex) in tableData">
+            <span class="activity-name">
+              {{ tableData[activityIndex][index].activityName }}
             </span>
             <p class="teacher-name">
-              {{ tableData[courseIndex][index].teacherName }}
+              {{ tableData[activityIndex][index].teacherName }}
             </p>
             <p class="location-name">
-              {{ tableData[courseIndex][index].location }}
+              {{ tableData[activityIndex][index].location }}
             </p>
           </td>
         </tr>
@@ -39,7 +39,7 @@ export default {
       tableData: [
         [
           {
-            courseName: "",
+            activityName: "",
             teacherName: "",
             location: ""
           }
@@ -70,7 +70,7 @@ export default {
       let length = parseInt(split[2]);
       for (let i = 0; i < length; i++) {
         this.tableData[week - 1][lesson - 1 + i] = {
-          courseName: item.courseName,
+          activityName: item.activityName,
           teacherName: item.teacherName,
           location: item.location
         };
@@ -82,7 +82,7 @@ export default {
         let arr = [];
         for (let i2 = 0; i2 < 10; i2++) {
           arr.push({
-            courseName: "",
+            activityName: "",
             teacherName: "",
             location: ""
           });
@@ -142,7 +142,7 @@ table {
       }
     }
 
-    .course-name {
+    .activity-name {
       color: #000;
       font-size: 16px;
       font-weight: 200;

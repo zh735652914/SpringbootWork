@@ -7,8 +7,8 @@ import java.util.Date;
 
 @Data
 public class StudentExamItemVO {
-    private Integer studentCourseId;
-    private String courseName;
+    private Integer studentActivityId;
+    private String activityName;
     private String teacherName;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")

@@ -1,6 +1,6 @@
 package com.springbootWork.manager.student;
 
-import com.springbootWork.dao.StudentCourseDAO;
+import com.springbootWork.dao.StudentActivityDAO;
 import com.springbootWork.manager.BaseManager;
 import com.springbootWork.model.vo.response.table.StudentExamItemVO;
 import org.springframework.stereotype.Component;
@@ -9,13 +9,13 @@ import java.util.List;
 
 @Component
 public class ExamManager extends BaseManager {
-    private final StudentCourseDAO studentCourseDAO;
+    private final StudentActivityDAO studentActivityDAO;
 
-    public ExamManager(StudentCourseDAO studentCourseDAO) {
-        this.studentCourseDAO = studentCourseDAO;
+    public ExamManager(StudentActivityDAO studentActivityDAO) {
+        this.studentActivityDAO = studentActivityDAO;
     }
 
     public List<StudentExamItemVO> listStudentExam(Integer studentId) {
-        return studentCourseDAO.listStudentExam(studentId);
+        return studentActivityDAO.listStudentExam(studentId);
     }
 }

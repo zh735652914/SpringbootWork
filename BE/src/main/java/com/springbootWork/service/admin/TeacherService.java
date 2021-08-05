@@ -59,7 +59,7 @@ public class TeacherService extends BaseService {
         if (manager.get(id) == null) {
             return failedResult("教师Id: " + id + "不存在!");
         }
-        if (manager.hasCourse(id)) {
+        if (manager.hasActivity(id)) {
             return failedResult("此教师还有教授的课程未被删除");
         }
 

@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class TeacherGradeVO {
     @NotNull
-    private Integer studentCourseId;
+    private Integer studentActivityId;
 
     @Range(min = 0, max = 100, message = "分数必须在0-100之间")
     private Integer dailyScore;
