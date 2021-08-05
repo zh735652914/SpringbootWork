@@ -26,13 +26,11 @@ public class ActivitySelectManager extends BaseManager {
     }
 
     public Integer getPageCount(Integer consumerId, String activityName, String teacherName) {
-        Integer grade = consumerDAO.getGradeById(consumerId);
-        return calcPageCount(activityDAO.countConsumerCanSelect(consumerId, grade, activityName, teacherName), ConsumerActivityDAO.PAGE_SIZE);
+        return calcPageCount(activityDAO.countConsumerCanSelect(consumerId, activityName, teacherName), ConsumerActivityDAO.PAGE_SIZE);
     }
 
     public List<ConsumerActivitySelectItemBO> getPage(Integer index, Integer consumerId, String activityName, String teacherName) {
-        Integer grade = consumerDAO.getGradeById(consumerId);
-        return activityDAO.getConsumerCanSelectPage(index, consumerId, grade, activityName, teacherName);
+        return activityDAO.getConsumerCanSelectPage(index, consumerId, activityName, teacherName);
     }
 
     public ActivityEntity getActivityById(Integer activityId) {
@@ -45,10 +43,6 @@ public class ActivitySelectManager extends BaseManager {
 
     public ConsumerActivityEntity getConsumerActivityByActivityIdAndConsumerId(Integer activityId, Integer consumerId) {
         return consumerActivityDAO.getByActivityIdAndConsumerId(activityId, consumerId);
-    }
-
-    public Integer getConsumerGradeById(Integer consumerId) {
-        return consumerDAO.getGradeById(consumerId);
     }
 
     @Transactional

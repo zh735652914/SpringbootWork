@@ -9,8 +9,6 @@ import java.util.Date;
 public class ConsumerInfoVO {
     private String number;
     private String name;
-    private String majorName;
-    private String className;
     private String email;
 
     @JsonFormat(pattern = "yyyy-MM-dd")

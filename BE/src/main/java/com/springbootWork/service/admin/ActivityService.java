@@ -56,7 +56,7 @@ public class ActivityService extends BaseService {
             return failedResult("活动Id: " + entity.getId() + "不存在!");
         }
         if (manager.getTeacherById(entity.getTeacherId()) == null) {
-            return failedResult("授课教师Id: " + entity.getTeacherId() + "不存在!");
+            return failedResult("发起人Id: " + entity.getTeacherId() + "不存在!");
         }
 
         entity.setSelectedCount(origin.getSelectedCount());
@@ -82,7 +82,7 @@ public class ActivityService extends BaseService {
             return failedResult("活动Id: " + entity.getId() + "已存在!");
         }
         if (manager.getTeacherById(entity.getTeacherId()) == null) {
-            return failedResult("授课教师Id: " + entity.getTeacherId() + "不存在!");
+            return failedResult("发起人Id: " + entity.getTeacherId() + "不存在!");
         }
 
         manager.create(entity);

@@ -17,12 +17,12 @@ public class ConsumerService extends BaseService {
         this.userService = userService;
     }
 
-    public ResultVO getPageCount(String majorName, String className, String name) {
-        return result(manager.getPageCount(majorName, className, name));
+    public ResultVO getPageCount(String className, String name) {
+        return result(manager.getPageCount(className, name));
     }
 
-    public ResultVO getPage(Integer index, String majorName, String className, String name) {
-        return result(manager.getPage(index, majorName, className, name));
+    public ResultVO getPage(Integer index, String name) {
+        return result(manager.getPage(index, name));
     }
 
     public ResultVO get(Integer id) {

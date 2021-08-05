@@ -3,16 +3,12 @@
 
 <mapper namespace="com.springbootWork.dao.mapper.ConsumerActivityMapper">
     <select id="getPage" resultType="ConsumerActivityItemVO">
-        SELECT sc_id AS 'id', activity_name AS 'activityName', consumer_name AS 'consumerName', class_name AS 'className',
+        SELECT sc_id AS 'id', activity_name AS 'activityName', consumer_name AS 'consumerName',
         sc_daily_score AS 'dailyScore', sc_exam_score AS 'examScore', sc_score AS 'score'
         FROM rc_consumer_activity
         JOIN rc_activity on sc_activity_id = activity_id
         JOIN rc_consumer on sc_consumer_id = consumer_id
-        JOIN rc_class on consumer_class_id = class_id
         <where>
-            <if test="className != null and className != ''">
-                AND class_name LIKE CONCAT('%',#{className},'%')
-            </if>
             <if test="activityName != null and activityName != ''">
                 AND activity_name LIKE CONCAT('%',#{activityName},'%')
             </if>
@@ -27,11 +23,7 @@
         FROM rc_consumer_activity
         JOIN rc_activity on sc_activity_id = activity_id
         JOIN rc_consumer on sc_consumer_id = consumer_id
-        JOIN rc_class on consumer_class_id = class_id
         <where>
-            <if test="className != null and className != ''">
-                AND class_name LIKE CONCAT('%',#{className},'%')
-            </if>
             <if test="activityName != null and activityName != ''">
                 AND activity_name LIKE CONCAT('%',#{activityName},'%')
             </if>
@@ -45,10 +37,9 @@
         SELECT sc_id          AS 'consumerActivityId',
                activity_name    AS 'activityName',
                teacher_name   AS 'teacherName',
-               activity_credit  AS 'credit',
-               sc_daily_score AS 'dailyScore',
-               sc_exam_score  AS 'examScore',
-               sc_score       AS 'score'
+               activity_describe    AS 'activityDescribe',
+               activity_time   AS 'activityTime',
+               activity_location   AS 'activityLocation'
         FROM rc_consumer_activity
                  JOIN rc_consumer on sc_consumer_id = consumer_id
                  JOIN rc_activity on sc_activity_id = activity_id

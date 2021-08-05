@@ -65,13 +65,4 @@ public class ConsumerActivityManager extends BaseManager {
     public ConsumerActivityEntity getByActivityIdAndConsumerId(Integer activityId, Integer consumerId) {
         return consumerActivityDAO.getByActivityIdAndConsumerId(activityId, consumerId);
     }
-
-    public Integer getConsumerGradeById(Integer consumerId) {
-        return consumerDAO.getGradeById(consumerId);
-    }
-
-//    public boolean inSameDepartment(Integer activityId, Integer consumerId) {
-//        return activityDAO.getDepartmentIdById(activityId)
-//                .equals(consumerDAO.getDepartmentIdById(consumerId));
-//    }
 }

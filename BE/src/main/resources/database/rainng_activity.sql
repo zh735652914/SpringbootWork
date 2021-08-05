@@ -27,30 +27,27 @@ INSERT INTO `rc_admin` VALUES (3, 'admintest3', '222222', 96);
 DROP TABLE IF EXISTS `rc_activity`;
 CREATE TABLE `rc_activity`  (
   `activity_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '活动Id',
-  `activity_teacher_id` int(10) UNSIGNED NOT NULL COMMENT '授课教师Id',
+  `activity_teacher_id` int(10) UNSIGNED NOT NULL COMMENT '发起人Id',
   `activity_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '活动名称',
   `activity_grade` int(10) UNSIGNED NOT NULL COMMENT '授课年级',
   `activity_time` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '上课时间 星期几-第几节-几节课',
-  `activity_location` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '上课地址',
-  `activity_credit` int(10) UNSIGNED NOT NULL COMMENT '学分',
+  `activity_location` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '活动地址',
+  `activity_describe`  varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '活动描述',
   `activity_selected_count` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '已选人数',
   `activity_max_size` int(10) UNSIGNED NOT NULL COMMENT '最大容量',
-  `activity_exam_date` datetime(0) NULL DEFAULT NULL COMMENT '考试时间',
-  `activity_exam_location` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '考试地点',
   PRIMARY KEY (`activity_id`) USING BTREE,
   INDEX `fk_activity_teacher_id`(`activity_teacher_id`) USING BTREE,
-  INDEX `idx_activity_name`(`activity_name`) USING BTREE,
-  CONSTRAINT `fk_activity_teacher_id` FOREIGN KEY (`activity_teacher_id`) REFERENCES `rc_teacher` (`teacher_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `idx_activity_name`(`activity_name`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rc_activity
 -- ----------------------------
-INSERT INTO `rc_activity` VALUES (1, 1, '游泳', 2017, '1-1-2', '北京', 5, 18, 50, NULL, NULL);
-INSERT INTO `rc_activity` VALUES (2, 1, '爬山', 2019, '1-3-2', '武汉', 4, 0, 30, NULL, NULL);
-INSERT INTO `rc_activity` VALUES (3, 1, '郊游', 2017, '2-3-2', '北京', 2, 1, 50, NULL, NULL);
-INSERT INTO `rc_activity` VALUES (4, 1, '骑行', 2017, '5-5-3', '武汉', 2, 0, 1, NULL, NULL);
-INSERT INTO `rc_activity` VALUES (5, 1, '野炊', 2017, '3-9-2', '北京', 3, 0, 10, NULL, NULL);
+INSERT INTO `rc_activity` VALUES (1, 1, '游泳', 2017, '1-1-2', '北京', '测试', 18, 50);
+INSERT INTO `rc_activity` VALUES (2, 1, '爬山', 2019, '1-3-2', '武汉', '测试', 30, 60);
+INSERT INTO `rc_activity` VALUES (3, 1, '郊游', 2017, '2-3-2', '北京', '测试', 1, 50);
+INSERT INTO `rc_activity` VALUES (4, 1, '骑行', 2017, '5-5-3', '武汉', '测试', 0, 20);
+INSERT INTO `rc_activity` VALUES (5, 1, '野炊', 2017, '3-9-2', '北京', '测试', 0, 10);
 
 -- ----------------------------
 -- Table structure for rc_consumer
@@ -58,8 +55,7 @@ INSERT INTO `rc_activity` VALUES (5, 1, '野炊', 2017, '3-9-2', '北京', 3, 0,
 DROP TABLE IF EXISTS `rc_consumer`;
 CREATE TABLE `rc_consumer`  (
   `consumer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '用户Id',
-  `consumer_class_id` int(10) UNSIGNED NOT NULL COMMENT '班级Id',
-  `consumer_number` char(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '学号',
+  `consumer_number` char(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '账号',
   `consumer_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '姓名',
   `consumer_password` char(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '密码',
   `consumer_email` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '电子邮箱',
@@ -67,43 +63,41 @@ CREATE TABLE `rc_consumer`  (
   `consumer_sex` tinyint(1) UNSIGNED NOT NULL COMMENT '性别',
   `consumer_last_login_time` datetime(0) NULL DEFAULT NULL COMMENT '最近登录时间',
   PRIMARY KEY (`consumer_id`) USING BTREE,
-  INDEX `fk_consumer_class_id`(`consumer_class_id`) USING BTREE,
   UNIQUE INDEX `idx_consumer_number`(`consumer_number`) USING BTREE,
-  INDEX `idx_consumer_name`(`consumer_name`) USING BTREE,
-  CONSTRAINT `fk_consumer_class_id` FOREIGN KEY (`consumer_class_id`) REFERENCES `rc_class` (`class_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `idx_consumer_name`(`consumer_name`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rc_consumer
 -- ----------------------------
-INSERT INTO `rc_consumer` VALUES (1, 1, '201711010001', '李雨轩', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, '1998-08-19 16:09:47', 1, '2019-12-16 17:16:47');
-INSERT INTO `rc_consumer` VALUES (2, 1, '201711010002', '宋健', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (3, 1, '201711010003', '李同学1', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `rc_consumer` VALUES (4, 1, '201711010004', '李同学2', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `rc_consumer` VALUES (5, 1, '201711010005', '李同学3', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `rc_consumer` VALUES (6, 1, '201711010006', '李同学4', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `rc_consumer` VALUES (7, 1, '201711010007', '李同学5', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `rc_consumer` VALUES (8, 1, '201711010008', '李同学6', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `rc_consumer` VALUES (9, 1, '201711010009', '李同学7', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `rc_consumer` VALUES (10, 1, '201711010010', '李同学8', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `rc_consumer` VALUES (11, 1, '201711010011', '李同学9', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `rc_consumer` VALUES (12, 1, '201711010012', '张同学1', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (13, 1, '201711010013', '张同学2', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (14, 1, '201711010014', '张同学3', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (15, 1, '201711010015', '张同学4', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (16, 1, '201711010016', '张同学5', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (17, 1, '201711010017', '张同学6', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (18, 1, '201711010018', '张同学7', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (19, 3, '201711020001', '王同学1', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (20, 3, '201711020002', '王同学2', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (21, 3, '201711020003', '王同学3', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (22, 3, '201711020004', '王同学4', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (23, 3, '201711020005', '王同学5', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (24, 3, '201711020006', '王同学6', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (25, 3, '201711020007', '王同学7', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (26, 3, '201711020008', '王同学8', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (27, 3, '201711020009', '王同学9', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `rc_consumer` VALUES (28, 3, '201711020010', '王同学10', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (1, '201711010001', '李雨轩', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, '1998-08-19 16:09:47', 1, '2019-12-16 17:16:47');
+INSERT INTO `rc_consumer` VALUES (2, '201711010002', '宋健', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (3, '201711010003', '李同学1', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `rc_consumer` VALUES (4, '201711010004', '李同学2', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `rc_consumer` VALUES (5, '201711010005', '李同学3', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `rc_consumer` VALUES (6, '201711010006', '李同学4', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `rc_consumer` VALUES (7, '201711010007', '李同学5', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `rc_consumer` VALUES (8, '201711010008', '李同学6', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `rc_consumer` VALUES (9, '201711010009', '李同学7', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `rc_consumer` VALUES (10, '201711010010', '李同学8', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `rc_consumer` VALUES (11, '201711010011', '李同学9', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `rc_consumer` VALUES (12, '201711010012', '张同学1', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (13, '201711010013', '张同学2', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (14, '201711010014', '张同学3', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (15, '201711010015', '张同学4', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (16, '201711010016', '张同学5', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (17, '201711010017', '张同学6', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (18, '201711010018', '张同学7', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (19, '201711020001', '王同学1', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (20, '201711020002', '王同学2', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (21, '201711020003', '王同学3', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (22, '201711020004', '王同学4', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (23, '201711020005', '王同学5', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (24, '201711020006', '王同学6', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (25, '201711020007', '王同学7', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (26, '201711020008', '王同学8', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (27, '201711020009', '王同学9', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `rc_consumer` VALUES (28, '201711020010', '王同学10', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
 
 -- ----------------------------
 -- Table structure for rc_consumer_activity

@@ -35,12 +35,9 @@
     <select id="listTeacherActivity" resultType="TeacherActivityItemVO">
         SELECT activity_id             AS 'id',
                activity_name           AS 'name',
-               activity_grade          AS 'grade',
-               activity_credit         AS 'credit',
                activity_time           AS 'time',
                activity_location       AS 'location',
                activity_selected_count AS 'selectedCount',
-               activity_exam_date      AS 'examDate'
         FROM rc_teacher
                  JOIN rc_activity on teacher_id = activity_teacher_id
         WHERE teacher_id = #{teacherId}

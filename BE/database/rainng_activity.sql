@@ -68,7 +68,7 @@ INSERT INTO `rc_class` VALUES (23, 5, 2019, '演示班级10');
 DROP TABLE IF EXISTS `rc_activity`;
 CREATE TABLE `rc_activity`  (
   `activity_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '活动Id',
-  `activity_teacher_id` int(10) UNSIGNED NOT NULL COMMENT '授课教师Id',
+  `activity_teacher_id` int(10) UNSIGNED NOT NULL COMMENT '发起人Id',
   `activity_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '活动名称',
   `activity_grade` int(10) UNSIGNED NOT NULL COMMENT '授课年级',
   `activity_time` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '上课时间 星期几-第几节-几节课',
@@ -224,7 +224,7 @@ DROP TABLE IF EXISTS `rc_consumer`;
 CREATE TABLE `rc_consumer`  (
   `consumer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '用户Id',
   `consumer_class_id` int(10) UNSIGNED NOT NULL COMMENT '班级Id',
-  `consumer_number` char(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '学号',
+  `consumer_number` char(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '账号',
   `consumer_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '姓名',
   `consumer_password` char(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '密码',
   `consumer_email` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '电子邮箱',

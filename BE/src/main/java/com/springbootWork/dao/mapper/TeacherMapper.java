@@ -12,9 +12,9 @@ import java.util.List;
 
 @Repository
 public interface TeacherMapper extends BaseMapper<TeacherEntity> {
-    Integer count(String departmentName, String name);
+    Integer count(String name);
 
-    IPage<TeacherItemVO> getPage(IPage<TeacherItemVO> page, String departmentName, String name);
+    IPage<TeacherItemVO> getPage(IPage<TeacherItemVO> page, String name);
 
     List<TimetableItemVO> listTeacherTimetable(Integer teacherId);
 

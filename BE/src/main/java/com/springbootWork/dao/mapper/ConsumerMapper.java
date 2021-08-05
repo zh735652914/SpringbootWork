@@ -10,11 +10,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ConsumerMapper extends BaseMapper<ConsumerEntity> {
 
-    Integer getGradeById(Integer consumerId);
+    Integer count(String className, String name);
 
-    Integer count(String majorName, String className, String name);
-
-    IPage<ConsumerItemVO> getPage(IPage<ConsumerItemVO> page, String majorName, String className, String name);
+    IPage<ConsumerItemVO> getPage(IPage<ConsumerItemVO> page, String name);
 
     ConsumerInfoVO getConsumerInfoById(Integer consumerId);
 }

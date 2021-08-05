@@ -10,8 +10,6 @@ public class ConsumerItemVO {
     private Integer id;
     private String number;
     private String name;
-    private String className;
-    private String majorName;
     private Integer sex;
     @JsonFormat(pattern = "yyyy/MM/dd HH:mm")
     private Date lastLoginTime;

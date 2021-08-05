@@ -8,7 +8,6 @@ public class ActivityItemBO {
     private String name;
     private String teacherName;
     private Integer grade;
-    private Integer credit;
     private String time;
     private Integer selectedCount;
     private Integer maxSize;

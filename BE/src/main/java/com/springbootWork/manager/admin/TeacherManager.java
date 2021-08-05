@@ -21,13 +21,13 @@ public class TeacherManager extends BaseManager {
         this.activityDAO = activityDAO;
     }
 
-    public Integer getPageCount(String departmentName, String name) {
-        int count = teacherDAO.count(departmentName, name);
+    public Integer getPageCount(String name) {
+        int count = teacherDAO.count(name);
         return calcPageCount(count, TeacherDAO.PAGE_SIZE);
     }
 
-    public List<TeacherItemVO> getPage(Integer index, String departmentName, String name) {
-        return teacherDAO.getPage(index, departmentName, name);
+    public List<TeacherItemVO> getPage(Integer index, String name) {
+        return teacherDAO.getPage(index, name);
     }
 
     public TeacherEntity get(Integer id) {

@@ -13,7 +13,7 @@ public interface ActivityMapper extends BaseMapper<ActivityEntity> {
 
     IPage<ActivityItemBO> getPage(IPage<ActivityItemBO> page, String teacherName, String name);
 
-    Integer countConsumerCanSelect(Integer consumerId, Integer grade, String activityName, String teacherName);
+    Integer countConsumerCanSelect(Integer consumerId, String activityName, String teacherName);
 
-    IPage<ConsumerActivitySelectItemBO> getConsumerCanSelectPage(IPage<ConsumerActivitySelectItemBO> page, Integer consumerId, Integer grade, String activityName, String teacherName);
+    IPage<ConsumerActivitySelectItemBO> getConsumerCanSelectPage(IPage<ConsumerActivitySelectItemBO> page, Integer consumerId, String activityName, String teacherName);
 }

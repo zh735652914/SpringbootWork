@@ -78,13 +78,13 @@ public class ActivityDAO extends BaseDAO {
         return mapper.updateById(activity);
     }
 
-    public Integer countConsumerCanSelect(Integer consumerId, Integer grade, String activityName, String teacherName) {
-        return mapper.countConsumerCanSelect(consumerId, grade, activityName, teacherName);
+    public Integer countConsumerCanSelect(Integer consumerId, String activityName, String teacherName) {
+        return mapper.countConsumerCanSelect(consumerId, activityName, teacherName);
     }
 
-    public List<ConsumerActivitySelectItemBO> getConsumerCanSelectPage(Integer index, Integer consumerId, Integer grade, String activityName, String teacherName) {
+    public List<ConsumerActivitySelectItemBO> getConsumerCanSelectPage(Integer index, Integer consumerId, String activityName, String teacherName) {
         Page<ConsumerActivitySelectItemBO> page = new Page<>(index, PAGE_SIZE);
 
-        return mapper.getConsumerCanSelectPage(page, consumerId, grade, activityName, teacherName).getRecords();
+        return mapper.getConsumerCanSelectPage(page, consumerId, activityName, teacherName).getRecords();
     }
 }

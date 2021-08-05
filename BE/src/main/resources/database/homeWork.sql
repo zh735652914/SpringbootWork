@@ -27,7 +27,7 @@ INSERT INTO `admin` VALUES (3, 'admintest3', '222222', 96);
 DROP TABLE IF EXISTS `activity`;
 CREATE TABLE `activity`  (
                            `activity_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '活动Id',
-                           `activity_teacher_id` int(10) UNSIGNED NOT NULL COMMENT '授课教师Id',
+                           `activity_teacher_id` int(10) UNSIGNED NOT NULL COMMENT '发起人Id',
                            `activity_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '活动名称',
                            `activity_grade` int(10) UNSIGNED NOT NULL COMMENT '授课年级',
                            `activity_time` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '上课时间 星期几-第几节-几节课',

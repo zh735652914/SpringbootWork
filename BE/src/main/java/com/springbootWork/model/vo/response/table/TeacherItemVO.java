@@ -7,5 +7,4 @@ public class TeacherItemVO {
     private Integer id;
     private String number;
     private String name;
-    private String departmentName;
 }

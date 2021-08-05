@@ -76,10 +76,6 @@ public class ConsumerActivityService extends BaseService {
             return failedResult("课容量已满");
         }
 
-        if (!activity.getGrade().equals(manager.getConsumerGradeById(entity.getConsumerId()))) {
-            return failedResult("活动与用户不在同一年级");
-        }
-
         manager.create(entity);
         return result("添加成功");
     }

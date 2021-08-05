@@ -21,13 +21,13 @@ public class ConsumerManager extends BaseManager {
         this.consumerDAO = consumerDAO;
     }
 
-    public Integer getPageCount(String majorName, String className, String name) {
-        int count = consumerDAO.count(majorName, className, name);
+    public Integer getPageCount(String className, String name) {
+        int count = consumerDAO.count(className, name);
         return calcPageCount(count, ConsumerDAO.PAGE_SIZE);
     }
 
-    public List<ConsumerItemVO> getPage(Integer index, String majorName, String className, String name) {
-        return consumerDAO.getPage(index, majorName, className, name);
+    public List<ConsumerItemVO> getPage(Integer index, String name) {
+        return consumerDAO.getPage(index, name);
     }
 
     public ConsumerEntity get(Integer id) {

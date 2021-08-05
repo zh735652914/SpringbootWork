@@ -17,12 +17,12 @@ public class TeacherService extends BaseService {
         this.userService = userService;
     }
 
-    public ResultVO getPageCount(String departmentName, String name) {
-        return result(manager.getPageCount(departmentName, name));
+    public ResultVO getPageCount(String name) {
+        return result(manager.getPageCount(name));
     }
 
-    public ResultVO getPage(Integer index, String departmentName, String name) {
-        return result(manager.getPage(index, departmentName, name));
+    public ResultVO getPage(Integer index, String name) {
+        return result(manager.getPage(index, name));
     }
 
     public ResultVO get(Integer id) {

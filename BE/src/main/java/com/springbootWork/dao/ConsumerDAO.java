@@ -43,21 +43,14 @@ public class ConsumerDAO extends BaseDAO {
         return mapper.updateById(entity);
     }
 
-    public int count(String majorName, String className, String name) {
-        return mapper.count(majorName, className, name);
+    public int count(String className, String name) {
+        return mapper.count(className, name);
     }
 
-    public List<ConsumerItemVO> getPage(Integer index, String majorName, String className, String name) {
+    public List<ConsumerItemVO> getPage(Integer index, String name) {
         Page<ConsumerItemVO> page = new Page<>(index, PAGE_SIZE);
 
-        return mapper.getPage(page, majorName, className, name).getRecords();
-    }
-
-    public Integer countByClassId(Integer id) {
-        LambdaQueryWrapper<ConsumerEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(ConsumerEntity::getClassId, id);
-
-        return mapper.selectCount(wrapper);
+        return mapper.getPage(page, name).getRecords();
     }
 
     public List<ConsumerEntity> listName() {
@@ -65,10 +58,6 @@ public class ConsumerDAO extends BaseDAO {
         wrapper.select(ConsumerEntity::getId, ConsumerEntity::getName);
 
         return mapper.selectList(wrapper);
-    }
-
-    public Integer getGradeById(Integer consumerId) {
-        return mapper.getGradeById(consumerId);
     }
 
     public ConsumerInfoVO getConsumerInfoById(Integer consumerId) {

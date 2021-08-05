@@ -16,7 +16,6 @@ import java.util.Date;
 @Data
 public class ConsumerEntity {
     public static final String ID = "consumer_id";
-    public static final String CLASS_ID = "consumer_class_id";
     public static final String NUMBER = "consumer_number";
     public static final String NAME = "consumer_name";
     public static final String PASSWORD = "consumer_password";
@@ -29,11 +28,7 @@ public class ConsumerEntity {
     @TableId(value = ID, type = IdType.AUTO)
     private Integer id;
 
-    @NotNull(message = "必须选择所属班级")
-    @TableField(CLASS_ID)
-    private Integer classId;
-
-    @Length(min = 12, max = 12, message = "学号长度必须为12位")
+    @Length(min = 12, max = 12, message = "账号长度必须为12位")
     @TableField(NUMBER)
     private String number;
 

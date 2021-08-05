@@ -39,18 +39,18 @@ public class TeacherController extends BaseController {
     }
 
     @RequestMapping("/page/count")
-    public ResultVO getPageCount(String departmentName, String name) {
-        return service.getPageCount(departmentName, name);
+    public ResultVO getPageCount(String name) {
+        return service.getPageCount(name);
     }
 
     @RequestMapping("/page")
-    public ResultVO getPage(String departmentName, String name) {
-        return service.getPage(1, departmentName, name);
+    public ResultVO getPage(String name) {
+        return service.getPage(1, name);
     }
 
     @RequestMapping("/page/{index}")
-    public ResultVO getPage(@PathVariable Integer index, String departmentName, String name) {
-        return service.getPage(index, departmentName, name);
+    public ResultVO getPage(@PathVariable Integer index, String name) {
+        return service.getPage(index, name);
     }
 
     @Admin

@@ -7,8 +7,7 @@ public class ConsumerActivitySelectedItemVO {
     private Integer consumerActivityId;
     private String activityName;
     private String teacherName;
-    private Integer credit;
-    private Integer dailyScore;
-    private Integer examScore;
-    private Integer score;
+    private String activityDescribe;
+    private String activityTime;
+    private String activityLocation;
 }

@@ -8,15 +8,13 @@ export const deleteItem = id => ajax.pureDelete("/admin/teacher/" + id);
 
 export const update = entity => ajax.put("/admin/teacher", entity);
 
-export const getPageCount = (departmentName, name) =>
+export const getPageCount = (name) =>
   ajax.get("/admin/teacher/page/count", {
-    departmentName: departmentName,
     name: name
   });
 
-export const getPage = (index, departmentName, name) =>
+export const getPage = (index, name) =>
   ajax.get("/admin/teacher/page/" + index, {
-    departmentName: departmentName,
     name: name
   });
 

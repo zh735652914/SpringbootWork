@@ -37,14 +37,14 @@ public class TeacherDAO extends BaseDAO {
         return mapper.updateById(entity);
     }
 
-    public int count(String departmentName, String name) {
-        return mapper.count(departmentName, name);
+    public int count(String name) {
+        return mapper.count(name);
     }
 
-    public List<TeacherItemVO> getPage(Integer index, String departmentName, String name) {
+    public List<TeacherItemVO> getPage(Integer index, String name) {
         Page<TeacherItemVO> page = new Page<>(index, PAGE_SIZE);
 
-        return mapper.getPage(page, departmentName, name).getRecords();
+        return mapper.getPage(page, name).getRecords();
     }
 
     public TeacherEntity getByNumber(String number) {
@@ -52,13 +52,6 @@ public class TeacherDAO extends BaseDAO {
         wrapper.eq(TeacherEntity::getNumber, number);
 
         return mapper.selectOne(wrapper);
-    }
-
-    public Integer countByDepartmentId(Integer departmentId) {
-        LambdaQueryWrapper<TeacherEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(TeacherEntity::getDepartmentId, departmentId);
-
-        return mapper.selectCount(wrapper);
     }
 
     public List<TeacherEntity> listName() {

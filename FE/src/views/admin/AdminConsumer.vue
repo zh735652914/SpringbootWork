@@ -73,7 +73,7 @@
           <el-form-item label="姓名">
             <el-input v-model="entityForm.name"></el-input>
           </el-form-item>
-          <el-form-item label="学号">
+          <el-form-item label="账号">
             <el-input type="number" v-model="entityForm.number"></el-input>
           </el-form-item>
           <el-form-item label="所属班级">
@@ -125,8 +125,6 @@ export default {
   data() {
     return {
       queryForm: {
-        majorName: "",
-        className: "",
         name: ""
       },
       entityForm: {},
@@ -142,8 +140,6 @@ export default {
     query() {
       api
         .getPageCount(
-          this.queryForm.majorName,
-          this.queryForm.className,
           this.queryForm.name
         )
         .then(res => {
@@ -156,8 +152,6 @@ export default {
       api
         .getPage(
           pageIndex,
-          this.queryForm.majorName,
-          this.queryForm.className,
           this.queryForm.name
         )
         .then(res => {
