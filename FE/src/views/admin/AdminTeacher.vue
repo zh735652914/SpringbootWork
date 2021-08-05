@@ -103,7 +103,6 @@
 
 <script>
 import * as api from "../../api/admin/teacher";
-import * as departmentApi from "../../api/admin/department";
 
 export default {
   name: "AdminTeacher",
@@ -175,11 +174,6 @@ export default {
       api.deleteItem(id).then(() => {
         this.$message.success("删除成功");
         this.getPage(this.pageIndex);
-      });
-    },
-    getDepartments() {
-      departmentApi.listName().then(res => {
-        this.departments = res;
       });
     }
   },

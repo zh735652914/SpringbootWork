@@ -119,7 +119,6 @@
 
 <script>
 import * as api from "../../api/admin/consumer";
-import * as classApi from "../../api/admin/class";
 
 export default {
   name: "AdminConsumer",
@@ -207,11 +206,6 @@ export default {
       api.deleteItem(id).then(() => {
         this.$message.success("删除成功");
         this.getPage(this.pageIndex);
-      });
-    },
-    getClasses() {
-      classApi.listName().then(res => {
-        this.classes = res;
       });
     }
   },

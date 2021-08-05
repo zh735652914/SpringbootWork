@@ -58,8 +58,8 @@
             prop="time"
             width="130px"
           />
-          <el-table-column label="已选人数" prop="selectedCount" />
-          <el-table-column label="最大容量" prop="maxSize" />
+          <el-table-column align="center" label="已选人数" prop="selectedCount" />
+          <el-table-column align="center" label="最大容量" prop="maxSize" />
           <el-table-column align="center" label="操作" width="200px">
             <template slot-scope="scope">
               <el-button @click="edit(scope.row.id)" size="mini" type="success"

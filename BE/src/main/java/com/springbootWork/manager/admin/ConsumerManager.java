@@ -1,6 +1,5 @@
 package com.springbootWork.manager.admin;
 
-import com.springbootWork.dao.ClassDAO;
 import com.springbootWork.dao.ConsumerActivityDAO;
 import com.springbootWork.dao.ConsumerDAO;
 import com.springbootWork.manager.BaseManager;
@@ -15,12 +14,10 @@ import java.util.List;
 
 @Component
 public class ConsumerManager extends BaseManager {
-    private final ClassDAO classDAO;
     private final ConsumerActivityDAO consumerActivityDAO;
     private final ConsumerDAO consumerDAO;
 
-    public ConsumerManager(ClassDAO classDAO, ConsumerActivityDAO consumerActivityDAO, ConsumerDAO consumerDAO) {
-        this.classDAO = classDAO;
+    public ConsumerManager(ConsumerActivityDAO consumerActivityDAO, ConsumerDAO consumerDAO) {
         this.consumerActivityDAO = consumerActivityDAO;
         this.consumerDAO = consumerDAO;
     }
@@ -48,10 +45,6 @@ public class ConsumerManager extends BaseManager {
 
     public int delete(Integer id) {
         return consumerDAO.delete(id);
-    }
-
-    public ClassEntity getClassById(Integer classId) {
-        return classDAO.get(classId);
     }
 
     public boolean hasConsumerActivity(Integer consumerId) {

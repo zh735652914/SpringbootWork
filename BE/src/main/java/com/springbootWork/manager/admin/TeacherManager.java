@@ -1,10 +1,8 @@
 package com.springbootWork.manager.admin;
 
 import com.springbootWork.dao.ActivityDAO;
-import com.springbootWork.dao.DepartmentDAO;
 import com.springbootWork.dao.TeacherDAO;
 import com.springbootWork.manager.BaseManager;
-import com.springbootWork.model.entity.DepartmentEntity;
 import com.springbootWork.model.entity.TeacherEntity;
 import com.springbootWork.model.vo.response.IdNameVO;
 import com.springbootWork.model.vo.response.table.TeacherItemVO;
@@ -15,12 +13,10 @@ import java.util.List;
 
 @Component
 public class TeacherManager extends BaseManager {
-    private final DepartmentDAO departmentDAO;
     private final TeacherDAO teacherDAO;
     private final ActivityDAO activityDAO;
 
-    public TeacherManager(DepartmentDAO departmentDAO, TeacherDAO teacherDAO, ActivityDAO activityDAO) {
-        this.departmentDAO = departmentDAO;
+    public TeacherManager(TeacherDAO teacherDAO, ActivityDAO activityDAO) {
         this.teacherDAO = teacherDAO;
         this.activityDAO = activityDAO;
     }
@@ -52,10 +48,6 @@ public class TeacherManager extends BaseManager {
 
     public boolean hasActivity(Integer teacherId) {
         return activityDAO.countByTeacherId(teacherId) > 0;
-    }
-
-    public DepartmentEntity getDepartmentById(Integer id) {
-        return departmentDAO.get(id);
     }
 
     public List<IdNameVO> listName() {

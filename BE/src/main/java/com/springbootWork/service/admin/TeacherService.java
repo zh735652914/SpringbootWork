@@ -41,9 +41,6 @@ public class TeacherService extends BaseService {
         if (originEntity == null) {
             return failedResult("教师Id: " + entity.getId() + "不存在!");
         }
-        if (manager.getDepartmentById(entity.getDepartmentId()) == null) {
-            return failedResult("所属系Id: " + entity.getDepartmentId() + "不存在!");
-        }
 
         if (entity.getPassword().equals("")) {
             entity.setPassword(originEntity.getPassword());
@@ -70,9 +67,6 @@ public class TeacherService extends BaseService {
     public ResultVO create(TeacherEntity entity) {
         if (manager.get(entity.getId()) != null) {
             return failedResult("教师Id: " + entity.getId() + "已存在!");
-        }
-        if (manager.getDepartmentById(entity.getDepartmentId()) == null) {
-            return failedResult("所属系Id: " + entity.getDepartmentId() + "不存在!");
         }
 
         entity.setPassword(userService.computePasswordHash(entity.getPassword()));
