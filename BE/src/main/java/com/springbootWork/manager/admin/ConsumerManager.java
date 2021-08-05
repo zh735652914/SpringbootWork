@@ -3,7 +3,6 @@ package com.springbootWork.manager.admin;
 import com.springbootWork.dao.ConsumerActivityDAO;
 import com.springbootWork.dao.ConsumerDAO;
 import com.springbootWork.manager.BaseManager;
-import com.springbootWork.model.entity.ClassEntity;
 import com.springbootWork.model.entity.ConsumerEntity;
 import com.springbootWork.model.vo.response.IdNameVO;
 import com.springbootWork.model.vo.response.table.ConsumerItemVO;
