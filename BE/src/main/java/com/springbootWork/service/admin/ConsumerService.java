@@ -28,7 +28,7 @@ public class ConsumerService extends BaseService {
     public ResultVO get(Integer id) {
         ConsumerEntity entity = manager.get(id);
         if (entity == null) {
-            return failedResult("学生Id: " + id + "不存在!");
+            return failedResult("用户Id: " + id + "不存在!");
         }
 
         entity.setPassword("");
@@ -39,7 +39,7 @@ public class ConsumerService extends BaseService {
     public ResultVO update(ConsumerEntity entity) {
         ConsumerEntity origin = manager.get(entity.getId());
         if (origin == null) {
-            return failedResult("学生Id: " + entity.getId() + "不存在!");
+            return failedResult("用户Id: " + entity.getId() + "不存在!");
         }
 
         if (entity.getPassword().equals("")) {
@@ -54,10 +54,10 @@ public class ConsumerService extends BaseService {
 
     public ResultVO delete(Integer id) {
         if (manager.get(id) == null) {
-            return failedResult("学生Id: " + id + "不存在!");
+            return failedResult("用户Id: " + id + "不存在!");
         }
         if (manager.hasConsumerActivity(id)) {
-            return failedResult("此学生还有未退选活动");
+            return failedResult("此用户还有未退选活动");
         }
 
         manager.delete(id);
@@ -66,7 +66,7 @@ public class ConsumerService extends BaseService {
 
     public ResultVO create(ConsumerEntity entity) {
         if (manager.get(entity.getId()) != null) {
-            return failedResult("学生Id: " + entity.getId() + "已存在!");
+            return failedResult("用户Id: " + entity.getId() + "已存在!");
         }
 
         manager.create(entity);

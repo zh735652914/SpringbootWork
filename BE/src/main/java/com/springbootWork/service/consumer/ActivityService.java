@@ -29,13 +29,13 @@ public class ActivityService extends BaseService {
         }
         ConsumerActivityEntity consumerActivity = manager.getConsumerActivityById(consumerActivityId);
         if (consumerActivity == null) {
-            return failedResult("学生选课Id:" + consumerActivityId + "不存在");
+            return failedResult("用户选课Id:" + consumerActivityId + "不存在");
         }
         if (!consumerActivity.getConsumerId().equals(consumerId)) {
-            return failedResult("此活动非此学生所选!");
+            return failedResult("此活动非此用户所选!");
         }
         if (consumerActivity.getDailyScore() != null || consumerActivity.getExamScore() != null || consumerActivity.getScore() != null) {
-            return failedResult("学生已获得成绩, 不能退选");
+            return failedResult("用户已获得成绩, 不能退选");
         }
 
         manager.deleteConsumerActivity(consumerActivity);

@@ -16,13 +16,13 @@ public @interface Admin {
     int MAJOR_MANAGE = 2;
     // 班级管理
     int CLASS_MANAGE = 4;
-    // 学生管理
+    // 用户管理
     int CONSUMER_MANAGE = 8;
     // 教师管理
     int TEACHER_MANAGE = 16;
     // 活动管理
     int ACTIVITY_MANAGE = 32;
-    // 学生选课管理
+    // 用户选课管理
     int CONSUMER_ACTIVITY_MANAGE = 64;
     // 管理员管理
     int ADMIN_MANAGE = 128;

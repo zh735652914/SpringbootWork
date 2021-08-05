@@ -25,18 +25,13 @@ public class ActivityManager extends BaseManager {
         this.consumerActivityDAO = consumerActivityDAO;
     }
 
-    public Integer getPageCount(String departmentName, String teacherName, String name) {
-        int count = activityDAO.count(departmentName, teacherName, name);
+    public Integer getPageCount(String teacherName, String name) {
+        int count = activityDAO.count(teacherName, name);
         return calcPageCount(count, ActivityDAO.PAGE_SIZE);
     }
 
-//    public Integer getPageCount(String teacherName, String name) {
-//        int count = activityDAO.count(teacherName, name);
-//        return calcPageCount(count, ActivityDAO.PAGE_SIZE);
-//    }
-
-    public List<ActivityItemBO> getPage(Integer index, String departmentName, String teacherName, String name) {
-        return activityDAO.getPage(index, departmentName, teacherName, name);
+    public List<ActivityItemBO> getPage(Integer index, String teacherName, String name) {
+        return activityDAO.getPage(index, teacherName, name);
     }
 
     public ActivityEntity get(Integer id) {

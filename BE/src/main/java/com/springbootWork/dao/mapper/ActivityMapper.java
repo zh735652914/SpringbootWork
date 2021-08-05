@@ -9,19 +9,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ActivityMapper extends BaseMapper<ActivityEntity> {
-    Integer count(String departmentName, String teacherName, String name);
+    Integer count(String teacherName, String name);
 
-//    Integer count(String teacherName, String name);
+    IPage<ActivityItemBO> getPage(IPage<ActivityItemBO> page, String teacherName, String name);
 
-    IPage<ActivityItemBO> getPage(IPage<ActivityItemBO> page, String departmentName, String teacherName, String name);
+    Integer countConsumerCanSelect(Integer consumerId, Integer grade, String activityName, String teacherName);
 
-//    Integer countConsumerCanSelect(Integer consumerId, Integer departmentId, Integer grade, String activityName, String teacherName);
-
-    Integer countConsumerCanSelect(Integer consumerId, Integer departmentId, Integer grade, String activityName, String teacherName);
-
-    IPage<ConsumerActivitySelectItemBO> getConsumerCanSelectPage(IPage<ConsumerActivitySelectItemBO> page, Integer consumerId, Integer departmentId, Integer grade, String activityName, String teacherName);
-
-//    IPage<ConsumerActivitySelectItemBO> getConsumerCanSelectPage(IPage<ConsumerActivitySelectItemBO> page, Integer consumerId, String activityName, String teacherName);
+    IPage<ConsumerActivitySelectItemBO> getConsumerCanSelectPage(IPage<ConsumerActivitySelectItemBO> page, Integer consumerId, Integer grade, String activityName, String teacherName);
 
     Integer getDepartmentIdById(Integer activityId);
 }

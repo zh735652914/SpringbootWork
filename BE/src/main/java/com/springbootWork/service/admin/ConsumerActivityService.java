@@ -26,7 +26,7 @@ public class ConsumerActivityService extends BaseService {
     public ResultVO get(Integer id) {
         ConsumerActivityEntity entity = manager.get(id);
         if (entity == null) {
-            return failedResult("学生选课Id: " + id + "不存在!");
+            return failedResult("用户选课Id: " + id + "不存在!");
         }
 
         return result(entity);
@@ -35,13 +35,13 @@ public class ConsumerActivityService extends BaseService {
     public ResultVO update(ConsumerActivityEntity entity) {
         ConsumerActivityEntity originEntity = manager.get(entity.getId());
         if (originEntity == null) {
-            return failedResult("学生选课Id: " + entity.getId() + "不存在!");
+            return failedResult("用户选课Id: " + entity.getId() + "不存在!");
         }
         if (!originEntity.getActivityId().equals(entity.getActivityId())) {
             return failedResult("活动Id被篡改");
         }
         if (!originEntity.getConsumerId().equals(entity.getConsumerId())) {
-            return failedResult("学生Id被篡改");
+            return failedResult("用户Id被篡改");
         }
 
         manager.update(entity);
@@ -51,7 +51,7 @@ public class ConsumerActivityService extends BaseService {
     public ResultVO delete(Integer id) {
         ConsumerActivityEntity entity = manager.get(id);
         if (entity == null) {
-            return failedResult("学生选课Id: " + id + "不存在!");
+            return failedResult("用户选课Id: " + id + "不存在!");
         }
 
         manager.delete(entity);
@@ -60,13 +60,13 @@ public class ConsumerActivityService extends BaseService {
 
     public ResultVO create(ConsumerActivityEntity entity) {
         if (manager.get(entity.getId()) != null) {
-            return failedResult("学生选课Id: " + entity.getId() + "已存在!");
+            return failedResult("用户选课Id: " + entity.getId() + "已存在!");
         }
         if (manager.getConsumerById(entity.getConsumerId()) == null) {
-            return failedResult("所属学生Id: " + entity.getConsumerId() + "不存在!");
+            return failedResult("所属用户Id: " + entity.getConsumerId() + "不存在!");
         }
         if (manager.getByActivityIdAndConsumerId(entity.getActivityId(), entity.getConsumerId()) != null) {
-            return failedResult("学生已经选修此活动");
+            return failedResult("用户已经选修此活动");
         }
         ActivityEntity activity = manager.getActivityById(entity.getActivityId());
         if (activity == null) {
@@ -75,11 +75,9 @@ public class ConsumerActivityService extends BaseService {
         if (activity.getSelectedCount() >= activity.getMaxSize()) {
             return failedResult("课容量已满");
         }
-//        if (!manager.inSameDepartment(entity.getActivityId(), entity.getConsumerId())) {
-//            return failedResult("活动与学生不在同一教学系");
-//        }
+
         if (!activity.getGrade().equals(manager.getConsumerGradeById(entity.getConsumerId()))) {
-            return failedResult("活动与学生不在同一年级");
+            return failedResult("活动与用户不在同一年级");
         }
 
         manager.create(entity);

@@ -39,8 +39,8 @@ public class ActivityController extends BaseController {
     }
 
     @RequestMapping("/page/count")
-    public ResultVO getPageCount(String departmentName, String teacherName, String name) {
-        return service.getPageCount(departmentName, teacherName, name);
+    public ResultVO getPageCount(String teacherName, String name) {
+        return service.getPageCount(teacherName, name);
     }
 
     @RequestMapping("/page")

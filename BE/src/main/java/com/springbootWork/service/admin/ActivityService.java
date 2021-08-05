@@ -23,16 +23,12 @@ public class ActivityService extends BaseService {
         this.lessonTimeConverter = lessonTimeConverter;
     }
 
-    public ResultVO getPageCount(String departmentName, String teacherName, String name) {
-        return result(manager.getPageCount(departmentName, teacherName, name));
+    public ResultVO getPageCount(String teacherName, String name) {
+        return result(manager.getPageCount(teacherName, name));
     }
 
-//    public ResultVO getPageCount(String teacherName, String name) {
-//        return result(manager.getPageCount(teacherName, name));
-//    }
-
     public ResultVO getPage(Integer index, String departmentName, String teacherName, String name) {
-        List<ActivityItemBO> boList = manager.getPage(index, departmentName, teacherName, name);
+        List<ActivityItemBO> boList = manager.getPage(index, teacherName, name);
         List<ActivityItemVO> voList = new ArrayList<>(boList.size());
 
         for (ActivityItemBO bo : boList) {
@@ -74,7 +70,7 @@ public class ActivityService extends BaseService {
             return failedResult("活动Id: " + id + "不存在!");
         }
         if (manager.hasConsumerActivity(id)) {
-            return failedResult("还有学生未退选此活动");
+            return failedResult("还有用户未退选此活动");
         }
 
         manager.delete(id);

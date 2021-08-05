@@ -37,7 +37,7 @@ public class ConsumerEntity {
     @TableField(NUMBER)
     private String number;
 
-    @NotBlank(message = "学生姓名不能为空")
+    @NotBlank(message = "用户姓名不能为空")
     @TableField(NAME)
     private String name;
 
