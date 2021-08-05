@@ -1,13 +1,13 @@
-package com.springbootWork.service.student;
+package com.springbootWork.service.consumer;
 
 import com.springbootWork.manager.OptionManager;
-import com.springbootWork.manager.student.ActivitySelectManager;
-import com.springbootWork.model.bo.StudentActivitySelectItemBO;
+import com.springbootWork.manager.consumer.ActivitySelectManager;
+import com.springbootWork.model.bo.ConsumerActivitySelectItemBO;
 import com.springbootWork.model.entity.ActivityEntity;
-import com.springbootWork.model.entity.StudentActivityEntity;
-import com.springbootWork.model.entity.StudentEntity;
+import com.springbootWork.model.entity.ConsumerActivityEntity;
+import com.springbootWork.model.entity.ConsumerEntity;
 import com.springbootWork.model.vo.response.ResultVO;
-import com.springbootWork.model.vo.response.table.StudentActivitySelectItemVO;
+import com.springbootWork.model.vo.response.table.ConsumerActivitySelectItemVO;
 import com.springbootWork.service.BaseService;
 import com.springbootWork.util.LessonTimeConverter;
 import org.springframework.beans.BeanUtils;
@@ -29,18 +29,18 @@ public class ActivitySelectService extends BaseService {
     }
 
     public ResultVO getPageCount(String activityName, String teacherName) {
-        Integer studentId = getUserId();
-        return result(manager.getPageCount(studentId, activityName, teacherName));
+        Integer consumerId = getUserId();
+        return result(manager.getPageCount(consumerId, activityName, teacherName));
     }
 
     public ResultVO getPage(Integer index, String activityName, String teacherName) {
-        Integer studentId = getUserId();
+        Integer consumerId = getUserId();
 
-        List<StudentActivitySelectItemBO> boList = manager.getPage(index, studentId, activityName, teacherName);
-        List<StudentActivitySelectItemVO> voList = new ArrayList<>(boList.size());
+        List<ConsumerActivitySelectItemBO> boList = manager.getPage(index, consumerId, activityName, teacherName);
+        List<ConsumerActivitySelectItemVO> voList = new ArrayList<>(boList.size());
 
-        for (StudentActivitySelectItemBO bo : boList) {
-            StudentActivitySelectItemVO vo = new StudentActivitySelectItemVO();
+        for (ConsumerActivitySelectItemBO bo : boList) {
+            ConsumerActivitySelectItemVO vo = new ConsumerActivitySelectItemVO();
             BeanUtils.copyProperties(bo, vo);
             vo.setTime(lessonTimeConverter.covertTimePart(bo.getTime()));
             voList.add(vo);
@@ -50,40 +50,40 @@ public class ActivitySelectService extends BaseService {
     }
 
     public ResultVO create(Integer activityId) {
-        Integer studentId = getUserId();
+        Integer consumerId = getUserId();
 
-        if (!optionManager.getAllowStudentSelect()) {
+        if (!optionManager.getAllowConsumerSelect()) {
             return failedResult("现在不是选课时间!");
         }
-        StudentEntity student = manager.getStudentById(studentId);
+        ConsumerEntity consumer = manager.getConsumerById(consumerId);
         ActivityEntity activity = manager.getActivityById(activityId);
-        if (student == null) {
-            return failedResult("学生Id:" + studentId + "不存在!");
+        if (consumer == null) {
+            return failedResult("学生Id:" + consumerId + "不存在!");
         }
         if (activity == null) {
             return failedResult("课程Id:" + activityId + "不存在!");
         }
-//        if (!manager.inSameDepartment(activityId, studentId)) {
+//        if (!manager.inSameDepartment(activityId, consumerId)) {
 //            return failedResult("学生不能选择非教学系的课程!");
 //        }
         if (activity.getSelectedCount() >= activity.getMaxSize()) {
             return failedResult("课容量已满!");
         }
-        if (manager.getStudentActivityByActivityIdAndStudentId(activityId, studentId) != null) {
+        if (manager.getConsumerActivityByActivityIdAndConsumerId(activityId, consumerId) != null) {
             return failedResult("学生已选修此课程!");
         }
-//        if (!manager.getStudentGradeById(student.getId()).equals(activity.getGrade())) {
+//        if (!manager.getConsumerGradeById(consumer.getId()).equals(activity.getGrade())) {
 //            return failedResult("学生与课程不在同一年级");
 //        }
         String timePart = splitTimePart(activity.getTime());
-        if (manager.countStudentActivitySelectedByTimePart(studentId, timePart) > 0) {
+        if (manager.countConsumerActivitySelectedByTimePart(consumerId, timePart) > 0) {
             return failedResult("上课时间冲突!");
         }
 
-        StudentActivityEntity studentActivity = new StudentActivityEntity();
-        studentActivity.setActivityId(activityId);
-        studentActivity.setStudentId(studentId);
-        manager.create(studentActivity);
+        ConsumerActivityEntity consumerActivity = new ConsumerActivityEntity();
+        consumerActivity.setActivityId(activityId);
+        consumerActivity.setConsumerId(consumerId);
+        manager.create(consumerActivity);
 
         return result("选课成功");
     }

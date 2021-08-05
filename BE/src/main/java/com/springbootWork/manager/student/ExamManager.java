@@ -1,21 +1,21 @@
-package com.springbootWork.manager.student;
+package com.springbootWork.manager.consumer;
 
-import com.springbootWork.dao.StudentActivityDAO;
+import com.springbootWork.dao.ConsumerActivityDAO;
 import com.springbootWork.manager.BaseManager;
-import com.springbootWork.model.vo.response.table.StudentExamItemVO;
+import com.springbootWork.model.vo.response.table.ConsumerExamItemVO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class ExamManager extends BaseManager {
-    private final StudentActivityDAO studentActivityDAO;
+    private final ConsumerActivityDAO consumerActivityDAO;
 
-    public ExamManager(StudentActivityDAO studentActivityDAO) {
-        this.studentActivityDAO = studentActivityDAO;
+    public ExamManager(ConsumerActivityDAO consumerActivityDAO) {
+        this.consumerActivityDAO = consumerActivityDAO;
     }
 
-    public List<StudentExamItemVO> listStudentExam(Integer studentId) {
-        return studentActivityDAO.listStudentExam(studentId);
+    public List<ConsumerExamItemVO> listConsumerExam(Integer consumerId) {
+        return consumerActivityDAO.listConsumerExam(consumerId);
     }
 }

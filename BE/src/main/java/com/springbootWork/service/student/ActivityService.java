@@ -1,13 +1,13 @@
-package com.springbootWork.service.student;
+package com.springbootWork.service.consumer;
 
 import com.springbootWork.manager.OptionManager;
-import com.springbootWork.manager.student.ActivityManager;
-import com.springbootWork.model.entity.StudentActivityEntity;
+import com.springbootWork.manager.consumer.ActivityManager;
+import com.springbootWork.model.entity.ConsumerActivityEntity;
 import com.springbootWork.model.vo.response.ResultVO;
 import com.springbootWork.service.BaseService;
 import org.springframework.stereotype.Service;
 
-@Service("student_activityService")
+@Service("consumer_activityService")
 public class ActivityService extends BaseService {
     private final ActivityManager manager;
     private final OptionManager optionManager;
@@ -18,27 +18,27 @@ public class ActivityService extends BaseService {
     }
 
     public ResultVO list() {
-        Integer studentId = getUserId();
-        return result(manager.listStudentActivitySelected(studentId));
+        Integer consumerId = getUserId();
+        return result(manager.listConsumerActivitySelected(consumerId));
     }
 
-    public ResultVO delete(Integer studentActivityId) {
-        Integer studentId = getUserId();
-        if (!optionManager.getAllowStudentSelect()) {
+    public ResultVO delete(Integer consumerActivityId) {
+        Integer consumerId = getUserId();
+        if (!optionManager.getAllowConsumerSelect()) {
             return failedResult("现在不是选课退课时间!");
         }
-        StudentActivityEntity studentActivity = manager.getStudentActivityById(studentActivityId);
-        if (studentActivity == null) {
-            return failedResult("学生选课Id:" + studentActivityId + "不存在");
+        ConsumerActivityEntity consumerActivity = manager.getConsumerActivityById(consumerActivityId);
+        if (consumerActivity == null) {
+            return failedResult("学生选课Id:" + consumerActivityId + "不存在");
         }
-        if (!studentActivity.getStudentId().equals(studentId)) {
+        if (!consumerActivity.getConsumerId().equals(consumerId)) {
             return failedResult("此课程非此学生所选!");
         }
-        if (studentActivity.getDailyScore() != null || studentActivity.getExamScore() != null || studentActivity.getScore() != null) {
+        if (consumerActivity.getDailyScore() != null || consumerActivity.getExamScore() != null || consumerActivity.getScore() != null) {
             return failedResult("学生已获得成绩, 不能退选");
         }
 
-        manager.deleteStudentActivity(studentActivity);
+        manager.deleteConsumerActivity(consumerActivity);
         return result("退选成功");
     }
 }

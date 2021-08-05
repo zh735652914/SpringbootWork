@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springbootWork.dao.mapper.ConsumerMapper">
+    <select id="getPage" resultType="ConsumerItemVO">
+        SELECT consumer_id AS 'id', consumer_number AS 'number', consumer_name AS 'name',
+        class_name AS 'className', major_name AS 'majorName', consumer_sex AS 'sex',
+        consumer_last_login_time AS 'lastLoginTime'
+        FROM rc_consumer
+        JOIN rc_class on consumer_class_id = class_id
+        JOIN rc_major on class_major_id = major_id
+        <where>
+            <if test="majorName != null and majorName != ''">
+                AND major_name LIKE CONCAT('%',#{majorName},'%')
+            </if>
+            <if test="className != null and className != ''">
+                AND class_name LIKE CONCAT('%',#{className},'%')
+            </if>
+            <if test="name != null and name != ''">
+                AND consumer_name LIKE CONCAT('%',#{name},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="count" resultType="Integer">
+        SELECT COUNT(*)
+        FROM rc_consumer
+        JOIN rc_class on consumer_class_id = class_id
+        JOIN rc_major on class_major_id = major_id
+        <where>
+            <if test="majorName != null and majorName != ''">
+                AND major_name LIKE CONCAT('%',#{majorName},'%')
+            </if>
+            <if test="className != null and className != ''">
+                AND class_name LIKE CONCAT('%',#{className},'%')
+            </if>
+            <if test="name != null and name != ''">
+                AND consumer_name LIKE CONCAT('%',#{name},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getDepartmentIdById" resultType="Integer">
+        SELECT major_department_id
+        FROM rc_consumer
+                 JOIN rc_class on consumer_class_id = class_id
+                 JOIN rc_major on class_major_id = major_id
+        WHERE consumer_id = #{consumerId}
+    </select>
+
+    <select id="getGradeById" resultType="Integer">
+        SELECT class_grade
+        FROM rc_consumer
+                 JOIN rc_class on consumer_class_id = class_id
+        WHERE consumer_id = #{consumerId}
+    </select>
+
+    <select id="getConsumerInfoById" resultType="ConsumerInfoVO">
+        SELECT consumer_number   AS 'number',
+               consumer_name     AS 'name',
+               class_name       AS 'className',
+               major_name       AS 'majorName',
+               department_name  AS 'departmentName',
+               consumer_email    AS 'email',
+               consumer_birthday AS 'birthday',
+               consumer_sex      AS 'sex'
+        FROM rc_consumer
+                 JOIN rc_class on consumer_class_id = class_id
+                 JOIN rc_major on class_major_id = major_id
+                 JOIN rc_department on major_department_id = department_id
+        WHERE consumer_id = #{consumerId}
+    </select>
+</mapper>

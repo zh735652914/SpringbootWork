@@ -22,7 +22,7 @@
             <el-input
               @keyup.enter.native="query"
               placeholder="学生名"
-              v-model="queryForm.studentName"
+              v-model="queryForm.consumerName"
             />
           </el-col>
           <el-col :span="3">
@@ -47,16 +47,16 @@
 
       <div class="table">
         <el-table :data="tableData" stripe>
-          <el-table-column label="选课Id" prop="studentActivityId" />
+          <el-table-column label="选课Id" prop="consumerActivityId" />
           <el-table-column label="课程名" prop="activityName" />
-          <el-table-column label="学生姓名" prop="studentName" />
+          <el-table-column label="学生姓名" prop="consumerName" />
           <el-table-column label="日常分" prop="dailyScore" />
           <el-table-column label="笔试分" prop="examScore" />
           <el-table-column label="成绩" prop="score" />
           <el-table-column align="center" label="操作" width="200px">
             <template slot-scope="scope">
               <el-button
-                @click="edit(scope.row.studentActivityId)"
+                @click="edit(scope.row.consumerActivityId)"
                 size="mini"
                 type="success"
                 >打分
@@ -72,7 +72,7 @@
             <el-input
               disabled
               type="number"
-              v-model="entityForm.studentActivityId"
+              v-model="entityForm.consumerActivityId"
             ></el-input>
           </el-form-item>
           <el-form-item label="日常成绩">
@@ -103,7 +103,7 @@ export default {
     return {
       queryForm: {
         activityName: "",
-        studentName: ""
+        consumerName: ""
       },
       entityForm: {},
       tableData: [],
@@ -116,7 +116,7 @@ export default {
   methods: {
     query() {
       api
-        .getPageCount(this.queryForm.activityName, this.queryForm.studentName)
+        .getPageCount(this.queryForm.activityName, this.queryForm.consumerName)
         .then(res => {
           this.pageCount = res;
           this.pageIndex = 1;
@@ -128,7 +128,7 @@ export default {
         .getPage(
           pageIndex,
           this.queryForm.activityName,
-          this.queryForm.studentName
+          this.queryForm.consumerName
         )
         .then(res => {
           this.tableData = res;

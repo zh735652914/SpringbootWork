@@ -1,11 +1,11 @@
 package com.springbootWork.manager;
 
 import com.springbootWork.dao.AdminDAO;
-import com.springbootWork.dao.StudentDAO;
+import com.springbootWork.dao.ConsumerDAO;
 import com.springbootWork.dao.TeacherDAO;
 import com.springbootWork.model.bo.AuthInfoBO;
 import com.springbootWork.model.constant.UserType;
-import com.springbootWork.model.entity.StudentEntity;
+import com.springbootWork.model.entity.ConsumerEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -14,17 +14,17 @@ import java.util.Date;
 public class UserManager extends BaseManager {
     private final AdminDAO adminDAO;
     private final TeacherDAO teacherDAO;
-    private final StudentDAO studentDAO;
+    private final ConsumerDAO consumerDAO;
 
-    public UserManager(AdminDAO adminDAO, TeacherDAO teacherDAO, StudentDAO studentDAO) {
+    public UserManager(AdminDAO adminDAO, TeacherDAO teacherDAO, ConsumerDAO consumerDAO) {
         this.adminDAO = adminDAO;
         this.teacherDAO = teacherDAO;
-        this.studentDAO = studentDAO;
+        this.consumerDAO = consumerDAO;
     }
 
     public AuthInfoBO getAuthInfoByUsername(String username, Integer userType) {
-        if (userType == UserType.STUDENT) {
-            return AuthInfoBO.fromStudent(studentDAO.getByNumber(username));
+        if (userType == UserType.CONSUMER) {
+            return AuthInfoBO.fromConsumer(consumerDAO.getByNumber(username));
         } else if (userType == UserType.TEACHER) {
             return AuthInfoBO.fromTeacher(teacherDAO.getByNumber(username));
         } else if (userType == UserType.ADMIN) {
@@ -34,13 +34,13 @@ public class UserManager extends BaseManager {
         return null;
     }
 
-    public void updateStudentLastLoginTime(String number) {
-        StudentEntity entity = studentDAO.getByNumber(number);
+    public void updateConsumerLastLoginTime(String number) {
+        ConsumerEntity entity = consumerDAO.getByNumber(number);
         if (entity == null) {
             return;
         }
 
         entity.setLastLoginTime(new Date());
-        studentDAO.update(entity);
+        consumerDAO.update(entity);
     }
 }

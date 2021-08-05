@@ -1,28 +1,28 @@
-package com.springbootWork.manager.student;
+package com.springbootWork.manager.consumer;
 
-import com.springbootWork.dao.StudentDAO;
+import com.springbootWork.dao.ConsumerDAO;
 import com.springbootWork.manager.BaseManager;
-import com.springbootWork.model.entity.StudentEntity;
-import com.springbootWork.model.vo.response.StudentInfoVO;
+import com.springbootWork.model.entity.ConsumerEntity;
+import com.springbootWork.model.vo.response.ConsumerInfoVO;
 import org.springframework.stereotype.Component;
 
 @Component
 public class InfoManager extends BaseManager {
-    private final StudentDAO studentDAO;
+    private final ConsumerDAO consumerDAO;
 
-    public InfoManager(StudentDAO studentDAO) {
-        this.studentDAO = studentDAO;
+    public InfoManager(ConsumerDAO consumerDAO) {
+        this.consumerDAO = consumerDAO;
     }
 
-    public StudentInfoVO getStudentInfoByStudentId(Integer studentId) {
-        return studentDAO.getStudentInfoById(studentId);
+    public ConsumerInfoVO getConsumerInfoByConsumerId(Integer consumerId) {
+        return consumerDAO.getConsumerInfoById(consumerId);
     }
 
-    public StudentEntity getStudentById(Integer studentId) {
-        return studentDAO.get(studentId);
+    public ConsumerEntity getConsumerById(Integer consumerId) {
+        return consumerDAO.get(consumerId);
     }
 
-    public int updateStudent(StudentEntity entity) {
-        return studentDAO.update(entity);
+    public int updateConsumer(ConsumerEntity entity) {
+        return consumerDAO.update(entity);
     }
 }

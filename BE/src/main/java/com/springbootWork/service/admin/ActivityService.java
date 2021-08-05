@@ -73,7 +73,7 @@ public class ActivityService extends BaseService {
         if (manager.get(id) == null) {
             return failedResult("课程Id: " + id + "不存在!");
         }
-        if (manager.hasStudentActivity(id)) {
+        if (manager.hasConsumerActivity(id)) {
             return failedResult("还有学生未退选此课程");
         }
 

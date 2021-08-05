@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OptionManager extends BaseManager {
-    private static final Boolean DEFAULT_ALLOW_STUDENT_SELECT = true;
+    private static final Boolean DEFAULT_ALLOW_CONSUMER_SELECT = true;
     private static final Boolean DEFAULT_ALLOW_TEACHER_GRADE = true;
     private final OptionDAO optionDAO;
 
@@ -13,17 +13,17 @@ public class OptionManager extends BaseManager {
         this.optionDAO = optionDAO;
     }
 
-    public Boolean getAllowStudentSelect() {
-        Boolean res = optionDAO.getAllowStudentSelect();
+    public Boolean getAllowConsumerSelect() {
+        Boolean res = optionDAO.getAllowConsumerSelect();
         if (res == null) {
-            optionDAO.setAllowStudentSelect(DEFAULT_ALLOW_STUDENT_SELECT);
+            optionDAO.setAllowConsumerSelect(DEFAULT_ALLOW_CONSUMER_SELECT);
             res = true;
         }
         return res;
     }
 
-    public void setAllowStudentSelect(Boolean status) {
-        optionDAO.setAllowStudentSelect(status);
+    public void setAllowConsumerSelect(Boolean status) {
+        optionDAO.setAllowConsumerSelect(status);
     }
 
     public Boolean getAllowTeacherGrade() {

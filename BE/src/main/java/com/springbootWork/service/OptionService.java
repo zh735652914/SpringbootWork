@@ -12,13 +12,13 @@ public class OptionService extends BaseService {
         this.manager = manager;
     }
 
-    public ResultVO setAllowStudentSelect(Boolean status) {
-        manager.setAllowStudentSelect(status);
+    public ResultVO setAllowConsumerSelect(Boolean status) {
+        manager.setAllowConsumerSelect(status);
         return result("成功");
     }
 
-    public ResultVO getAllowStudentSelect() {
-        return result(manager.getAllowStudentSelect());
+    public ResultVO getAllowConsumerSelect() {
+        return result(manager.getAllowConsumerSelect());
     }
 
     public ResultVO setAllowTeacherGrade(Boolean status) {

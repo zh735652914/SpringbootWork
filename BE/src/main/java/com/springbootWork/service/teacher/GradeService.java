@@ -2,7 +2,7 @@ package com.springbootWork.service.teacher;
 
 import com.springbootWork.manager.OptionManager;
 import com.springbootWork.manager.teacher.GradeManager;
-import com.springbootWork.model.entity.StudentActivityEntity;
+import com.springbootWork.model.entity.ConsumerActivityEntity;
 import com.springbootWork.model.vo.TeacherGradeVO;
 import com.springbootWork.model.vo.response.ResultVO;
 import com.springbootWork.service.BaseService;
@@ -19,14 +19,14 @@ public class GradeService extends BaseService {
         this.optionManager = optionManager;
     }
 
-    public ResultVO getPageCount(String activityName, String studentName) {
+    public ResultVO getPageCount(String activityName, String consumerName) {
         Integer teacherId = getUserId();
-        return result(manager.getTeacherGradePageCount(teacherId, activityName, studentName));
+        return result(manager.getTeacherGradePageCount(teacherId, activityName, consumerName));
     }
 
-    public ResultVO getPage(Integer index, String activityName, String studentName) {
+    public ResultVO getPage(Integer index, String activityName, String consumerName) {
         Integer teacherId = getUserId();
-        return result(manager.getTeacherGradePage(index, teacherId, activityName, studentName));
+        return result(manager.getTeacherGradePage(index, teacherId, activityName, consumerName));
     }
 
     public ResultVO update(TeacherGradeVO vo) {
@@ -35,37 +35,37 @@ public class GradeService extends BaseService {
         }
 
         Integer teacherId = getUserId();
-        StudentActivityEntity studentActivity = manager.getStudentActivityById(vo.getStudentActivityId());
-        if (studentActivity == null) {
-            return failedResult("学生选课Id:" + vo.getStudentActivityId() + "不存在");
+        ConsumerActivityEntity consumerActivity = manager.getConsumerActivityById(vo.getConsumerActivityId());
+        if (consumerActivity == null) {
+            return failedResult("学生选课Id:" + vo.getConsumerActivityId() + "不存在");
         }
-        if (!manager.getActivityById(studentActivity.getActivityId()).getTeacherId().equals(teacherId)) {
+        if (!manager.getActivityById(consumerActivity.getActivityId()).getTeacherId().equals(teacherId)) {
             return failedResult("此课程非您教授");
         }
 
-        BeanUtils.copyProperties(vo, studentActivity);
+        BeanUtils.copyProperties(vo, consumerActivity);
 
-        manager.updateStudentActivity(studentActivity);
+        manager.updateConsumerActivity(consumerActivity);
         return result("打分成功");
     }
 
-    public ResultVO get(Integer studentActivityId) {
+    public ResultVO get(Integer consumerActivityId) {
         if (!optionManager.getAllowTeacherGrade()) {
             return failedResult("现在不是打分时间!");
         }
 
         Integer teacherId = getUserId();
-        StudentActivityEntity studentActivity = manager.getStudentActivityById(studentActivityId);
-        if (studentActivity == null) {
-            return failedResult("学生选课Id:" + studentActivityId + "不存在");
+        ConsumerActivityEntity consumerActivity = manager.getConsumerActivityById(consumerActivityId);
+        if (consumerActivity == null) {
+            return failedResult("学生选课Id:" + consumerActivityId + "不存在");
         }
-        if (!manager.getActivityById(studentActivity.getActivityId()).getTeacherId().equals(teacherId)) {
+        if (!manager.getActivityById(consumerActivity.getActivityId()).getTeacherId().equals(teacherId)) {
             return failedResult("此课程非您教授");
         }
 
         TeacherGradeVO vo = new TeacherGradeVO();
-        BeanUtils.copyProperties(studentActivity, vo);
-        vo.setStudentActivityId(studentActivityId);
+        BeanUtils.copyProperties(consumerActivity, vo);
+        vo.setConsumerActivityId(consumerActivityId);
 
         return result(vo);
     }

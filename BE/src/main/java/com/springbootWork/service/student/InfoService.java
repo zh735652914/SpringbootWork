@@ -1,8 +1,8 @@
-package com.springbootWork.service.student;
+package com.springbootWork.service.consumer;
 
-import com.springbootWork.manager.student.InfoManager;
-import com.springbootWork.model.entity.StudentEntity;
-import com.springbootWork.model.vo.request.StudentInfoFormVO;
+import com.springbootWork.manager.consumer.InfoManager;
+import com.springbootWork.model.entity.ConsumerEntity;
+import com.springbootWork.model.vo.request.ConsumerInfoFormVO;
 import com.springbootWork.model.vo.response.ResultVO;
 import com.springbootWork.service.BaseService;
 import com.springbootWork.service.UserService;
@@ -23,22 +23,22 @@ public class InfoService extends BaseService {
     }
 
     public ResultVO get() {
-        return result(manager.getStudentInfoByStudentId(getUserId()));
+        return result(manager.getConsumerInfoByConsumerId(getUserId()));
     }
 
-    public ResultVO update(@RequestBody @Validated StudentInfoFormVO studentInfoForm) {
-        StudentEntity student = manager.getStudentById(getUserId());
+    public ResultVO update(@RequestBody @Validated ConsumerInfoFormVO consumerInfoForm) {
+        ConsumerEntity consumer = manager.getConsumerById(getUserId());
 
-        String password = studentInfoForm.getPassword();
+        String password = consumerInfoForm.getPassword();
         if (password == null || password.equals("")) {
-            password = student.getPassword();
+            password = consumer.getPassword();
         } else {
             password = userService.computePasswordHash(password);
         }
 
-        BeanUtils.copyProperties(studentInfoForm, student);
-        student.setPassword(password);
-        manager.updateStudent(student);
+        BeanUtils.copyProperties(consumerInfoForm, consumer);
+        consumer.setPassword(password);
+        manager.updateConsumer(consumer);
 
         return result("更新成功");
     }

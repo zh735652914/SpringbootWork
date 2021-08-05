@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.springbootWork.dao.mapper.ActivityMapper;
 import com.springbootWork.model.bo.ActivityItemBO;
-import com.springbootWork.model.bo.StudentActivitySelectItemBO;
+import com.springbootWork.model.bo.ConsumerActivitySelectItemBO;
 import com.springbootWork.model.entity.ActivityEntity;
 import org.springframework.stereotype.Repository;
 
@@ -78,24 +78,24 @@ public class ActivityDAO extends BaseDAO {
         return mapper.updateById(activity);
     }
 
-//    public Integer countStudentCanSelect(Integer studentId, Integer departmentId, Integer grade, String activityName, String teacherName) {
-//        return mapper.countStudentCanSelect(studentId, departmentId, grade, activityName, teacherName);
+//    public Integer countConsumerCanSelect(Integer consumerId, Integer departmentId, Integer grade, String activityName, String teacherName) {
+//        return mapper.countConsumerCanSelect(consumerId, departmentId, grade, activityName, teacherName);
 //    }
 
-    public Integer countStudentCanSelect(Integer studentId, Integer departmentId, Integer grade, String activityName, String teacherName) {
-        return mapper.countStudentCanSelect(studentId, departmentId, grade, activityName, teacherName);
+    public Integer countConsumerCanSelect(Integer consumerId, Integer departmentId, Integer grade, String activityName, String teacherName) {
+        return mapper.countConsumerCanSelect(consumerId, departmentId, grade, activityName, teacherName);
     }
 
-    public List<StudentActivitySelectItemBO> getStudentCanSelectPage(Integer index, Integer studentId, Integer departmentId, Integer grade, String activityName, String teacherName) {
-        Page<StudentActivitySelectItemBO> page = new Page<>(index, PAGE_SIZE);
+    public List<ConsumerActivitySelectItemBO> getConsumerCanSelectPage(Integer index, Integer consumerId, Integer departmentId, Integer grade, String activityName, String teacherName) {
+        Page<ConsumerActivitySelectItemBO> page = new Page<>(index, PAGE_SIZE);
 
-        return mapper.getStudentCanSelectPage(page, studentId, departmentId, grade, activityName, teacherName).getRecords();
+        return mapper.getConsumerCanSelectPage(page, consumerId, departmentId, grade, activityName, teacherName).getRecords();
     }
 
-//    public List<StudentActivitySelectItemBO> getStudentCanSelectPage(Integer index, Integer studentId, String activityName, String teacherName) {
-//        Page<StudentActivitySelectItemBO> page = new Page<>(index, PAGE_SIZE);
+//    public List<ConsumerActivitySelectItemBO> getConsumerCanSelectPage(Integer index, Integer consumerId, String activityName, String teacherName) {
+//        Page<ConsumerActivitySelectItemBO> page = new Page<>(index, PAGE_SIZE);
 //
-//        return mapper.getStudentCanSelectPage(page, studentId, activityName, teacherName).getRecords();
+//        return mapper.getConsumerCanSelectPage(page, consumerId, activityName, teacherName).getRecords();
 //    }
 
 //    public Integer getDepartmentIdById(Integer activityId) {

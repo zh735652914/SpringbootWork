@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class TeacherGradeItemVO {
-    private Integer studentActivityId;
+    private Integer consumerActivityId;
     private String activityName;
-    private String studentName;
+    private String consumerName;
     private Integer dailyScore;
     private Integer examScore;
     private Integer score;

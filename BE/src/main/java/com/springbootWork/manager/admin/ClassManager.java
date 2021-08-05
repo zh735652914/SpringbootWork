@@ -2,7 +2,7 @@ package com.springbootWork.manager.admin;
 
 import com.springbootWork.dao.ClassDAO;
 import com.springbootWork.dao.MajorDAO;
-import com.springbootWork.dao.StudentDAO;
+import com.springbootWork.dao.ConsumerDAO;
 import com.springbootWork.manager.BaseManager;
 import com.springbootWork.model.entity.ClassEntity;
 import com.springbootWork.model.entity.MajorEntity;
@@ -17,12 +17,12 @@ import java.util.List;
 public class ClassManager extends BaseManager {
     private final MajorDAO majorDAO;
     private final ClassDAO classDAO;
-    private final StudentDAO studentDAO;
+    private final ConsumerDAO consumerDAO;
 
-    public ClassManager(MajorDAO majorDAO, ClassDAO classDAO, StudentDAO studentDAO) {
+    public ClassManager(MajorDAO majorDAO, ClassDAO classDAO, ConsumerDAO consumerDAO) {
         this.majorDAO = majorDAO;
         this.classDAO = classDAO;
-        this.studentDAO = studentDAO;
+        this.consumerDAO = consumerDAO;
     }
 
     public Integer getPageCount(String departmentName, String majorName, String name) {
@@ -54,8 +54,8 @@ public class ClassManager extends BaseManager {
         return majorDAO.get(majorId);
     }
 
-    public boolean hasStudent(Integer classId) {
-        return studentDAO.countByClassId(classId) > 0;
+    public boolean hasConsumer(Integer classId) {
+        return consumerDAO.countByClassId(classId) > 0;
     }
 
     public List<IdNameVO> listName() {

@@ -6,44 +6,44 @@ let SideBarItem = {};
 SideBarItem.items = [
   {
     icon: "el-icon-fa fa-bar-chart",
-    index: "/student",
+    index: "/consumer",
     title: "用户首页",
-    userType: UserType.student,
+    userType: UserType.consumer,
     permission: Permission.no
   },
   {
     icon: "el-icon-fa fa-book",
-    index: "/student/activity/select",
+    index: "/consumer/activity/select",
     title: "所有活动",
-    userType: UserType.student,
+    userType: UserType.consumer,
     permission: Permission.no
   },
   {
     icon: "el-icon-fa fa-edit",
-    index: "/student/activity",
+    index: "/consumer/activity",
     title: "用户活动",
-    userType: UserType.student,
+    userType: UserType.consumer,
     permission: Permission.no
   },
   {
     icon: "el-icon-fa fa-table",
-    index: "/student/timetable",
+    index: "/consumer/timetable",
     title: "时间表查询",
-    userType: UserType.student,
+    userType: UserType.consumer,
     permission: Permission.no
   },
   {
     icon: "el-icon-fa fa-eye",
-    index: "/student/exam",
+    index: "/consumer/exam",
     title: "考试查询",
-    userType: UserType.student,
+    userType: UserType.consumer,
     permission: Permission.no
   },
   {
     icon: "el-icon-fa fa-id-badge",
-    index: "/student/info",
+    index: "/consumer/info",
     title: "信息维护",
-    userType: UserType.student,
+    userType: UserType.consumer,
     permission: Permission.no
   },
   {
@@ -104,10 +104,10 @@ SideBarItem.items = [
   },
   {
     icon: "el-icon-fa fa-user",
-    index: "/admin/student",
+    index: "/admin/consumer",
     title: "用户管理",
     userType: UserType.admin,
-    permission: Permission.student
+    permission: Permission.consumer
   },
   {
     icon: "el-icon-fa fa-user-plus",
@@ -125,10 +125,10 @@ SideBarItem.items = [
   },
   {
     icon: "el-icon-fa fa-edit",
-    index: "/admin/student/activity",
+    index: "/admin/consumer/activity",
     title: "选课修改",
     userType: UserType.admin,
-    permission: Permission.studentActivity
+    permission: Permission.consumerActivity
   },
   {
     icon: "el-icon-fa fa-id-badge",

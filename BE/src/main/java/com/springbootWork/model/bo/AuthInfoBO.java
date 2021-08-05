@@ -2,7 +2,7 @@ package com.springbootWork.model.bo;
 
 import com.springbootWork.model.constant.UserType;
 import com.springbootWork.model.entity.AdminEntity;
-import com.springbootWork.model.entity.StudentEntity;
+import com.springbootWork.model.entity.ConsumerEntity;
 import com.springbootWork.model.entity.TeacherEntity;
 import lombok.Data;
 
@@ -29,11 +29,11 @@ public class AuthInfoBO {
         this.permission = permission;
     }
 
-    public static AuthInfoBO fromStudent(StudentEntity entity) {
+    public static AuthInfoBO fromConsumer(ConsumerEntity entity) {
         if (entity == null) {
             return null;
         }
-        return new AuthInfoBO(entity.getId(), entity.getNumber(), entity.getPassword(), UserType.STUDENT);
+        return new AuthInfoBO(entity.getId(), entity.getNumber(), entity.getPassword(), UserType.CONSUMER);
     }
 
     public static AuthInfoBO fromTeacher(TeacherEntity entity) {

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class OptionDAO {
     private static final String HASH_NAME = "rc_option";
-    private static final String ALLOW_STUDENT_SELECT = "allow_student_select";
+    private static final String ALLOW_CONSUMER_SELECT = "allow_consumer_select";
     private static final String ALLOW_TEACHER_GRADE = "allow_teacher_grade";
 
     private final RedisTemplate template;
@@ -16,12 +16,12 @@ public class OptionDAO {
         this.template = template;
     }
 
-    public Boolean getAllowStudentSelect() {
-        return (Boolean) get(ALLOW_STUDENT_SELECT);
+    public Boolean getAllowConsumerSelect() {
+        return (Boolean) get(ALLOW_CONSUMER_SELECT);
     }
 
-    public void setAllowStudentSelect(Boolean status) {
-        set(ALLOW_STUDENT_SELECT, status);
+    public void setAllowConsumerSelect(Boolean status) {
+        set(ALLOW_CONSUMER_SELECT, status);
     }
 
     public Boolean getAllowTeacherGrade() {

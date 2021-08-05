@@ -1,7 +1,7 @@
 package com.springbootWork.manager.admin;
 
 import com.springbootWork.dao.ActivityDAO;
-import com.springbootWork.dao.StudentActivityDAO;
+import com.springbootWork.dao.ConsumerActivityDAO;
 import com.springbootWork.dao.TeacherDAO;
 import com.springbootWork.manager.BaseManager;
 import com.springbootWork.model.bo.ActivityItemBO;
@@ -17,12 +17,12 @@ import java.util.List;
 public class ActivityManager extends BaseManager {
     private final TeacherDAO teacherDAO;
     private final ActivityDAO activityDAO;
-    private final StudentActivityDAO studentActivityDAO;
+    private final ConsumerActivityDAO consumerActivityDAO;
 
-    public ActivityManager(TeacherDAO teacherDAO, ActivityDAO activityDAO, StudentActivityDAO studentActivityDAO) {
+    public ActivityManager(TeacherDAO teacherDAO, ActivityDAO activityDAO, ConsumerActivityDAO consumerActivityDAO) {
         this.teacherDAO = teacherDAO;
         this.activityDAO = activityDAO;
-        this.studentActivityDAO = studentActivityDAO;
+        this.consumerActivityDAO = consumerActivityDAO;
     }
 
     public Integer getPageCount(String departmentName, String teacherName, String name) {
@@ -59,8 +59,8 @@ public class ActivityManager extends BaseManager {
         return teacherDAO.get(teacherId);
     }
 
-    public boolean hasStudentActivity(Integer activityId) {
-        return studentActivityDAO.countByActivityId(activityId) > 0;
+    public boolean hasConsumerActivity(Integer activityId) {
+        return consumerActivityDAO.countByActivityId(activityId) > 0;
     }
 
     public List<IdNameVO> listName() {

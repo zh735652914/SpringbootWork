@@ -1,10 +1,10 @@
 import { pureGet, put } from "../common/ajax";
 
-export const getAllowStudentSelect = () =>
-  pureGet("/option/allowStudentSelect");
+export const getAllowConsumerSelect = () =>
+  pureGet("/option/allowConsumerSelect");
 
-export const setAllowStudentSelect = option =>
-  put("/option/allowStudentSelect", {
+export const setAllowConsumerSelect = option =>
+  put("/option/allowConsumerSelect", {
     option: option
   });
 

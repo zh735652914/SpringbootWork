@@ -216,98 +216,98 @@ INSERT INTO `major` VALUES (44, 7, '演示专业19');
 INSERT INTO `major` VALUES (45, 7, '演示专业20');
 
 -- ----------------------------
--- Table structure for student
+-- Table structure for consumer
 -- ----------------------------
-DROP TABLE IF EXISTS `student`;
-CREATE TABLE `student`  (
-                               `student_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '用户Id',
-                               `student_class_id` int(10) UNSIGNED NOT NULL COMMENT '班级Id',
-                               `student_number` char(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '账号',
-                               `student_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '姓名',
-                               `student_password` char(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '密码',
-                               `student_email` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '电子邮箱',
-                               `student_birthday` datetime(0) NULL DEFAULT NULL COMMENT '生日',
-                               `student_sex` tinyint(1) UNSIGNED NOT NULL COMMENT '性别',
-                               `student_last_login_time` datetime(0) NULL DEFAULT NULL COMMENT '最近登录时间',
-                               PRIMARY KEY (`student_id`) USING BTREE,
-                               INDEX `fk_student_class_id`(`student_class_id`) USING BTREE,
-                               UNIQUE INDEX `idx_student_number`(`student_number`) USING BTREE,
-                               INDEX `idx_student_name`(`student_name`) USING BTREE,
-                               CONSTRAINT `fk_student_class_id` FOREIGN KEY (`student_class_id`) REFERENCES `class` (`class_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+DROP TABLE IF EXISTS `consumer`;
+CREATE TABLE `consumer`  (
+                               `consumer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '用户Id',
+                               `consumer_class_id` int(10) UNSIGNED NOT NULL COMMENT '班级Id',
+                               `consumer_number` char(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '账号',
+                               `consumer_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '姓名',
+                               `consumer_password` char(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '密码',
+                               `consumer_email` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '电子邮箱',
+                               `consumer_birthday` datetime(0) NULL DEFAULT NULL COMMENT '生日',
+                               `consumer_sex` tinyint(1) UNSIGNED NOT NULL COMMENT '性别',
+                               `consumer_last_login_time` datetime(0) NULL DEFAULT NULL COMMENT '最近登录时间',
+                               PRIMARY KEY (`consumer_id`) USING BTREE,
+                               INDEX `fk_consumer_class_id`(`consumer_class_id`) USING BTREE,
+                               UNIQUE INDEX `idx_consumer_number`(`consumer_number`) USING BTREE,
+                               INDEX `idx_consumer_name`(`consumer_name`) USING BTREE,
+                               CONSTRAINT `fk_consumer_class_id` FOREIGN KEY (`consumer_class_id`) REFERENCES `class` (`class_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of student
+-- Records of consumer
 -- ----------------------------
-INSERT INTO `student` VALUES (1, 1, '201711010001', '李雨轩', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, '1998-08-19 16:09:47', 1, '2019-12-16 17:16:47');
-INSERT INTO `student` VALUES (2, 1, '201711010002', '宋健', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (3, 1, '201711010003', '李同学1', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `student` VALUES (4, 1, '201711010004', '李同学2', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `student` VALUES (5, 1, '201711010005', '李同学3', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `student` VALUES (6, 1, '201711010006', '李同学4', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `student` VALUES (7, 1, '201711010007', '李同学5', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `student` VALUES (8, 1, '201711010008', '李同学6', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `student` VALUES (9, 1, '201711010009', '李同学7', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `student` VALUES (10, 1, '201711010010', '李同学8', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `student` VALUES (11, 1, '201711010011', '李同学9', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
-INSERT INTO `student` VALUES (12, 1, '201711010012', '张同学1', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (13, 1, '201711010013', '张同学2', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (14, 1, '201711010014', '张同学3', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (15, 1, '201711010015', '张同学4', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (16, 1, '201711010016', '张同学5', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (17, 1, '201711010017', '张同学6', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (18, 1, '201711010018', '张同学7', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (19, 3, '201711020001', '王同学1', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (20, 3, '201711020002', '王同学2', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (21, 3, '201711020003', '王同学3', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (22, 3, '201711020004', '王同学4', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (23, 3, '201711020005', '王同学5', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (24, 3, '201711020006', '王同学6', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (25, 3, '201711020007', '王同学7', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (26, 3, '201711020008', '王同学8', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (27, 3, '201711020009', '王同学9', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
-INSERT INTO `student` VALUES (28, 3, '201711020010', '王同学10', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (1, 1, '201711010001', '李雨轩', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, '1998-08-19 16:09:47', 1, '2019-12-16 17:16:47');
+INSERT INTO `consumer` VALUES (2, 1, '201711010002', '宋健', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (3, 1, '201711010003', '李同学1', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `consumer` VALUES (4, 1, '201711010004', '李同学2', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `consumer` VALUES (5, 1, '201711010005', '李同学3', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `consumer` VALUES (6, 1, '201711010006', '李同学4', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `consumer` VALUES (7, 1, '201711010007', '李同学5', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `consumer` VALUES (8, 1, '201711010008', '李同学6', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `consumer` VALUES (9, 1, '201711010009', '李同学7', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `consumer` VALUES (10, 1, '201711010010', '李同学8', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `consumer` VALUES (11, 1, '201711010011', '李同学9', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 0, NULL);
+INSERT INTO `consumer` VALUES (12, 1, '201711010012', '张同学1', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (13, 1, '201711010013', '张同学2', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (14, 1, '201711010014', '张同学3', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (15, 1, '201711010015', '张同学4', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (16, 1, '201711010016', '张同学5', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (17, 1, '201711010017', '张同学6', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (18, 1, '201711010018', '张同学7', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (19, 3, '201711020001', '王同学1', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (20, 3, '201711020002', '王同学2', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (21, 3, '201711020003', '王同学3', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (22, 3, '201711020004', '王同学4', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (23, 3, '201711020005', '王同学5', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (24, 3, '201711020006', '王同学6', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (25, 3, '201711020007', '王同学7', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (26, 3, '201711020008', '王同学8', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (27, 3, '201711020009', '王同学9', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
+INSERT INTO `consumer` VALUES (28, 3, '201711020010', '王同学10', '81a5f5a9bfde4cdcb5b9fe1f8508df2a', NULL, NULL, 1, NULL);
 
 -- ----------------------------
--- Table structure for student_activity
+-- Table structure for consumer_activity
 -- ----------------------------
-DROP TABLE IF EXISTS `student_activity`;
-CREATE TABLE `student_activity`  (
+DROP TABLE IF EXISTS `consumer_activity`;
+CREATE TABLE `consumer_activity`  (
                                       `sc_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '选课Id',
-                                      `sc_student_id` int(10) UNSIGNED NOT NULL COMMENT '用户Id',
+                                      `sc_consumer_id` int(10) UNSIGNED NOT NULL COMMENT '用户Id',
                                       `sc_activity_id` int(10) UNSIGNED NOT NULL COMMENT '活动Id',
                                       `sc_daily_score` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '日常表现分',
                                       `sc_exam_score` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '期末测试分',
                                       `sc_score` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '总成绩',
                                       PRIMARY KEY (`sc_id`) USING BTREE,
                                       INDEX `fk_sc_activity_id`(`sc_activity_id`) USING BTREE,
-                                      INDEX `fk_sc_student_id`(`sc_student_id`) USING BTREE,
+                                      INDEX `fk_sc_consumer_id`(`sc_consumer_id`) USING BTREE,
                                       CONSTRAINT `fk_sc_activity_id` FOREIGN KEY (`sc_activity_id`) REFERENCES `activity` (`activity_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-                                      CONSTRAINT `fk_sc_student_id` FOREIGN KEY (`sc_student_id`) REFERENCES `student` (`student_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+                                      CONSTRAINT `fk_sc_consumer_id` FOREIGN KEY (`sc_consumer_id`) REFERENCES `consumer` (`consumer_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of student_activity
+-- Records of consumer_activity
 -- ----------------------------
-INSERT INTO `student_activity` VALUES (1, 1, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (2, 2, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (3, 3, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (4, 4, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (5, 5, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (6, 6, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (7, 7, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (8, 8, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (9, 9, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (10, 10, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (11, 11, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (12, 12, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (13, 13, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (14, 14, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (15, 15, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (16, 16, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (17, 17, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (18, 18, 1, NULL, NULL, NULL);
-INSERT INTO `student_activity` VALUES (19, 1, 3, 98, 100, 99);
+INSERT INTO `consumer_activity` VALUES (1, 1, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (2, 2, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (3, 3, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (4, 4, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (5, 5, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (6, 6, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (7, 7, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (8, 8, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (9, 9, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (10, 10, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (11, 11, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (12, 12, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (13, 13, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (14, 14, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (15, 15, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (16, 16, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (17, 17, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (18, 18, 1, NULL, NULL, NULL);
+INSERT INTO `consumer_activity` VALUES (19, 1, 3, 98, 100, 99);
 
 -- ----------------------------
 -- Table structure for teacher

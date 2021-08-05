@@ -16,15 +16,15 @@ public class OptionController extends BaseController {
         this.service = service;
     }
 
-    @GetMapping("/allowStudentSelect")
-    public ResultVO getAllowStudentSelect() {
-        return service.getAllowStudentSelect();
+    @GetMapping("/allowConsumerSelect")
+    public ResultVO getAllowConsumerSelect() {
+        return service.getAllowConsumerSelect();
     }
 
-    @Admin(Admin.STUDENT_ACTIVITY_MANAGE)
-    @PutMapping("/allowStudentSelect")
-    public ResultVO setAllowStudentSelect(@RequestBody @Validated BoolOptionVO option) {
-        return service.setAllowStudentSelect(option.getOption());
+    @Admin(Admin.CONSUMER_ACTIVITY_MANAGE)
+    @PutMapping("/allowConsumerSelect")
+    public ResultVO setAllowConsumerSelect(@RequestBody @Validated BoolOptionVO option) {
+        return service.setAllowConsumerSelect(option.getOption());
     }
 
     @GetMapping("/allowTeacherGrade")
@@ -32,7 +32,7 @@ public class OptionController extends BaseController {
         return service.getAllowTeacherGrade();
     }
 
-    @Admin(Admin.STUDENT_ACTIVITY_MANAGE)
+    @Admin(Admin.CONSUMER_ACTIVITY_MANAGE)
     @PutMapping("/allowTeacherGrade")
     public ResultVO setAllowTeacherGrade(@RequestBody @Validated BoolOptionVO option) {
         return service.setAllowTeacherGrade(option.getOption());

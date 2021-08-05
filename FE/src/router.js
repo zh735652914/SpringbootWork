@@ -2,22 +2,22 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Container from "./views/Container.vue";
 import Login from "./views/Login";
-import StudentActivitySelect from "./views/student/StudentActivitySelect";
-import StudentActivity from "./views/student/StudentActivity";
-import StudentInfo from "./views/student/StudentInfo";
-import StudentTimeTable from "./views/student/StudentTimeTable";
-import StudentExam from "./views/student/StudentExam";
-import StudentScore from "./views/student/StudentScore";
+import ConsumerActivitySelect from "./views/consumer/ConsumerActivitySelect";
+import ConsumerActivity from "./views/consumer/ConsumerActivity";
+import ConsumerInfo from "./views/consumer/ConsumerInfo";
+import ConsumerTimeTable from "./views/consumer/ConsumerTimeTable";
+import ConsumerExam from "./views/consumer/ConsumerExam";
+import ConsumerScore from "./views/consumer/ConsumerScore";
 import TeacherActivity from "./views/teacher/TeacherActivity";
 import TeacherTimetable from "./views/teacher/TeacherTimetable";
 import TeacherGrade from "./views/teacher/TeacherGrade";
 import AdminDepartment from "./views/admin/AdminDepartment";
 import AdminMajor from "./views/admin/AdminMajor";
 import AdminClass from "./views/admin/AdminClass";
-import AdminStudent from "./views/admin/AdminStudent";
+import AdminConsumer from "./views/admin/AdminConsumer";
 import AdminTeacher from "./views/admin/AdminTeacher";
 import AdminActivity from "./views/admin/AdminActivity";
-import AdminStudentActivity from "./views/admin/AdminStudentActivity";
+import AdminConsumerActivity from "./views/admin/AdminConsumerActivity";
 import AdminAdmin from "./views/admin/AdminAdmin";
 import Home from "./views/Home";
 
@@ -30,39 +30,39 @@ const routes = [
     component: Container,
     children: [
       {
-        path: "/student",
-        name: "student-home",
+        path: "/consumer",
+        name: "consumer-home",
         component: Home
       },
       {
-        path: "/student/activity/select",
-        name: "student-activity-select",
-        component: StudentActivitySelect
+        path: "/consumer/activity/select",
+        name: "consumer-activity-select",
+        component: ConsumerActivitySelect
       },
       {
-        path: "/student/activity",
-        name: "student-activity",
-        component: StudentActivity
+        path: "/consumer/activity",
+        name: "consumer-activity",
+        component: ConsumerActivity
       },
       {
-        path: "/student/timetable",
-        name: "student-timetable",
-        component: StudentTimeTable
+        path: "/consumer/timetable",
+        name: "consumer-timetable",
+        component: ConsumerTimeTable
       },
       {
-        path: "/student/exam",
-        name: "student-exam",
-        component: StudentExam
+        path: "/consumer/exam",
+        name: "consumer-exam",
+        component: ConsumerExam
       },
       {
-        path: "/student/score",
-        name: "student-score",
-        component: StudentScore
+        path: "/consumer/score",
+        name: "consumer-score",
+        component: ConsumerScore
       },
       {
-        path: "/student/info",
-        name: "student-info",
-        component: StudentInfo
+        path: "/consumer/info",
+        name: "consumer-info",
+        component: ConsumerInfo
       },
       {
         path: "/teacher",
@@ -105,9 +105,9 @@ const routes = [
         component: AdminClass
       },
       {
-        path: "/admin/student",
-        name: "admin-student",
-        component: AdminStudent
+        path: "/admin/consumer",
+        name: "admin-consumer",
+        component: AdminConsumer
       },
       {
         path: "/admin/teacher",
@@ -120,9 +120,9 @@ const routes = [
         component: AdminActivity
       },
       {
-        path: "/admin/student/activity",
-        name: "admin-student-activity",
-        component: AdminStudentActivity
+        path: "/admin/consumer/activity",
+        name: "admin-consumer-activity",
+        component: AdminConsumerActivity
       },
       {
         path: "/admin/admin",

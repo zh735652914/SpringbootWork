@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springbootWork.dao.mapper.ConsumerActivityMapper">
+    <select id="getPage" resultType="ConsumerActivityItemVO">
+        SELECT sc_id AS 'id', activity_name AS 'activityName', consumer_name AS 'consumerName', class_name AS 'className',
+        sc_daily_score AS 'dailyScore', sc_exam_score AS 'examScore', sc_score AS 'score'
+        FROM rc_consumer_activity
+        JOIN rc_activity on sc_activity_id = activity_id
+        JOIN rc_consumer on sc_consumer_id = consumer_id
+        JOIN rc_class on consumer_class_id = class_id
+        <where>
+            <if test="className != null and className != ''">
+                AND class_name LIKE CONCAT('%',#{className},'%')
+            </if>
+            <if test="activityName != null and activityName != ''">
+                AND activity_name LIKE CONCAT('%',#{activityName},'%')
+            </if>
+            <if test="consumerName != null and consumerName != ''">
+                AND consumer_name LIKE CONCAT('%',#{consumerName},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="count" resultType="Integer">
+        SELECT COUNT(*)
+        FROM rc_consumer_activity
+        JOIN rc_activity on sc_activity_id = activity_id
+        JOIN rc_consumer on sc_consumer_id = consumer_id
+        JOIN rc_class on consumer_class_id = class_id
+        <where>
+            <if test="className != null and className != ''">
+                AND class_name LIKE CONCAT('%',#{className},'%')
+            </if>
+            <if test="activityName != null and activityName != ''">
+                AND activity_name LIKE CONCAT('%',#{activityName},'%')
+            </if>
+            <if test="consumerName != null and consumerName != ''">
+                AND consumer_name LIKE CONCAT('%',#{consumerName},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="listConsumerActivitySelected" resultType="ConsumerActivitySelectedItemVO">
+        SELECT sc_id          AS 'consumerActivityId',
+               activity_name    AS 'activityName',
+               teacher_name   AS 'teacherName',
+               activity_credit  AS 'credit',
+               sc_daily_score AS 'dailyScore',
+               sc_exam_score  AS 'examScore',
+               sc_score       AS 'score'
+        FROM rc_consumer_activity
+                 JOIN rc_consumer on sc_consumer_id = consumer_id
+                 JOIN rc_activity on sc_activity_id = activity_id
+                 JOIN rc_teacher on activity_teacher_id = teacher_id
+        WHERE consumer_id = #{consumerId}
+    </select>
+
+    <select id="listConsumerExam" resultType="ConsumerExamItemVO">
+        SELECT sc_id                AS 'consumerActivityId',
+               activity_name          AS 'activityName',
+               teacher_name         AS 'teacherName',
+               activity_exam_date        'examDate',
+               activity_exam_location AS 'examLocation'
+        FROM rc_consumer_activity
+                 JOIN rc_activity on sc_activity_id = activity_id
+                 JOIN rc_consumer on sc_consumer_id = consumer_id
+                 JOIN rc_teacher on activity_teacher_id = teacher_id
+        WHERE consumer_id = #{consumerId}
+          AND activity_exam_date IS NOT NULL
+          AND activity_exam_location IS NOT NULL
+          AND sc_exam_score IS NULL
+    </select>
+
+    <select id="countConsumerActivitySelectedByTimePart" resultType="Integer">
+        SELECT COUNT(*)
+        FROM rc_consumer_activity
+                 JOIN rc_consumer on sc_consumer_id = consumer_id
+                 JOIN rc_activity on sc_activity_id = activity_id
+        WHERE consumer_id = #{consumerId}
+          AND activity_time LIKE CONCAT(#{timePart}, '-%')
+    </select>
+
+    <select id="listConsumerTimetable" resultType="TimetableItemVO">
+        SELECT activity_time     AS 'time',
+               activity_name     AS 'activityName',
+               teacher_name    AS 'teacherName',
+               activity_location AS 'location'
+        FROM rc_consumer_activity
+                 JOIN rc_activity on sc_activity_id = activity_id
+                 JOIN rc_teacher on activity_teacher_id = teacher_id
+        WHERE sc_consumer_id = #{consumerId}
+    </select>
+
+    <select id="getTeacherGradePage" resultType="TeacherGradeItemVO">
+        SELECT sc_id AS 'consumerActivityId', activity_name AS 'activityName',
+        consumer_name AS 'consumerName', sc_daily_score AS 'dailyScore',
+        sc_exam_score AS 'examScore', sc_score AS 'score'
+        FROM rc_consumer_activity
+        JOIN rc_activity on sc_activity_id = activity_id
+        JOIN rc_consumer on sc_consumer_id = consumer_id
+        JOIN rc_teacher on activity_teacher_id = teacher_id
+        <where>
+            AND teacher_id = #{teacherId}
+            <if test="activityName != null and activityName != ''">
+                AND activity_name LIKE CONCAT('%',#{activityName},'%')
+            </if>
+            <if test="consumerName != null and consumerName != ''">
+                AND consumer_name LIKE CONCAT('%',#{consumerName},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="countTeacherGrade" resultType="Integer">
+        SELECT COUNT(*)
+        FROM rc_consumer_activity
+        JOIN rc_activity on sc_activity_id = activity_id
+        JOIN rc_consumer on sc_consumer_id = consumer_id
+        JOIN rc_teacher on activity_teacher_id = teacher_id
+        <where>
+            AND teacher_id = #{teacherId}
+            <if test="activityName != null and activityName != ''">
+                AND activity_name LIKE CONCAT('%',#{activityName},'%')
+            </if>
+            <if test="consumerName != null and consumerName != ''">
+                AND consumer_name LIKE CONCAT('%',#{consumerName},'%')
+            </if>
+        </where>
+    </select>
+</mapper>

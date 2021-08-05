@@ -1,6 +1,6 @@
 let UserType = {};
 
-UserType.student = 1;
+UserType.consumer = 1;
 UserType.teacher = 2;
 UserType.admin = 3;
 

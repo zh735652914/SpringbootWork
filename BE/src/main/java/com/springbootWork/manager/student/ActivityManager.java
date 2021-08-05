@@ -1,36 +1,36 @@
-package com.springbootWork.manager.student;
+package com.springbootWork.manager.consumer;
 
 import com.springbootWork.dao.ActivityDAO;
-import com.springbootWork.dao.StudentActivityDAO;
+import com.springbootWork.dao.ConsumerActivityDAO;
 import com.springbootWork.manager.BaseManager;
-import com.springbootWork.model.entity.StudentActivityEntity;
-import com.springbootWork.model.vo.response.table.StudentActivitySelectedItemVO;
+import com.springbootWork.model.entity.ConsumerActivityEntity;
+import com.springbootWork.model.vo.response.table.ConsumerActivitySelectedItemVO;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Component("student_ActivityManager")
+@Component("consumer_ActivityManager")
 public class ActivityManager extends BaseManager {
-    private final StudentActivityDAO studentActivityDAO;
+    private final ConsumerActivityDAO consumerActivityDAO;
     private final ActivityDAO activityDAO;
 
-    public ActivityManager(StudentActivityDAO studentActivityDAO, ActivityDAO activityDAO) {
-        this.studentActivityDAO = studentActivityDAO;
+    public ActivityManager(ConsumerActivityDAO consumerActivityDAO, ActivityDAO activityDAO) {
+        this.consumerActivityDAO = consumerActivityDAO;
         this.activityDAO = activityDAO;
     }
 
-    public StudentActivityEntity getStudentActivityById(Integer studentActivityId) {
-        return studentActivityDAO.get(studentActivityId);
+    public ConsumerActivityEntity getConsumerActivityById(Integer consumerActivityId) {
+        return consumerActivityDAO.get(consumerActivityId);
     }
 
     @Transactional
-    public int deleteStudentActivity(StudentActivityEntity studentActivityEntity) {
-        activityDAO.decreaseSelectedCount(studentActivityEntity.getActivityId());
-        return studentActivityDAO.delete(studentActivityEntity.getId());
+    public int deleteConsumerActivity(ConsumerActivityEntity consumerActivityEntity) {
+        activityDAO.decreaseSelectedCount(consumerActivityEntity.getActivityId());
+        return consumerActivityDAO.delete(consumerActivityEntity.getId());
     }
 
-    public List<StudentActivitySelectedItemVO> listStudentActivitySelected(Integer studentId) {
-        return studentActivityDAO.listStudentActivitySelected(studentId);
+    public List<ConsumerActivitySelectedItemVO> listConsumerActivitySelected(Integer consumerId) {
+        return consumerActivityDAO.listConsumerActivitySelected(consumerId);
     }
 }

@@ -1,6 +1,6 @@
-package com.springbootWork.service.student;
+package com.springbootWork.service.consumer;
 
-import com.springbootWork.manager.student.ExamManager;
+import com.springbootWork.manager.consumer.ExamManager;
 import com.springbootWork.model.vo.response.ResultVO;
 import com.springbootWork.service.BaseService;
 import org.springframework.stereotype.Service;
@@ -14,6 +14,6 @@ public class ExamService extends BaseService {
     }
 
     public ResultVO list() {
-        return result(manager.listStudentExam(getUserId()));
+        return result(manager.listConsumerExam(getUserId()));
     }
 }
