@@ -11,6 +11,8 @@ import java.util.Date;
 public class ConsumerInfoFormVO {
     private String password;
 
+    private String name;
+
     @Email(message = "邮箱格式不正确")
     private String email;
 

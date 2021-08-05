@@ -49,6 +49,7 @@
         <el-table :data="tableData" stripe>
           <el-table-column align="center" label="活动Id" prop="activityId" />
           <el-table-column align="center" label="活动名" prop="activityName" width="180px" />
+          <el-table-column label="活动简介" prop="dailyScore" />
           <el-table-column align="center" label="活动发起人" prop="teacherName" />
           <el-table-column
             align="center"

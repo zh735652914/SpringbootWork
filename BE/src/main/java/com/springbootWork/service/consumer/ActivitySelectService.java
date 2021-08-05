@@ -61,19 +61,19 @@ public class ActivitySelectService extends BaseService {
             return failedResult("学生Id:" + consumerId + "不存在!");
         }
         if (activity == null) {
-            return failedResult("课程Id:" + activityId + "不存在!");
+            return failedResult("活动Id:" + activityId + "不存在!");
         }
 //        if (!manager.inSameDepartment(activityId, consumerId)) {
-//            return failedResult("学生不能选择非教学系的课程!");
+//            return failedResult("学生不能选择非教学系的活动!");
 //        }
         if (activity.getSelectedCount() >= activity.getMaxSize()) {
             return failedResult("课容量已满!");
         }
         if (manager.getConsumerActivityByActivityIdAndConsumerId(activityId, consumerId) != null) {
-            return failedResult("学生已选修此课程!");
+            return failedResult("学生已选修此活动!");
         }
 //        if (!manager.getConsumerGradeById(consumer.getId()).equals(activity.getGrade())) {
-//            return failedResult("学生与课程不在同一年级");
+//            return failedResult("学生与活动不在同一年级");
 //        }
         String timePart = splitTimePart(activity.getTime());
         if (manager.countConsumerActivitySelectedByTimePart(consumerId, timePart) > 0) {

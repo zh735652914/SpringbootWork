@@ -20,7 +20,7 @@ public @interface Admin {
     int CONSUMER_MANAGE = 8;
     // 教师管理
     int TEACHER_MANAGE = 16;
-    // 课程管理
+    // 活动管理
     int ACTIVITY_MANAGE = 32;
     // 学生选课管理
     int CONSUMER_ACTIVITY_MANAGE = 64;

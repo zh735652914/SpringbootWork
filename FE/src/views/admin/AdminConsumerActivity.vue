@@ -18,33 +18,14 @@
             <el-checkbox
               @change="updateAllowSelect"
               v-model="optionForm.allowSelect"
-              >允许学生选课
-            </el-checkbox>
-            <el-checkbox
-              @change="updateAllowGrade"
-              v-model="optionForm.allowGrade"
-              >允许教师打分
+              >允许用户选择
             </el-checkbox>
           </el-col>
-          <el-col :offset="8" :span="3">
+          <el-col :offset="13" :span="3">
             <el-input
               @keyup.enter.native="query"
-              placeholder="课程名"
+              placeholder="活动名"
               v-model="queryForm.name"
-            />
-          </el-col>
-          <el-col :span="3">
-            <el-input
-              @keyup.enter.native="query"
-              placeholder="专业名"
-              v-model="queryForm.majorName"
-            />
-          </el-col>
-          <el-col :span="3">
-            <el-input
-              @keyup.enter.native="query"
-              placeholder="班级名"
-              v-model="queryForm.className"
             />
           </el-col>
           <el-col :span="3">
@@ -69,13 +50,9 @@
 
       <div class="table">
         <el-table :data="tableData" stripe>
-          <el-table-column label="选课Id" prop="id" width="80px" />
-          <el-table-column label="课程名" prop="activityName" />
-          <el-table-column label="学生名" prop="consumerName" />
-          <el-table-column label="学生班级" prop="className" />
-          <el-table-column label="日常分" min-width="80px" prop="dailyScore" />
-          <el-table-column label="期末分" prop="examScore" width="80px" />
-          <el-table-column label="总分" prop="score" width="80px" />
+          <el-table-column align="center" label="选课Id" prop="id" width="80px" />
+          <el-table-column align="center" label="活动名" prop="activityName" />
+          <el-table-column align="center" label="用户名" prop="consumerName" />
           <el-table-column align="center" label="操作" width="200px">
             <template slot-scope="scope">
               <el-button @click="edit(scope.row.id)" size="mini" type="success"
@@ -94,10 +71,10 @@
 
       <el-dialog :visible.sync="editing" title="编辑" width="30%">
         <el-form :model="entityForm" label-width="70px" ref="form">
-          <el-form-item label="学生">
+          <el-form-item label="用户">
             <el-select
               :disabled="entityForm.id !== -1"
-              placeholder="请选择学生"
+              placeholder="请选择用户"
               v-model="entityForm.consumerId"
             >
               <el-option
@@ -108,10 +85,10 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item label="课程">
+          <el-form-item label="活动">
             <el-select
               :disabled="entityForm.id !== -1"
-              placeholder="请选择课程"
+              placeholder="请选择活动"
               v-model="entityForm.activityId"
             >
               <el-option
@@ -122,15 +99,7 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item label="日常得分">
-            <el-input type="number" v-model="entityForm.dailyScore"></el-input>
-          </el-form-item>
-          <el-form-item label="考试得分">
-            <el-input type="number" v-model="entityForm.examScore"></el-input>
-          </el-form-item>
-          <el-form-item label="总分">
-            <el-input type="number" v-model="entityForm.score"></el-input>
-          </el-form-item>
+
         </el-form>
         <span class="dialog-footer" slot="footer">
           <el-button @click="save" type="primary">确 定</el-button>

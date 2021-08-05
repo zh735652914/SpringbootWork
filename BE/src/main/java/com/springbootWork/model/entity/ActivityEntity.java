@@ -35,7 +35,7 @@ public class ActivityEntity {
     @TableField(TEACHER_ID)
     private Integer teacherId;
 
-    @NotBlank(message = "课程名不能为空")
+    @NotBlank(message = "活动名不能为空")
     @TableField(NAME)
     private String name;
 
@@ -44,7 +44,7 @@ public class ActivityEntity {
     @TableField(GRADE)
     private Integer grade;
 
-    @Pattern(regexp = "[1-7]-[1-9]-[1-4]", message = "课程最长时间为4节")
+    @Pattern(regexp = "[1-7]-[1-9]-[1-4]", message = "活动最长时间为4节")
     @TableField(TIME)
     private String time;
 

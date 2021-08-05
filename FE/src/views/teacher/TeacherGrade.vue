@@ -14,7 +14,7 @@
           <el-col :offset="15" :span="3">
             <el-input
               @keyup.enter.native="query"
-              placeholder="课程名"
+              placeholder="活动名"
               v-model="queryForm.activityName"
             />
           </el-col>
@@ -48,7 +48,7 @@
       <div class="table">
         <el-table :data="tableData" stripe>
           <el-table-column label="选课Id" prop="consumerActivityId" />
-          <el-table-column label="课程名" prop="activityName" />
+          <el-table-column label="活动名" prop="activityName" />
           <el-table-column label="学生姓名" prop="consumerName" />
           <el-table-column label="日常分" prop="dailyScore" />
           <el-table-column label="笔试分" prop="examScore" />

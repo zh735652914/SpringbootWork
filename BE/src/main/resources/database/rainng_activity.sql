@@ -9,7 +9,7 @@ CREATE TABLE `rc_admin`  (
   `admin_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '管理员Id',
   `admin_username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户名',
   `admin_password` char(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '密码',
-  `admin_privilege` int(11) NOT NULL COMMENT '角色\r\n二进制表示权限\r\n1-系管理\r\n2-专业管理\r\n4-班级管理\r\n8-学生管理\r\n16-教师管理\r\n32-课程管理\r\n64-选课管理\r\n128-管理员管理',
+  `admin_privilege` int(11) NOT NULL COMMENT '角色\r\n二进制表示权限\r\n1-系管理\r\n2-专业管理\r\n4-班级管理\r\n8-学生管理\r\n16-教师管理\r\n32-活动管理\r\n64-选课管理\r\n128-管理员管理',
   PRIMARY KEY (`admin_id`) USING BTREE,
   UNIQUE INDEX `idx_admin_username`(`admin_username`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
@@ -68,9 +68,9 @@ INSERT INTO `rc_class` VALUES (23, 5, 2019, '演示班级10');
 -- ----------------------------
 DROP TABLE IF EXISTS `rc_activity`;
 CREATE TABLE `rc_activity`  (
-  `activity_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '课程Id',
+  `activity_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '活动Id',
   `activity_teacher_id` int(10) UNSIGNED NOT NULL COMMENT '授课教师Id',
-  `activity_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '课程名称',
+  `activity_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '活动名称',
   `activity_grade` int(10) UNSIGNED NOT NULL COMMENT '授课年级',
   `activity_time` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '上课时间 星期几-第几节-几节课',
   `activity_location` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '上课地址',
@@ -275,7 +275,7 @@ DROP TABLE IF EXISTS `rc_consumer_activity`;
 CREATE TABLE `rc_consumer_activity`  (
   `sc_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '选课Id',
   `sc_consumer_id` int(10) UNSIGNED NOT NULL COMMENT '学生Id',
-  `sc_activity_id` int(10) UNSIGNED NOT NULL COMMENT '课程Id',
+  `sc_activity_id` int(10) UNSIGNED NOT NULL COMMENT '活动Id',
   `sc_daily_score` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '日常表现分',
   `sc_exam_score` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '期末测试分',
   `sc_score` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '总成绩',

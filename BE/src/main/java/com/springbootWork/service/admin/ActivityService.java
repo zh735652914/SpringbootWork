@@ -48,7 +48,7 @@ public class ActivityService extends BaseService {
     public ResultVO get(Integer id) {
         ActivityEntity entity = manager.get(id);
         if (entity == null) {
-            return failedResult("课程Id: " + id + "不存在!");
+            return failedResult("活动Id: " + id + "不存在!");
         }
 
         return result(entity);
@@ -57,7 +57,7 @@ public class ActivityService extends BaseService {
     public ResultVO update(ActivityEntity entity) {
         ActivityEntity origin = manager.get(entity.getId());
         if (origin == null) {
-            return failedResult("课程Id: " + entity.getId() + "不存在!");
+            return failedResult("活动Id: " + entity.getId() + "不存在!");
         }
         if (manager.getTeacherById(entity.getTeacherId()) == null) {
             return failedResult("授课教师Id: " + entity.getTeacherId() + "不存在!");
@@ -71,10 +71,10 @@ public class ActivityService extends BaseService {
 
     public ResultVO delete(Integer id) {
         if (manager.get(id) == null) {
-            return failedResult("课程Id: " + id + "不存在!");
+            return failedResult("活动Id: " + id + "不存在!");
         }
         if (manager.hasConsumerActivity(id)) {
-            return failedResult("还有学生未退选此课程");
+            return failedResult("还有学生未退选此活动");
         }
 
         manager.delete(id);
@@ -83,7 +83,7 @@ public class ActivityService extends BaseService {
 
     public ResultVO create(ActivityEntity entity) {
         if (manager.get(entity.getId()) != null) {
-            return failedResult("课程Id: " + entity.getId() + "已存在!");
+            return failedResult("活动Id: " + entity.getId() + "已存在!");
         }
         if (manager.getTeacherById(entity.getTeacherId()) == null) {
             return failedResult("授课教师Id: " + entity.getTeacherId() + "不存在!");

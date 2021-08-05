@@ -3,7 +3,7 @@
     <div class="crumbs">
       <el-breadcrumb separator="/">
         <el-breadcrumb-item>
-          <i class="el-icon-fa fa-edit"></i> 用户活动
+          <i class="el-icon-fa fa-edit"></i> 已选活动
         </el-breadcrumb-item>
       </el-breadcrumb>
     </div>

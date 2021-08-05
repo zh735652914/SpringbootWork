@@ -3,7 +3,7 @@
     <div class="crumbs">
       <el-breadcrumb separator="/">
         <el-breadcrumb-item>
-          <i class="el-icon-fa fa-id-badge"></i> 管理员管理
+          <i class="el-icon-fa fa-id-badge"></i> 运营人员管理
         </el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -45,13 +45,9 @@
           </el-form-item>
           <el-form-item label="权限">
             <el-checkbox-group v-model="priGroup">
-              <el-checkbox label="1" name="priGroup">系管理</el-checkbox>
-              <el-checkbox label="2" name="priGroup">专业管理</el-checkbox>
-              <el-checkbox label="4" name="priGroup">班级管理</el-checkbox>
-              <el-checkbox label="8" name="priGroup">学生管理</el-checkbox>
-              <el-checkbox label="16" name="priGroup">教师管理</el-checkbox>
-              <el-checkbox label="32" name="priGroup">课程管理</el-checkbox>
-              <el-checkbox label="64" name="priGroup">选课修改</el-checkbox>
+              <el-checkbox label="8" name="priGroup">用户管理</el-checkbox>
+              <el-checkbox label="16" name="priGroup">活动发布人员管理</el-checkbox>
+              <el-checkbox label="32" name="priGroup">活动管理</el-checkbox>
               <el-checkbox label="128" name="priGroup">管理员管理</el-checkbox>
             </el-checkbox-group>
           </el-form-item>

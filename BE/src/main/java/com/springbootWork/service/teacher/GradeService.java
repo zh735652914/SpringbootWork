@@ -40,7 +40,7 @@ public class GradeService extends BaseService {
             return failedResult("学生选课Id:" + vo.getConsumerActivityId() + "不存在");
         }
         if (!manager.getActivityById(consumerActivity.getActivityId()).getTeacherId().equals(teacherId)) {
-            return failedResult("此课程非您教授");
+            return failedResult("此活动非您教授");
         }
 
         BeanUtils.copyProperties(vo, consumerActivity);
@@ -60,7 +60,7 @@ public class GradeService extends BaseService {
             return failedResult("学生选课Id:" + consumerActivityId + "不存在");
         }
         if (!manager.getActivityById(consumerActivity.getActivityId()).getTeacherId().equals(teacherId)) {
-            return failedResult("此课程非您教授");
+            return failedResult("此活动非您教授");
         }
 
         TeacherGradeVO vo = new TeacherGradeVO();

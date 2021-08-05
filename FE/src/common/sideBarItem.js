@@ -21,7 +21,7 @@ SideBarItem.items = [
   {
     icon: "el-icon-fa fa-edit",
     index: "/consumer/activity",
-    title: "用户活动",
+    title: "已选活动",
     userType: UserType.consumer,
     permission: Permission.no
   },
@@ -29,13 +29,6 @@ SideBarItem.items = [
     icon: "el-icon-fa fa-table",
     index: "/consumer/timetable",
     title: "时间表查询",
-    userType: UserType.consumer,
-    permission: Permission.no
-  },
-  {
-    icon: "el-icon-fa fa-eye",
-    index: "/consumer/exam",
-    title: "考试查询",
     userType: UserType.consumer,
     permission: Permission.no
   },
@@ -82,27 +75,6 @@ SideBarItem.items = [
     permission: Permission.no
   },
   {
-    icon: "el-icon-fa fa-fort-awesome",
-    index: "/admin/department",
-    title: "系管理",
-    userType: UserType.admin,
-    permission: Permission.department
-  },
-  {
-    icon: "el-icon-fa fa-graduation-cap",
-    index: "/admin/major",
-    title: "专业管理",
-    userType: UserType.admin,
-    permission: Permission.major
-  },
-  {
-    icon: "el-icon-fa fa-group",
-    index: "/admin/class",
-    title: "班级管理",
-    userType: UserType.admin,
-    permission: Permission.class
-  },
-  {
     icon: "el-icon-fa fa-user",
     index: "/admin/consumer",
     title: "用户管理",
@@ -119,14 +91,14 @@ SideBarItem.items = [
   {
     icon: "el-icon-fa fa-book",
     index: "/admin/activity",
-    title: "课程管理",
+    title: "活动管理",
     userType: UserType.admin,
     permission: Permission.activity
   },
   {
     icon: "el-icon-fa fa-edit",
     index: "/admin/consumer/activity",
-    title: "选课修改",
+    title: "已选活动修改",
     userType: UserType.admin,
     permission: Permission.consumerActivity
   },

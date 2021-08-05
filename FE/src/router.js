@@ -6,14 +6,9 @@ import ConsumerActivitySelect from "./views/consumer/ConsumerActivitySelect";
 import ConsumerActivity from "./views/consumer/ConsumerActivity";
 import ConsumerInfo from "./views/consumer/ConsumerInfo";
 import ConsumerTimeTable from "./views/consumer/ConsumerTimeTable";
-import ConsumerExam from "./views/consumer/ConsumerExam";
-import ConsumerScore from "./views/consumer/ConsumerScore";
 import TeacherActivity from "./views/teacher/TeacherActivity";
 import TeacherTimetable from "./views/teacher/TeacherTimetable";
 import TeacherGrade from "./views/teacher/TeacherGrade";
-import AdminDepartment from "./views/admin/AdminDepartment";
-import AdminMajor from "./views/admin/AdminMajor";
-import AdminClass from "./views/admin/AdminClass";
 import AdminConsumer from "./views/admin/AdminConsumer";
 import AdminTeacher from "./views/admin/AdminTeacher";
 import AdminActivity from "./views/admin/AdminActivity";
@@ -50,16 +45,6 @@ const routes = [
         component: ConsumerTimeTable
       },
       {
-        path: "/consumer/exam",
-        name: "consumer-exam",
-        component: ConsumerExam
-      },
-      {
-        path: "/consumer/score",
-        name: "consumer-score",
-        component: ConsumerScore
-      },
-      {
         path: "/consumer/info",
         name: "consumer-info",
         component: ConsumerInfo
@@ -88,21 +73,6 @@ const routes = [
         path: "/admin",
         name: "admin-home",
         component: Home
-      },
-      {
-        path: "/admin/department",
-        name: "admin-department",
-        component: AdminDepartment
-      },
-      {
-        path: "/admin/major",
-        name: "admin-major",
-        component: AdminMajor
-      },
-      {
-        path: "/admin/class",
-        name: "admin-class",
-        component: AdminClass
       },
       {
         path: "/admin/consumer",

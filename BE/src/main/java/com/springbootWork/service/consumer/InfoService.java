@@ -38,6 +38,7 @@ public class InfoService extends BaseService {
 
         BeanUtils.copyProperties(consumerInfoForm, consumer);
         consumer.setPassword(password);
+        consumer.setName(consumerInfoForm.getName());
         manager.updateConsumer(consumer);
 
         return result("更新成功");

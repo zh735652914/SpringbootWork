@@ -3,7 +3,7 @@
     <div class="crumbs">
       <el-breadcrumb separator="/">
         <el-breadcrumb-item>
-          <i class="el-icon-fa fa-book"></i> 课程管理
+          <i class="el-icon-fa fa-book"></i> 活动管理
         </el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -14,25 +14,18 @@
           <el-col :span="2">
             <el-button @click="create" icon="el-icon-plus">创建</el-button>
           </el-col>
-          <el-col :offset="10" :span="3">
+          <el-col :offset="13" :span="3">
             <el-input
               @keyup.enter.native="query"
-              placeholder="课程名"
+              placeholder="活动名"
               v-model="queryForm.name"
             />
           </el-col>
           <el-col :span="3">
             <el-input
               @keyup.enter.native="query"
-              placeholder="教师名"
+              placeholder="发起者名"
               v-model="queryForm.teacherName"
-            />
-          </el-col>
-          <el-col :span="3">
-            <el-input
-              @keyup.enter.native="query"
-              placeholder="系名"
-              v-model="queryForm.departmentName"
             />
           </el-col>
           <el-col :span="3">
@@ -57,15 +50,11 @@
 
       <div class="table">
         <el-table :data="tableData" stripe>
-          <el-table-column label="课程Id" prop="id" />
-          <el-table-column label="课程名" prop="name" width="200px" />
-          <el-table-column label="教师" prop="teacherName" />
-          <el-table-column label="所属系" prop="departmentName" />
-          <el-table-column label="年级" prop="grade" />
-          <el-table-column label="学分" prop="credit" />
+          <el-table-column label="活动Id" prop="id" />
+          <el-table-column label="活动名" prop="name" width="200px" />
           <el-table-column
             align="center"
-            label="上课时间"
+            label="活动时间"
             prop="time"
             width="130px"
           />
@@ -89,11 +78,11 @@
 
       <el-dialog :visible.sync="editing" title="编辑" width="30%">
         <el-form :model="entityForm" label-width="70px" ref="form">
-          <el-form-item label="课程名">
+          <el-form-item label="活动名">
             <el-input v-model="entityForm.name"></el-input>
           </el-form-item>
-          <el-form-item label="授课教师">
-            <el-select placeholder="请选择教师" v-model="entityForm.teacherId">
+          <el-form-item label="发起者">
+            <el-select placeholder="请选择用户" v-model="entityForm.consumerId">
               <el-option
                 :key="index"
                 :label="item.name"
@@ -102,10 +91,7 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item label="年级">
-            <el-input type="number" v-model="entityForm.grade"></el-input>
-          </el-form-item>
-          <el-form-item label="上课时间">
+          <el-form-item label="活动时间">
             <el-select v-model="activityDay">
               <el-option
                 :key="index"
@@ -125,29 +111,14 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="时长(节)">
+          <el-form-item label="活动时长">
             <el-input type="number" v-model="activityLength"></el-input>
           </el-form-item>
-          <el-form-item label="上课地点">
+          <el-form-item label="活动地点">
             <el-input v-model="entityForm.location"></el-input>
-          </el-form-item>
-          <el-form-item label="学分">
-            <el-input type="number" v-model="entityForm.credit"></el-input>
           </el-form-item>
           <el-form-item label="最大容量">
             <el-input type="number" v-model="entityForm.maxSize"></el-input>
-          </el-form-item>
-          <el-form-item label="考试时间">
-            <el-date-picker
-              format="yyyy-MM-dd HH:mm"
-              type="datetime"
-              v-model="entityForm.examDate"
-              value-format="yyyy-MM-dd HH:mm"
-            >
-            </el-date-picker>
-          </el-form-item>
-          <el-form-item label="考试地点">
-            <el-input v-model="entityForm.examLocation"></el-input>
           </el-form-item>
         </el-form>
         <span class="dialog-footer" slot="footer">

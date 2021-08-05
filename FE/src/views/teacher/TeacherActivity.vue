@@ -11,8 +11,8 @@
     <div class="container">
       <div class="table">
         <el-table :data="tableData" stripe>
-          <el-table-column label="课程Id" prop="id" />
-          <el-table-column label="课程名" prop="name" />
+          <el-table-column label="活动Id" prop="id" />
+          <el-table-column label="活动名" prop="name" />
           <el-table-column label="年级" prop="grade" />
           <el-table-column label="学分" prop="credit" />
           <el-table-column label="上课时间" prop="time" />

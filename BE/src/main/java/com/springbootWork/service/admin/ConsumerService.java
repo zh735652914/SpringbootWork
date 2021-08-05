@@ -60,7 +60,7 @@ public class ConsumerService extends BaseService {
             return failedResult("学生Id: " + id + "不存在!");
         }
         if (manager.hasConsumerActivity(id)) {
-            return failedResult("此学生还有未退选课程");
+            return failedResult("此学生还有未退选活动");
         }
 
         manager.delete(id);

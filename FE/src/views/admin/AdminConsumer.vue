@@ -3,7 +3,7 @@
     <div class="crumbs">
       <el-breadcrumb separator="/">
         <el-breadcrumb-item>
-          <i class="el-icon-fa fa-user"></i> 学生管理
+          <i class="el-icon-fa fa-user"></i> 用户管理
         </el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -14,25 +14,11 @@
           <el-col :span="2">
             <el-button @click="create" icon="el-icon-plus">创建</el-button>
           </el-col>
-          <el-col :offset="10" :span="3">
+          <el-col :offset="15" :span="3">
             <el-input
               @keyup.enter.native="query"
-              placeholder="学生姓名"
+              placeholder="用户名"
               v-model="queryForm.name"
-            />
-          </el-col>
-          <el-col :span="3">
-            <el-input
-              @keyup.enter.native="query"
-              placeholder="专业名"
-              v-model="queryForm.majorName"
-            />
-          </el-col>
-          <el-col :span="3">
-            <el-input
-              @keyup.enter.native="query"
-              placeholder="班级名"
-              v-model="queryForm.className"
             />
           </el-col>
           <el-col :span="3">
@@ -57,11 +43,9 @@
 
       <div class="table">
         <el-table :data="tableData" stripe>
-          <el-table-column label="学生Id" prop="id" width="80px" />
-          <el-table-column label="学号" prop="number" />
+          <el-table-column label="用户Id" prop="id" width="80px" />
+          <el-table-column label="账号" prop="number" />
           <el-table-column label="姓名" prop="name" />
-          <el-table-column label="班级" prop="className" />
-          <el-table-column label="专业" min-width="150px" prop="majorName" />
           <el-table-column label="性别" prop="sex" width="80px" />
           <el-table-column
             label="上次登录"

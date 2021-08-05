@@ -25,7 +25,7 @@ public class ConsumerActivityEntity {
     @TableField(CONSUMER_ID)
     private Integer consumerId;
 
-    @NotNull(message = "必须选择课程")
+    @NotNull(message = "必须选择活动")
     @TableField(ACTIVITY_ID)
     private Integer activityId;
 

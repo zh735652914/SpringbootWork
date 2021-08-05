@@ -38,7 +38,7 @@ public class ConsumerActivityService extends BaseService {
             return failedResult("学生选课Id: " + entity.getId() + "不存在!");
         }
         if (!originEntity.getActivityId().equals(entity.getActivityId())) {
-            return failedResult("课程Id被篡改");
+            return failedResult("活动Id被篡改");
         }
         if (!originEntity.getConsumerId().equals(entity.getConsumerId())) {
             return failedResult("学生Id被篡改");
@@ -66,20 +66,20 @@ public class ConsumerActivityService extends BaseService {
             return failedResult("所属学生Id: " + entity.getConsumerId() + "不存在!");
         }
         if (manager.getByActivityIdAndConsumerId(entity.getActivityId(), entity.getConsumerId()) != null) {
-            return failedResult("学生已经选修此课程");
+            return failedResult("学生已经选修此活动");
         }
         ActivityEntity activity = manager.getActivityById(entity.getActivityId());
         if (activity == null) {
-            return failedResult("所属课程Id: " + entity.getActivityId() + "不存在!");
+            return failedResult("所属活动Id: " + entity.getActivityId() + "不存在!");
         }
         if (activity.getSelectedCount() >= activity.getMaxSize()) {
             return failedResult("课容量已满");
         }
 //        if (!manager.inSameDepartment(entity.getActivityId(), entity.getConsumerId())) {
-//            return failedResult("课程与学生不在同一教学系");
+//            return failedResult("活动与学生不在同一教学系");
 //        }
         if (!activity.getGrade().equals(manager.getConsumerGradeById(entity.getConsumerId()))) {
-            return failedResult("课程与学生不在同一年级");
+            return failedResult("活动与学生不在同一年级");
         }
 
         manager.create(entity);

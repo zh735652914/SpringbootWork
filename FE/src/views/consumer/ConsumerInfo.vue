@@ -14,7 +14,7 @@
           <el-input disabled v-model="entityForm.number"></el-input>
         </el-form-item>
         <el-form-item label="姓名">
-          <el-input disabled v-model="entityForm.name"></el-input>
+          <el-input v-model="entityForm.name"></el-input>
         </el-form-item>
         <el-form-item label="Email">
           <el-input v-model="entityForm.email"></el-input>
@@ -56,8 +56,6 @@ export default {
         number: "",
         name: "",
         departmentName: "",
-        majorName: "",
-        className: "",
         email: "",
         birthday: "",
         sex: "",
