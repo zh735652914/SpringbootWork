@@ -16,4 +16,8 @@ public interface ActivityMapper extends BaseMapper<ActivityEntity> {
     Integer countConsumerCanSelect(Integer consumerId, String activityName, String teacherName);
 
     IPage<ConsumerActivitySelectItemBO> getConsumerCanSelectPage(IPage<ConsumerActivitySelectItemBO> page, Integer consumerId, String activityName, String teacherName);
+
+    Integer countVisitorCanSelect(String activityName, String teacherName);
+
+    IPage<ConsumerActivitySelectItemBO> getVisitorCanSelectPage(IPage<ConsumerActivitySelectItemBO> page, String activityName, String teacherName);
 }

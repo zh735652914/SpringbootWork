@@ -50,4 +50,11 @@ public class AuthInfoBO {
         return new AuthInfoBO(entity.getId(), entity.getUsername(), entity.getPassword(), UserType.ADMIN,
                 entity.getPrivilege());
     }
+
+    public static AuthInfoBO fromVisitor(ConsumerEntity entity) {
+        if (entity == null) {
+            return null;
+        }
+        return new AuthInfoBO(entity.getId(), entity.getNumber(), entity.getPassword(), UserType.VISITOR);
+    }
 }

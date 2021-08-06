@@ -6,6 +6,20 @@ let SideBarItem = {};
 SideBarItem.items = [
   {
     icon: "el-icon-fa fa-bar-chart",
+    index: "/visitor",
+    title: "用户首页",
+    userType: UserType.visitor,
+    permission: Permission.no
+  },
+  {
+    icon: "el-icon-fa fa-book",
+    index: "/visitor/activity/select",
+    title: "所有活动",
+    userType: UserType.visitor,
+    permission: Permission.no
+  },
+  {
+    icon: "el-icon-fa fa-bar-chart",
     index: "/consumer",
     title: "用户首页",
     userType: UserType.consumer,

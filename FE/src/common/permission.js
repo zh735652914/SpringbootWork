@@ -9,6 +9,7 @@ Permission.teacher = 16;
 Permission.activity = 32;
 Permission.consumerActivity = 64;
 Permission.admin = 128;
+Permission.visitor = 8;
 
 Permission.permissionCount = 8;
 

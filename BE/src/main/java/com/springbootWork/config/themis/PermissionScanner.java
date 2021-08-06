@@ -26,6 +26,8 @@ public class PermissionScanner {
 
         } else if ((annotation = getAnnotation(method, Admin.class)) != null) {
             return new Permission(UserType.ADMIN, annotation.value());
+        } else if (getAnnotation(method, Visitor.class) != null) {
+            return new Permission(UserType.VISITOR);
         }
 
         return new Permission(false);

@@ -32,6 +32,8 @@ export default {
         this.$router.push({ name: "teacher-home" });
       } else if (userType === UserType.admin) {
         this.$router.push({ name: "admin-home" });
+      }else if (userType === UserType.visitor) {
+        this.$router.push({ name: "visitor-home" });
       }
     }
   },

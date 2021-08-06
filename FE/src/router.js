@@ -15,6 +15,7 @@ import AdminActivity from "./views/admin/AdminActivity";
 import AdminConsumerActivity from "./views/admin/AdminConsumerActivity";
 import AdminAdmin from "./views/admin/AdminAdmin";
 import Home from "./views/Home";
+import VisitorAcitvitySelect from "./views/VisitorActivitySelect";
 
 Vue.use(VueRouter);
 
@@ -98,6 +99,21 @@ const routes = [
         path: "/admin/admin",
         name: "admin-admin",
         component: AdminAdmin
+      },
+      {
+        path: "/visitor",
+        name: "visitor-home",
+        component: Home
+      },
+      {
+        path: "/visitor/activity/select",
+        name: "visitor-activity-select",
+        component: VisitorAcitvitySelect
+      },
+      {
+        path: "/visitor/activity",
+        name: "visitor-activity",
+        component: ConsumerActivity
       }
     ]
   },

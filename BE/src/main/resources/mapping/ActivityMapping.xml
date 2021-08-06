@@ -72,4 +72,31 @@
         AND activity_selected_count &lt; activity_max_size) cnt
     </select>
 
+    <select id="countVisitorCanSelect" resultType="Integer">
+        SELECT COUNT(*) FROM ( SELECT DISTINCT activity_id
+        FROM rc_activity
+        JOIN rc_teacher on activity_teacher_id = teacher_id
+        <if test="activityName != null and activityName != ''">
+            AND activity_name LIKE CONCAT('%',#{activityName},'%')
+        </if>
+        <if test="teacherName != null and teacherName != ''">
+            AND teacher_name LIKE CONCAT('%',#{teacherName},'%')
+        </if>
+        AND activity_selected_count &lt; activity_max_size) cnt
+    </select>
+
+    <select id="getVisitorCanSelectPage" resultType="ConsumerActivitySelectItemBO">
+        SELECT DISTINCT activity_id AS 'activityId', activity_name AS 'activityName', teacher_name AS 'teacherName',
+        activity_time AS 'time', activity_describe AS 'activityDescribe', activity_location AS activityLocation,
+        activity_selected_count AS 'selectedCount', activity_max_size AS 'maxSize'
+        FROM rc_activity
+        JOIN rc_teacher on activity_teacher_id = teacher_id
+        <if test="activityName != null and activityName != ''">
+            AND activity_name LIKE CONCAT('%',#{activityName},'%')
+        </if>
+        <if test="teacherName != null and teacherName != ''">
+            AND teacher_name LIKE CONCAT('%',#{teacherName},'%')
+        </if>
+        AND activity_selected_count &lt; activity_max_size
+    </select>
 </mapper>

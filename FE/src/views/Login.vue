@@ -28,8 +28,8 @@
 
         <el-form-item prop="userType">
           <el-radio-group v-model="formData.userType">
-            <el-radio label="1">注册用户</el-radio>
-            <el-radio label="2">用户</el-radio>
+            <el-radio label="1">用户</el-radio>
+            <el-radio label="2">测试</el-radio>
             <el-radio label="3">运营人员</el-radio>
           </el-radio-group>
         </el-form-item>
@@ -38,6 +38,9 @@
           <el-button @click="submit()" type="primary">登录</el-button>
         </div>
       </el-form>
+          <div class="visitor-btn" v-loading="this.$store.state.loading" prop="userType">
+                <el-button @click="visitor()" type="primary">游客</el-button>
+          </div>
     </div>
   </div>
 </template>
@@ -79,6 +82,18 @@ export default {
           });
         }
       });
+    },
+    visitor() {
+        login(
+            this.formData.username = '201711010006',
+            this.formData.password = '111111',
+            this.formData.userType = 4
+            ).then(res => {
+              this.$store.commit("login", res);
+              console.log("This is visitor.");
+              this.$router.push({ name: "container" });
+            });
+        console.log("This is visitor.");
     }
   }
 };
@@ -124,6 +139,15 @@ export default {
 .login-btn button {
   width: 100%;
   height: 36px;
+}
+
+.visitor-btn {
+  text-align: center;
+}
+
+.visitor-btn button {
+  width: 85%;
+  height: 20px;
 }
 
 .el-radio {

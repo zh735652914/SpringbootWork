@@ -50,7 +50,9 @@ axiosInstance.interceptors.response.use(
     let data = error.response.data.data;
     subtractRequestCount();
 
-    if (code === -1) {
+    if (code === 0){
+      console.log("hello");
+    }else if (code === -1) {
       innerMessage("info", "需要登录");
       setTimeout(() => (window.location.href = "/login"), 250);
       return Promise.reject(new Error("NO_LOGIN"));
