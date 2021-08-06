@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 @Service
 public class UserService extends BaseService {
-    private static final String PASSWORD_SALT = "_Rain_Ng-_Azure_99";
+    private static final String PASSWORD_SALT = "zhouhao-95";
 
     private final HttpSession session;
     private final UserManager manager;
@@ -34,16 +34,16 @@ public class UserService extends BaseService {
         }
 
         //这块原始代码是将用户输入的密码进行Hash计算后进行对比，需要数据库中的密码也是Hash后的值；
-//        String passwordHash = computePasswordHash(password);
-//        if (!passwordHash.equals(authInfo.getPassword())) {
-//            return failedResult("密码错误");
-//        }
+        String passwordHash = computePasswordHash(password);
+        if (!passwordHash.equals(authInfo.getPassword())) {
+            return failedResult("密码错误");
+        }
 
         //直接将用户输入的密码对数据库中的密码进行对比，没有经过Hash
         //用户注册的时候写入数据库的密码可能是Hash后的，需要注意一下！！！
-        if (!password.equals(authInfo.getPassword())) {
-            return failedResult("密码错误");
-        }
+//        if (!password.equals(authInfo.getPassword())) {
+//            return failedResult("密码错误");
+//        }
 
         if (authInfo.getUserType().equals(UserType.CONSUMER)) {
             manager.updateConsumerLastLoginTime(username);
@@ -68,5 +68,9 @@ public class UserService extends BaseService {
     public String computePasswordHash(String password) {
         String md5 = md5Encrypt.computeHexString(password);
         return md5Encrypt.computeHexString(md5 + PASSWORD_SALT);
+    }
+
+    public static String getPasswordSalt() {
+        return PASSWORD_SALT;
     }
 }
