@@ -23,11 +23,11 @@ public class TeacherEntity {
     @TableId(value = ID, type = IdType.AUTO)
     private Integer id;
 
-    @Length(min = 12, max = 12, message = "工号长度必须为12位")
+    @Length(min = 12, max = 12, message = "账号长度必须为12位")
     @TableField(NUMBER)
     private String number;
 
-    @NotBlank(message = "教师姓名不能为空")
+    @NotBlank(message = "发起人姓名不能为空")
     @TableField(NAME)
     private String name;
 

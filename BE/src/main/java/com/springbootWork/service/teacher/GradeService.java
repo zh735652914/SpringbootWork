@@ -37,7 +37,7 @@ public class GradeService extends BaseService {
         Integer teacherId = getUserId();
         ConsumerActivityEntity consumerActivity = manager.getConsumerActivityById(vo.getConsumerActivityId());
         if (consumerActivity == null) {
-            return failedResult("用户选课Id:" + vo.getConsumerActivityId() + "不存在");
+            return failedResult("用户选择Id:" + vo.getConsumerActivityId() + "不存在");
         }
         if (!manager.getActivityById(consumerActivity.getActivityId()).getTeacherId().equals(teacherId)) {
             return failedResult("此活动非您教授");
@@ -57,7 +57,7 @@ public class GradeService extends BaseService {
         Integer teacherId = getUserId();
         ConsumerActivityEntity consumerActivity = manager.getConsumerActivityById(consumerActivityId);
         if (consumerActivity == null) {
-            return failedResult("用户选课Id:" + consumerActivityId + "不存在");
+            return failedResult("用户选择Id:" + consumerActivityId + "不存在");
         }
         if (!manager.getActivityById(consumerActivity.getActivityId()).getTeacherId().equals(teacherId)) {
             return failedResult("此活动非您教授");

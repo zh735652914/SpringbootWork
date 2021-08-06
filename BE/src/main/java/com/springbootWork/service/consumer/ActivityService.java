@@ -25,11 +25,11 @@ public class ActivityService extends BaseService {
     public ResultVO delete(Integer consumerActivityId) {
         Integer consumerId = getUserId();
         if (!optionManager.getAllowConsumerSelect()) {
-            return failedResult("现在不是选课退课时间!");
+            return failedResult("现在不是选择退课时间!");
         }
         ConsumerActivityEntity consumerActivity = manager.getConsumerActivityById(consumerActivityId);
         if (consumerActivity == null) {
-            return failedResult("用户选课Id:" + consumerActivityId + "不存在");
+            return failedResult("用户选择Id:" + consumerActivityId + "不存在");
         }
         if (!consumerActivity.getConsumerId().equals(consumerId)) {
             return failedResult("此活动非此用户所选!");

@@ -15,9 +15,9 @@
           <el-table-column label="活动名" prop="name" />
           <el-table-column label="年级" prop="grade" />
           <el-table-column label="学分" prop="credit" />
-          <el-table-column label="上课时间" prop="time" />
-          <el-table-column label="上课地点" prop="location" />
-          <el-table-column label="选课人数" prop="selectedCount" />
+          <el-table-column label="活动时间" prop="time" />
+          <el-table-column label="活动地点" prop="location" />
+          <el-table-column label="选择人数" prop="selectedCount" />
           <el-table-column label="考试时间" prop="examDate" />
         </el-table>
       </div>

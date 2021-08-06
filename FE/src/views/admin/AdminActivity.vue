@@ -52,12 +52,14 @@
         <el-table :data="tableData" stripe>
           <el-table-column label="活动Id" prop="id" />
           <el-table-column label="活动名" prop="name" width="200px" />
+          <el-table-column label="活动简介" prop="activityDescribe" width="200px" />
           <el-table-column
             align="center"
             label="活动时间"
             prop="time"
             width="130px"
           />
+          <el-table-column align="center" label="活动地点" prop="activityLocation" width="100px" />
           <el-table-column align="center" label="已选人数" prop="selectedCount" />
           <el-table-column align="center" label="最大容量" prop="maxSize" />
           <el-table-column align="center" label="操作" width="200px">
@@ -82,7 +84,7 @@
             <el-input v-model="entityForm.name"></el-input>
           </el-form-item>
           <el-form-item label="发起者">
-            <el-select placeholder="请选择用户" v-model="entityForm.consumerId">
+            <el-select placeholder="请选择用户" v-model="entityForm.teacherId">
               <el-option
                 :key="index"
                 :label="item.name"
@@ -115,7 +117,10 @@
             <el-input type="number" v-model="activityLength"></el-input>
           </el-form-item>
           <el-form-item label="活动地点">
-            <el-input v-model="entityForm.location"></el-input>
+            <el-input v-model="entityForm.activityLocation"></el-input>
+          </el-form-item>
+          <el-form-item label="活动描述">
+            <el-input v-model="entityForm.activityDescribe"></el-input>
           </el-form-item>
           <el-form-item label="最大容量">
             <el-input type="number" v-model="entityForm.maxSize"></el-input>
@@ -203,13 +208,10 @@ export default {
         id: -1,
         teacherId: null,
         name: "",
-        grade: 2021,
         time: "",
-        location: "",
-        credit: 2,
-        maxSize: 50,
-        examDate: null,
-        examLocation: null
+        activityLocation: "",
+        activityDescribe: "",
+        maxSize: 50
       };
       this.activityDay = 5;
       this.activityTime = 0;

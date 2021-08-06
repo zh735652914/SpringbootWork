@@ -47,7 +47,7 @@
 
       <div class="table">
         <el-table :data="tableData" stripe>
-          <el-table-column label="选课Id" prop="consumerActivityId" />
+          <el-table-column label="选择Id" prop="consumerActivityId" />
           <el-table-column label="活动名" prop="activityName" />
           <el-table-column label="用户姓名" prop="consumerName" />
           <el-table-column label="日常分" prop="dailyScore" />
@@ -68,7 +68,7 @@
 
       <el-dialog :visible.sync="editing" title="编辑" width="30%">
         <el-form :model="entityForm" label-width="70px" ref="form">
-          <el-form-item label="选课Id">
+          <el-form-item label="选择Id">
             <el-input
               disabled
               type="number"

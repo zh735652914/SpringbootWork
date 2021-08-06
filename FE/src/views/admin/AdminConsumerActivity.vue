@@ -3,7 +3,7 @@
     <div class="crumbs">
       <el-breadcrumb separator="/">
         <el-breadcrumb-item>
-          <i class="el-icon-fa fa-edit"></i> 选课管理
+          <i class="el-icon-fa fa-edit"></i> 选择管理
         </el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -50,7 +50,7 @@
 
       <div class="table">
         <el-table :data="tableData" stripe>
-          <el-table-column align="center" label="选课Id" prop="id" width="80px" />
+          <el-table-column align="center" label="选择Id" prop="id" width="80px" />
           <el-table-column align="center" label="活动名" prop="activityName" />
           <el-table-column align="center" label="用户名" prop="consumerName" />
           <el-table-column align="center" label="操作" width="200px">

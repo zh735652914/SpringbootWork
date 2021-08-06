@@ -19,6 +19,7 @@ public class ActivityEntity {
     public static final String NAME = "activity_name";
     public static final String TIME = "activity_time";
     public static final String LOCATION = "activity_location";
+    public static final String DESCRIBE = "activity_describe";
     public static final String TYPE = "activity_type";
     public static final String SELECTED_COUNT = "activity_selected_count";
     public static final String MAX_SIZE = "activity_max_size";
@@ -39,9 +40,13 @@ public class ActivityEntity {
     @TableField(TIME)
     private String time;
 
+    @NotBlank(message = "活动描述不能为空")
+    @TableField(DESCRIBE)
+    private String activityDescribe;
+
     @NotBlank(message = "活动地点不能为空")
     @TableField(LOCATION)
-    private String location;
+    private String activityLocation;
 
     @TableField(SELECTED_COUNT)
     private Integer selectedCount;

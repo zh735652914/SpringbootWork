@@ -3,7 +3,7 @@
     <div class="crumbs">
       <el-breadcrumb separator="/">
         <el-breadcrumb-item>
-          <i class="el-icon-fa fa-user-plus"></i> 教师管理
+          <i class="el-icon-fa fa-user-plus"></i> 发起人管理
         </el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -17,7 +17,7 @@
           <el-col :offset="13" :span="3">
             <el-input
               @keyup.enter.native="query"
-              placeholder="教师"
+              placeholder="发起人"
               v-model="queryForm.name"
             />
           </el-col>
@@ -43,9 +43,9 @@
 
       <div class="table">
         <el-table :data="tableData" stripe>
-          <el-table-column label="教师Id" prop="id" />
-          <el-table-column label="教师工号" prop="number" />
-          <el-table-column label="教师姓名" prop="name" />
+          <el-table-column label="发起人Id" prop="id" />
+          <el-table-column label="发起人账号" prop="number" />
+          <el-table-column label="发起人姓名" prop="name" />
           <el-table-column align="center" label="操作" width="200px">
             <template slot-scope="scope">
               <el-button @click="edit(scope.row.id)" size="mini" type="success"
@@ -64,10 +64,10 @@
 
       <el-dialog :visible.sync="editing" title="编辑" width="30%">
         <el-form :model="entityForm" label-width="70px" ref="form">
-          <el-form-item label="教师工号">
+          <el-form-item label="发起人账号">
             <el-input type="number" v-model="entityForm.number"></el-input>
           </el-form-item>
-          <el-form-item label="教师姓名">
+          <el-form-item label="发起人姓名">
             <el-input v-model="entityForm.name"></el-input>
           </el-form-item>
           <el-form-item label="登录密码">

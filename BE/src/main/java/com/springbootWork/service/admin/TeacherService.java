@@ -28,7 +28,7 @@ public class TeacherService extends BaseService {
     public ResultVO get(Integer id) {
         TeacherEntity entity = manager.get(id);
         if (entity == null) {
-            return failedResult("教师Id: " + id + "不存在!");
+            return failedResult("发起人Id: " + id + "不存在!");
         }
 
         entity.setPassword("");
@@ -39,7 +39,7 @@ public class TeacherService extends BaseService {
     public ResultVO update(TeacherEntity entity) {
         TeacherEntity originEntity = manager.get(entity.getId());
         if (originEntity == null) {
-            return failedResult("教师Id: " + entity.getId() + "不存在!");
+            return failedResult("发起人Id: " + entity.getId() + "不存在!");
         }
 
         if (entity.getPassword().equals("")) {
@@ -54,10 +54,10 @@ public class TeacherService extends BaseService {
 
     public ResultVO delete(Integer id) {
         if (manager.get(id) == null) {
-            return failedResult("教师Id: " + id + "不存在!");
+            return failedResult("发起人Id: " + id + "不存在!");
         }
         if (manager.hasActivity(id)) {
-            return failedResult("此教师还有教授的活动未被删除");
+            return failedResult("此发起人还有教授的活动未被删除");
         }
 
         manager.delete(id);
@@ -66,7 +66,7 @@ public class TeacherService extends BaseService {
 
     public ResultVO create(TeacherEntity entity) {
         if (manager.get(entity.getId()) != null) {
-            return failedResult("教师Id: " + entity.getId() + "已存在!");
+            return failedResult("发起人Id: " + entity.getId() + "已存在!");
         }
 
         entity.setPassword(userService.computePasswordHash(entity.getPassword()));

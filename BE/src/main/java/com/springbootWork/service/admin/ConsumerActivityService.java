@@ -26,7 +26,7 @@ public class ConsumerActivityService extends BaseService {
     public ResultVO get(Integer id) {
         ConsumerActivityEntity entity = manager.get(id);
         if (entity == null) {
-            return failedResult("用户选课Id: " + id + "不存在!");
+            return failedResult("用户选择Id: " + id + "不存在!");
         }
 
         return result(entity);
@@ -35,7 +35,7 @@ public class ConsumerActivityService extends BaseService {
     public ResultVO update(ConsumerActivityEntity entity) {
         ConsumerActivityEntity originEntity = manager.get(entity.getId());
         if (originEntity == null) {
-            return failedResult("用户选课Id: " + entity.getId() + "不存在!");
+            return failedResult("用户选择Id: " + entity.getId() + "不存在!");
         }
         if (!originEntity.getActivityId().equals(entity.getActivityId())) {
             return failedResult("活动Id被篡改");
@@ -51,7 +51,7 @@ public class ConsumerActivityService extends BaseService {
     public ResultVO delete(Integer id) {
         ConsumerActivityEntity entity = manager.get(id);
         if (entity == null) {
-            return failedResult("用户选课Id: " + id + "不存在!");
+            return failedResult("用户选择Id: " + id + "不存在!");
         }
 
         manager.delete(entity);
@@ -60,13 +60,13 @@ public class ConsumerActivityService extends BaseService {
 
     public ResultVO create(ConsumerActivityEntity entity) {
         if (manager.get(entity.getId()) != null) {
-            return failedResult("用户选课Id: " + entity.getId() + "已存在!");
+            return failedResult("用户选择Id: " + entity.getId() + "已存在!");
         }
         if (manager.getConsumerById(entity.getConsumerId()) == null) {
             return failedResult("所属用户Id: " + entity.getConsumerId() + "不存在!");
         }
         if (manager.getByActivityIdAndConsumerId(entity.getActivityId(), entity.getConsumerId()) != null) {
-            return failedResult("用户已经选修此活动");
+            return failedResult("用户已经选择此活动");
         }
         ActivityEntity activity = manager.getActivityById(entity.getActivityId());
         if (activity == null) {

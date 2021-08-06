@@ -53,7 +53,7 @@ public class ActivitySelectService extends BaseService {
         Integer consumerId = getUserId();
 
         if (!optionManager.getAllowConsumerSelect()) {
-            return failedResult("现在不是选课时间!");
+            return failedResult("现在不是选择时间!");
         }
         ConsumerEntity consumer = manager.getConsumerById(consumerId);
         ActivityEntity activity = manager.getActivityById(activityId);
@@ -67,11 +67,11 @@ public class ActivitySelectService extends BaseService {
             return failedResult("课容量已满!");
         }
         if (manager.getConsumerActivityByActivityIdAndConsumerId(activityId, consumerId) != null) {
-            return failedResult("用户已选修此活动!");
+            return failedResult("用户已选择此活动!");
         }
         String timePart = splitTimePart(activity.getTime());
         if (manager.countConsumerActivitySelectedByTimePart(consumerId, timePart) > 0) {
-            return failedResult("上课时间冲突!");
+            return failedResult("活动时间冲突!");
         }
 
         ConsumerActivityEntity consumerActivity = new ConsumerActivityEntity();
@@ -79,7 +79,7 @@ public class ActivitySelectService extends BaseService {
         consumerActivity.setConsumerId(consumerId);
         manager.create(consumerActivity);
 
-        return result("选课成功");
+        return result("选择成功");
     }
 
     private String splitTimePart(String time) {

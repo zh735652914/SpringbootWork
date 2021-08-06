@@ -49,7 +49,7 @@
         <el-table :data="tableData" stripe>
           <el-table-column align="center" label="活动Id" prop="activityId" />
           <el-table-column align="center" label="活动名" prop="activityName" width="180px" />
-          <el-table-column label="活动简介" prop="dailyScore" />
+          <el-table-column label="活动简介" prop="activityDescribe" />
           <el-table-column align="center" label="活动发起人" prop="teacherName" />
           <el-table-column
             align="center"
@@ -57,6 +57,8 @@
             prop="time"
             width="130px"
           />
+          <el-table-column label="活动地点" prop="activityLocation" />
+          <el-table-column label="活动发起人" prop="teacherName" />
           <el-table-column align="center" label="已选人数" prop="selectedCount" />
           <el-table-column align="center" label="活动容量" prop="maxSize" />
           <el-table-column align="center" label="操作" width="200px">

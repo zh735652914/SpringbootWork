@@ -13,10 +13,10 @@
         <el-table :data="tableData" stripe>
           <el-table-column label="活动Id" prop="consumerActivityId" />
           <el-table-column label="活动名" prop="activityName" />
-          <el-table-column label="活动发起人" prop="teacherName" />
           <el-table-column label="活动简介" prop="activityDescribe" />
           <el-table-column label="活动时间" prop="activityTime" />
-          <el-table-column label="活动地址" prop="activityLocation" />
+          <el-table-column label="活动地点" prop="activityLocation" />
+          <el-table-column label="活动发起人" prop="teacherName" />
           <el-table-column align="center" label="操作" width="200px">
             <template slot-scope="scope">
               <el-button

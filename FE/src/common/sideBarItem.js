@@ -84,7 +84,7 @@ SideBarItem.items = [
   {
     icon: "el-icon-fa fa-user-plus",
     index: "/admin/teacher",
-    title: "教师管理",
+    title: "发起人管理",
     userType: UserType.admin,
     permission: Permission.teacher
   },

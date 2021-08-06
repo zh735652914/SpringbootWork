@@ -7,9 +7,9 @@ public class ActivityItemVO {
     private Integer id;
     private String name;
     private String teacherName;
-    private Integer grade;
-    private Integer credit;
     private String time;
     private Integer selectedCount;
     private Integer maxSize;
+    private String activityDescribe;
+    private String activityLocation;
 }

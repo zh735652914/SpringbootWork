@@ -7,8 +7,9 @@ public class ConsumerActivitySelectItemVO {
     private Integer activityId;
     private String activityName;
     private String teacherName;
-    private Integer credit;
+    private String activityDescribe;
     private String time;
+    private String activityLocation;
     private Integer selectedCount;
     private Integer maxSize;
 }

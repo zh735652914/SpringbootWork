@@ -40,10 +40,6 @@ public class ActivityDAO extends BaseDAO {
         return mapper.count(teacherName, name);
     }
 
-//    public int count(String teacherName, String name) {
-//        return mapper.count(teacherName, name);
-//    }
-
     public List<ActivityItemBO> getPage(Integer index, String teacherName, String name) {
         Page<ActivityItemBO> page = new Page<>(index, PAGE_SIZE);
 
