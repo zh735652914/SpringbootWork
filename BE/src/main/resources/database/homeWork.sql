@@ -29,7 +29,7 @@ CREATE TABLE `activity`  (
                            `activity_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '活动Id',
                            `activity_teacher_id` int(10) UNSIGNED NOT NULL COMMENT '发起人Id',
                            `activity_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '活动名称',
-                           `activity_grade` int(10) UNSIGNED NOT NULL COMMENT '授课年级',
+                           `activity_grade` int(10) UNSIGNED NOT NULL COMMENT '活动年级',
                            `activity_time` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '活动时间 星期几-第几节-几节课',
                            `activity_location` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '活动地址',
                            `activity_credit` int(10) UNSIGNED NOT NULL COMMENT '学分',

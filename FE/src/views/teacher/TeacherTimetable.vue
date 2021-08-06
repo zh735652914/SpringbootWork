@@ -3,7 +3,7 @@
     <div class="crumbs">
       <el-breadcrumb separator="/">
         <el-breadcrumb-item>
-          <i class="el-icon-fa fa-table"></i> 发起人课表
+          <i class="el-icon-fa fa-table"></i> 发起人活动表
         </el-breadcrumb-item>
       </el-breadcrumb>
     </div>
